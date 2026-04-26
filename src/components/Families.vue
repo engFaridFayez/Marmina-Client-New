@@ -35,11 +35,6 @@
               </g>
             </svg>
           </div>
-          <button
-            class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 mx-9 hover:bg-amber-500 cursor-pointer"
-          >
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -57,9 +52,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -79,9 +71,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -101,9 +90,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -121,9 +107,6 @@
               </g>
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -141,9 +124,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
 
@@ -169,9 +149,6 @@
               </g>
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -193,9 +170,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -215,9 +189,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -237,9 +208,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -257,9 +225,6 @@
               </g>
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -277,9 +242,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
       <div
@@ -301,9 +263,6 @@
               />
             </svg>
           </div>
-          <button class="bg-[#D4AB34] rounded-3xl mt-5 px-5 py-2 hover:bg-amber-500 cursor-pointer">
-            دخول
-          </button>
         </div>
       </div>
     </div>
