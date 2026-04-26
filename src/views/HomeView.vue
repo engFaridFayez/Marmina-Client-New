@@ -4,6 +4,7 @@ import Carousel from '@/components/Carousel.vue';
 import About from '@/components/About.vue';
 import Pops from '@/components/Pops.vue';
 import Families from '@/components/Families.vue';
+import Verse from '@/components/Verse.vue';
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import Families from '@/components/Families.vue';
     <About />
     <Pops />
     <Families />
+    <Verse />
 </div>
 
 <h1>HELLLLOOOOOOO</h1>
