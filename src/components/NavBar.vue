@@ -15,9 +15,9 @@ const showLogin = ref(false);
         <!-- Start Logo -->
         <div class="flex justify-center gap-2">
           <img class="w-10 h-10 md:w-12 md:h-12" :src="logo" alt="Marmina Logo" />
-          <div class="flex flex-col">
-            <h2 class="text-sm md:text-xl lg:text-2xl text-[#1B2947] font-bold">
-              كنيسة الملاك سوريال
+          <div class="flex flex-col mt-1">
+            <h2 class="text-sm md:text-xl lg:text-sm text-[#1B2947] font-bold">
+              مدرسة شمامسة كنيسة الملاك سوريال
             </h2>
             <h5 class="text-[20px] md:text-[12px] text-[#6886a4] font-bold">
               والشهيد العظيم مارمينا - العمرانية
@@ -79,7 +79,6 @@ const showLogin = ref(false);
   <Transition name="fade">
     <LoginForm v-if="showLogin" @close="showLogin = false" />
   </Transition>
-  
 </template>
 
 <style>

@@ -5,6 +5,7 @@ import arsan from "@/assets/images/arsan.jpg";
 import philo from "@/assets/images/philo.jpg";
 import sorial from "@/assets/images/sorial.jpg";
 import sarg from "@/assets/images/sarg.jpeg";
+import danial from "@/assets/images/danial.jpg";
 </script>
 
 <template>
@@ -45,6 +46,12 @@ import sarg from "@/assets/images/sarg.jpeg";
         <img :src="philo" class="rounded-full w-25 h-25 object-cover" alt="" />
         <h1 class="text-[#D4AB34] text-2xl font-bold mt-2 flex justify-center text-center">
           القس فيلوثاؤس عياد
+        </h1>
+      </div>
+      <div class="flex flex-col items-center justify-center bg-[#243553] p-10 md:p-14 rounded-3xl">
+        <img :src="danial" class="rounded-full w-25 h-25 object-cover" alt="" />
+        <h1 class="text-[#D4AB34] text-2xl font-bold mt-2 flex justify-center text-center">
+          القس دانيال سامح
         </h1>
       </div>
       <div class="flex flex-col items-center justify-center bg-[#243553] p-10 md:p-14 rounded-3xl">
