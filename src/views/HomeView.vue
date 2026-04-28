@@ -1,23 +1,25 @@
 <script setup lang="ts">
-import NavBar from '@/components/NavBar.vue';
-import Carousel from '@/components/Carousel.vue';
-import About from '@/components/About.vue';
-import Pops from '@/components/Pops.vue';
-import Families from '@/components/Families.vue';
-import Verse from '@/components/Verse.vue';
+import NavBar from "@/components/NavBar.vue";
+import Carousel from "@/components/Carousel.vue";
+import About from "@/components/About.vue";
+import Pops from "@/components/Pops.vue";
+import Families from "@/components/Families.vue";
+import Verse from "@/components/Verse.vue";
+import TimeTable from "@/components/TimeTable.vue";
 </script>
 
 <template>
-<div dir="rtl">
+  <div dir="rtl">
     <NavBar />
-</div>
-<Carousel />
-<div dir="rtl">
+  </div>
+  <Carousel />
+  <div dir="rtl">
     <About />
     <Pops />
     <Families />
     <Verse />
-</div>
+    <TimeTable />
+  </div>
 
-<h1>HELLLLOOOOOOO</h1>
+  <h1>HELLLLOOOOOOO</h1>
 </template>
