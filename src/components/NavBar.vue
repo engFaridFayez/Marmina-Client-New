@@ -9,14 +9,14 @@ const showLogin = ref(false);
 </script>
 
 <template>
-  <nav class="bg-[#F1F4F5] text-[#5E616F]">
+  <nav class="bg-[#F1F4F5] text-[#5E616F] sticky top-0 z-50 shadow">
     <div class="max-w-7xl mx-auto px-5">
       <div class="flex justify-between items-center h-16">
         <!-- Start Logo -->
         <div class="flex justify-center gap-2">
-          <img class="w-10 h-10 md:w-12 md:h-12" :src="logo" alt="Marmina Logo" />
+          <img class="w-10 h-10 md:w-15 md:h-15" :src="logo" alt="Marmina Logo" />
           <div class="flex flex-col mt-1">
-            <h2 class="text-sm md:text-xl lg:text-sm text-[#1B2947] font-bold">
+            <h2 class="text-sm md:text-xl lg:text-xl text-[#1B2947] font-bold">
               مدرسة شمامسة كنيسة الملاك سوريال
             </h2>
             <h5 class="text-[20px] md:text-[12px] text-[#6886a4] font-bold">

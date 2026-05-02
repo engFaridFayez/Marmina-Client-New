@@ -6,20 +6,28 @@ import Pops from "@/components/Pops.vue";
 import Families from "@/components/Families.vue";
 import Verse from "@/components/Verse.vue";
 import TimeTable from "@/components/TimeTable.vue";
+import NotificationCenter from "@/components/NotificationCenter.vue";
+import SchhoolHistory from "@/components/SchhoolHistory.vue";
+import Gallery from "@/components/Gallery.vue";
+import Ads from "@/components/Ads.vue";
+import Contact from "@/components/Contact.vue";
 </script>
 
 <template>
   <div dir="rtl">
     <NavBar />
-  </div>
-  <Carousel />
-  <div dir="rtl">
+
+    <Carousel />
+
     <About />
     <Pops />
     <Families />
     <Verse />
     <TimeTable />
+    <NotificationCenter />
+    <SchhoolHistory />
+    <Gallery />
+    <Ads />
+    <Contact />
   </div>
-
-  <h1>HELLLLOOOOOOO</h1>
 </template>
