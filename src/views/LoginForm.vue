@@ -1,7 +1,24 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import { useAuthStore } from "@/stores/auth";
+
 const emit = defineEmits<{
   (e: "close"): void;
 }>();
+
+const auth = useAuthStore();
+
+const username = ref("");
+const password = ref("");
+
+const handleLogin = async () => {
+  try {
+    await auth.login(username.value, password.value);
+    alert("Login Success ✅");
+  } catch (error) {
+    alert("Login Failed ❌");
+  }
+};
 </script>
 
 <template>
@@ -45,7 +62,7 @@ const emit = defineEmits<{
       <h2 class="text-4xl font-bold mb-4 text-center">تسجيل الدخول</h2>
       <h5 class="text-xl mb-15 text-center">اهلاً بك في مدرسة الشمامسة</h5>
 
-      <form class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4">
         <!-- الرقم القومي -->
         <div class="flex flex-col gap-1">
           <label for="nationalId">الرقم القومي</label>
@@ -53,9 +70,10 @@ const emit = defineEmits<{
           <div class="relative">
             <input
               id="nationalId"
-              type="number"
+              type="text"
               placeholder="#12345678901234"
-              class="border p-2 pl-10 rounded-4xl w-full "
+              v-model="username"
+              class="border p-2 pl-10 rounded-4xl w-full"
             />
 
             <!-- Icon -->
@@ -79,6 +97,7 @@ const emit = defineEmits<{
               id="password"
               type="password"
               placeholder="*********"
+              v-model="password"
               class="border p-2 pl-10 rounded-4xl w-full"
             />
 
@@ -95,19 +114,17 @@ const emit = defineEmits<{
         </div>
 
         <div class="flex justify-end text-amber-500">
-          <a>
-            هل نسيت كلمة السر؟ 
-          </a>
+          <a> هل نسيت كلمة السر؟ </a>
         </div>
 
         <!-- Button -->
         <button
-          type="submit"
+          @click="handleLogin"
           class="bg-[#D7AB31] text-white py-2 rounded-4xl hover:bg-yellow-500 transition"
         >
           دخول
         </button>
-      </form>
+      </div>
     </div>
   </div>
 </template>

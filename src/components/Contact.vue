@@ -115,10 +115,13 @@
             </div>
           </div>
 
-          
           <div class="flex flex-col justify-center gap-4 mt-4">
             <!-- Facebook -->
-            <a href="https://www.facebook.com/archangelsureil" target="blank" class="bg-[#1877F2] cursor-pointer flex justify-center text-white text-center p-3 w-full rounded-full hover:scale-110 transition">
+            <a
+              href="https://www.facebook.com/archangelsureil"
+              target="blank"
+              class="bg-[#1877F2] cursor-pointer flex justify-center text-white text-center p-3 w-full rounded-full hover:scale-110 transition"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
@@ -129,7 +132,11 @@
             </a>
 
             <!-- YouTube -->
-            <a href="https://www.youtube.com/@Archangel_Suriel_Deacons" target="blank" class="bg-red-600 cursor-pointer flex justify-center  text-white text-center p-3 w-full rounded-full hover:scale-110 transition">
+            <a
+              href="https://www.youtube.com/@Archangel_Suriel_Deacons"
+              target="blank"
+              class="bg-red-600 cursor-pointer flex justify-center text-white text-center p-3 w-full rounded-full hover:scale-110 transition"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"

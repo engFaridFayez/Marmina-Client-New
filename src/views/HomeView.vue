@@ -11,14 +11,13 @@ import SchhoolHistory from "@/components/SchhoolHistory.vue";
 import Gallery from "@/components/Gallery.vue";
 import Ads from "@/components/Ads.vue";
 import Contact from "@/components/Contact.vue";
+import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
   <div dir="rtl">
     <NavBar />
-
     <Carousel />
-
     <About />
     <Pops />
     <Families />
@@ -29,5 +28,6 @@ import Contact from "@/components/Contact.vue";
     <Gallery />
     <Ads />
     <Contact />
+    <Footer />
   </div>
 </template>
