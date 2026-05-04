@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
+import { useToast } from "vue-toastification";
+import router from "@/router";
 
 const emit = defineEmits<{
   (e: "close"): void;
 }>();
+
+const toast = useToast();
 
 const auth = useAuthStore();
 
@@ -14,9 +18,10 @@ const password = ref("");
 const handleLogin = async () => {
   try {
     await auth.login(username.value, password.value);
-    alert("Login Success ✅");
+    toast.success("تم تسجيل الدخول بنجاح ✅");
+    emit("close");
   } catch (error) {
-    alert("Login Failed ❌");
+    toast.error("فشل تسجيل الدخول ❌");
   }
 };
 </script>
@@ -62,8 +67,7 @@ const handleLogin = async () => {
       <h2 class="text-4xl font-bold mb-4 text-center">تسجيل الدخول</h2>
       <h5 class="text-xl mb-15 text-center">اهلاً بك في مدرسة الشمامسة</h5>
 
-      <div class="flex flex-col gap-4">
-        <!-- الرقم القومي -->
+      <form @submit.prevent="handleLogin" class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
           <label for="nationalId">الرقم القومي</label>
 
@@ -119,12 +123,13 @@ const handleLogin = async () => {
 
         <!-- Button -->
         <button
-          @click="handleLogin"
+          type="submit"
           class="bg-[#D7AB31] text-white py-2 rounded-4xl hover:bg-yellow-500 transition"
         >
           دخول
         </button>
-      </div>
+      </form>
+      <!-- الرقم القومي -->
     </div>
   </div>
 </template>

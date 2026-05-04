@@ -4,6 +4,7 @@ import api from "@/services/api";
 interface User {
   username: string;
   role: string;
+  image: string
 }
 
 interface AuthState {
@@ -21,7 +22,6 @@ export const useAuthStore = defineStore("auth", {
 
   getters: {
     isAuthenticated: (state) => {
-      console.log("Getter access:", state.access);
       return !!state.access;
     },
   },
@@ -32,18 +32,11 @@ export const useAuthStore = defineStore("auth", {
           username,
           password,
         });
-
-        console.log("RESPONSE:", response.data);
-
         this.access = response.data.access;
         this.refresh = response.data.refresh;
 
-        console.log("STORE AFTER SET:", this.access);
-
         localStorage.setItem("access", this.access!);
         localStorage.setItem("refresh", this.refresh!);
-
-        console.log("LOCAL STORAGE:", localStorage.getItem("access"));
 
         await this.fetchUser();
 
@@ -57,9 +50,19 @@ export const useAuthStore = defineStore("auth", {
       try {
         const response = await api.get("me/");
         this.user = response.data;
+        console.log(response.data);
+        
       } catch (error) {
         console.error("Fetch user failed", error);
       }
+    },
+
+    async logout() {
+      this.user = null;
+      this.access = null;
+      this.refresh = null;
+      localStorage.removeItem("access")
+      localStorage.removeItem("refresh")
     },
   },
 });

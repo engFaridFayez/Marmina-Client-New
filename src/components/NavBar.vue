@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import logo from "@/assets/images/logo.png";
 import LoginForm from "@/views/LoginForm.vue";
 import { useAuthStore } from "@/stores/auth";
+import unknown from "@/assets/images/default.jpg";
 
 const auth = useAuthStore();
 
@@ -12,13 +13,22 @@ if (auth.isAuthenticated) {
   console.log("مش عامل login ❌");
 }
 
+const imageUrl = computed(() => {
+  if (!auth.user?.image) return unknown;
+  return auth.user.image.startsWith("http")
+    ? auth.user.image
+    : `http://127.0.0.1:8000${auth.user.image}`;
+});
+
+console.log(auth.fetchUser());
+
 const isOpen = ref(false);
 
 const showLogin = ref(false);
 </script>
 
 <template>
-  <nav class="bg-[#F1F4F5] text-[#5E616F] sticky top-0 z-50 shadow">
+  <nav class="bg-[#F1F4F5] text-[#5E616F] sticky py-3 text-xl top-0 z-50 shadow">
     <div class="max-w-7xl mx-auto px-5">
       <div class="flex justify-between items-center h-16">
         <!-- Start Logo -->
@@ -36,18 +46,48 @@ const showLogin = ref(false);
 
         <!-- Middle Links -->
         <div class="hidden lg:flex gap-6 xl:gap-8">
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900">عن الكنيسة</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900">الصفوف الكنسية</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900">معرض الصور</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900">الاعلانات</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900">تواصل معنا</a>
-          <div v-if="auth.isAuthenticated">مرحبًا 👋</div>
+          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">عن الكنيسة</a>
+          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">الصفوف الكنسية</a>
+          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">معرض الصور</a>
+          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">الاعلانات</a>
+          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">تواصل معنا</a>
+        </div>
 
-          <div v-else>اعمل تسجيل دخول</div>
+        <div v-if="auth.isAuthenticated" class="hidden lg:flex gap-6 cursor-pointer">
+          <router-link to="/profile">
+            <div class="flex justify-between bg-[#162A49] py-2 px-7 rounded-2xl">
+              <div>
+                <img :src="imageUrl" class="w-10 h-10 ml-5 rounded-full" />
+              </div>
+              <div class="text-2xl text-white mt-1">
+                {{ auth.user?.username }}
+              </div>
+            </div>
+          </router-link>
+          <!-- <a
+            @click="auth.logout"
+            class="flex items-center text-white bg-[#D7AB31] py-2 px-3 md:px-5 rounded-2xl text-sm md:text-base hover:text-gray-300"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 36 36">
+              <path
+                fill="currentColor"
+                d="M23 4H7a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6h-9.37a1 1 0 0 1-1-1a1 1 0 0 1 1-1H25V6a2 2 0 0 0-2-2"
+                class="clr-i-solid clr-i-solid-path-1"
+              />
+              <path
+                fill="currentColor"
+                d="M28.16 17.28a1 1 0 0 0-1.41 1.41L30.13 22H25v2h5.13l-3.38 3.46a1 1 0 1 0 1.41 1.41l5.84-5.8Z"
+                class="clr-i-solid clr-i-solid-path-2"
+              />
+              <path fill="none" d="M0 0h36v36H0z" />
+            </svg>
+            تسجيل الخروج
+            {{ auth.user?.username }}
+          </a> -->
         </div>
 
         <!-- End Links -->
-        <div class="hidden lg:flex gap-6 cursor-pointer">
+        <div v-else class="hidden lg:flex gap-6 cursor-pointer">
           <a
             @click="showLogin = true"
             class="flex items-center text-white bg-[#D7AB31] py-2 px-3 md:px-5 rounded-2xl text-sm md:text-base hover:text-gray-300"
