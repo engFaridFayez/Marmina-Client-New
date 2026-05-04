@@ -60,7 +60,8 @@ const showLogin = ref(false);
                 <img :src="imageUrl" class="w-10 h-10 ml-5 rounded-full" />
               </div>
               <div class="text-2xl text-white mt-1">
-                {{ auth.user?.username }}
+                <!-- {{ auth.user?.username }} -->
+                  مينا جمال
               </div>
             </div>
           </router-link>
