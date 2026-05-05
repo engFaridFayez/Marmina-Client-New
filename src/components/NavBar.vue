@@ -28,11 +28,11 @@ const showLogin = ref(false);
 </script>
 
 <template>
-  <nav class="bg-[#F1F4F5] text-[#5E616F] sticky py-3 text-xl top-0 z-50 shadow">
-    <div class="max-w-7xl mx-auto px-5">
+  <nav class="bg-[#F1F4F5] text-[#5E616F] sticky py-2 text-xl top-0 z-50 shadow">
+    <div class="mx-auto px-5">
       <div class="flex justify-between items-center h-16">
         <!-- Start Logo -->
-        <div class="flex justify-center gap-2">
+        <router-link to="/" class="flex justify-center gap-2">
           <img class="w-10 h-10 md:w-15 md:h-15" :src="logo" alt="Marmina Logo" />
           <div class="flex flex-col mt-1">
             <h2 class="text-sm md:text-xl lg:text-xl text-[#1B2947] font-bold">
@@ -42,7 +42,7 @@ const showLogin = ref(false);
               والشهيد العظيم مارمينا - العمرانية
             </h5>
           </div>
-        </div>
+        </router-link>
 
         <!-- Middle Links -->
         <div class="hidden lg:flex gap-6 xl:gap-8">
@@ -59,9 +59,8 @@ const showLogin = ref(false);
               <div>
                 <img :src="imageUrl" class="w-10 h-10 ml-5 rounded-full" />
               </div>
-              <div class="text-2xl text-white mt-1">
-                <!-- {{ auth.user?.username }} -->
-                  مينا جمال
+              <div v-if="auth.user" class="text-xl text-white mt-1">
+                {{ auth.user.first_name }} {{ auth.user.last_name }}
               </div>
             </div>
           </router-link>

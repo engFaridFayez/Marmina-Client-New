@@ -4,7 +4,9 @@ import api from "@/services/api";
 interface User {
   username: string;
   role: string;
-  image: string
+  image: string;
+  first_name: string;
+  last_name: string;
 }
 
 interface AuthState {
@@ -51,7 +53,7 @@ export const useAuthStore = defineStore("auth", {
         const response = await api.get("me/");
         this.user = response.data;
         console.log(response.data);
-        
+
       } catch (error) {
         console.error("Fetch user failed", error);
       }

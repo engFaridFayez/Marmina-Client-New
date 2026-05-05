@@ -19,6 +19,7 @@ const handleLogin = async () => {
   try {
     await auth.login(username.value, password.value);
     toast.success("تم تسجيل الدخول بنجاح ✅");
+    router.push("/profile");
     emit("close");
   } catch (error) {
     toast.error("فشل تسجيل الدخول ❌");
