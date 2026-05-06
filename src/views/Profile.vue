@@ -36,7 +36,7 @@ const imageUrl = computed(() => {
           <img :src="imageUrl" class="w-50 h-50 rounded-full" alt="" />
         </div>
         <div v-if="auth.user" class="text-white text-5xl font-bold mt-3">
-          <h1>{{ auth.user.first_name }} {{ auth.user.last_name }}</h1>
+          <h1>{{ auth.user.full_name }}</h1>
         </div>
         <div class="text-white text-2xl font-bold mt-3">
           <h1>ثالثه اعدادي</h1>

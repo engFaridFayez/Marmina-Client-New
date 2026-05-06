@@ -7,6 +7,7 @@ interface User {
   image: string;
   first_name: string;
   last_name: string;
+  full_name: string;
 }
 
 interface AuthState {

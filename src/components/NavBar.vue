@@ -53,14 +53,14 @@ const showLogin = ref(false);
           <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">تواصل معنا</a>
         </div>
 
-        <div v-if="auth.isAuthenticated" class="hidden lg:flex gap-6 cursor-pointer">
+        <div v-if="auth.isAuthenticated && auth.user" class="hidden lg:flex gap-6 cursor-pointer">
           <router-link to="/profile">
             <div class="flex justify-between bg-[#162A49] py-2 px-7 rounded-2xl">
               <div>
                 <img :src="imageUrl" class="w-10 h-10 ml-5 rounded-full" />
               </div>
               <div v-if="auth.user" class="text-xl text-white mt-1">
-                {{ auth.user.first_name }} {{ auth.user.last_name }}
+                {{ auth.user.full_name }}
               </div>
             </div>
           </router-link>

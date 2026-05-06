@@ -14,4 +14,28 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response && error.response?.status === 401) {
+
+            const hadToken = !!localStorage.getItem("access");
+
+            // 🧹 cleanup
+            localStorage.removeItem("access");
+            localStorage.removeItem("refresh");
+
+            if (hadToken) {
+                // 🔥 session expired
+                window.dispatchEvent(new Event("unauthorized"));
+            }
+
+            return Promise.reject(error);
+        }
+
+        return Promise.reject(error);
+    }
+);
+
+
 export default api;
