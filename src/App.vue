@@ -18,8 +18,8 @@ onUnmounted(() => {
   window.removeEventListener("unauthorized", handleUnauthorized);
 });
 
-const goToLogin = () => {
-  window.location.href = "/login";
+const goToHome = () => {
+  window.location.href = "/";
 };
 
 const route = useRoute();
@@ -30,13 +30,13 @@ const route = useRoute();
     v-if="showPopup"
     title="Session Expired"
     content="Please login again"
-    button="Login"
+    button="Ok"
     type="error"
     @close="showPopup = false"
-    @action="goToLogin"
+    @action="goToHome"
   />
   <div dir="rtl" class="sticky text-xl top-0 z-50 shadow">
-    <NavBar />
+    <NavBar v-if="route.meta.showNav !== false"/>
   </div>
 
   <RouterView />
