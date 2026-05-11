@@ -64,26 +64,29 @@ const showLogin = ref(false);
               </div>
             </div>
           </router-link>
-          <!-- <a
-            @click="auth.logout"
-            class="flex items-center text-white bg-[#D7AB31] py-2 px-3 md:px-5 rounded-2xl text-sm md:text-base hover:text-gray-300"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 36 36">
-              <path
-                fill="currentColor"
-                d="M23 4H7a2 2 0 0 0-2 2v24a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6h-9.37a1 1 0 0 1-1-1a1 1 0 0 1 1-1H25V6a2 2 0 0 0-2-2"
-                class="clr-i-solid clr-i-solid-path-1"
-              />
-              <path
-                fill="currentColor"
-                d="M28.16 17.28a1 1 0 0 0-1.41 1.41L30.13 22H25v2h5.13l-3.38 3.46a1 1 0 1 0 1.41 1.41l5.84-5.8Z"
-                class="clr-i-solid clr-i-solid-path-2"
-              />
-              <path fill="none" d="M0 0h36v36H0z" />
-            </svg>
-            تسجيل الخروج
-            {{ auth.user?.username }}
-          </a> -->
+          <div v-if="auth.user.role == 'مخدوم'"></div>
+          <div v-else>
+            <router-link to="/admin">
+              <div class="flex text-white justify-between bg-[#000000] py-2 mt-1 px-7 rounded-2xl">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h1>Admin</h1>
+                </div>
+              </div>
+            </router-link>
+          </div>
         </div>
 
         <!-- End Links -->

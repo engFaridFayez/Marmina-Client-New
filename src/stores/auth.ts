@@ -4,14 +4,23 @@ import api from "@/services/api";
 interface User {
   id: number;
   username: string;
-  role: string;
-  image: string;
+  full_name: string;
   first_name: string;
   last_name: string;
-  full_name: string;
+  birth_date: Date;
+  joined_date:Date;
+  email: string;
+  image: string;
+  address: string;
+  phone: string;
+  father: string;
+  role: string;
+  family: Family | null;
   is_staff: boolean;
   is_superuser: boolean;
-  family: Family | null;
+  slogan:string;
+  parent_phone:string;
+  whatsapp:string;
 }
 
 interface Stage {
@@ -25,8 +34,8 @@ interface Family {
   name: string;
   year?: string;
   stage?: Stage;
-  user_count?: number;   // ← add
-  users?: User[];        // ← add
+  user_count?: number;
+  users?: User[];
 }
 interface AuthState {
   user: User | null;
@@ -81,7 +90,7 @@ export const useAuthStore = defineStore("auth", {
     async getFamilies() {
       try {
         this.loading = true;
-        const res = await api.get("families/");
+        const res = await api.get("familiesusers/");
         console.log(res.data);
         this.families = res.data;
       } catch (err) {
@@ -94,7 +103,7 @@ export const useAuthStore = defineStore("auth", {
     async getStages() {
       try {
         this.loading = true;
-        const res = await api.get("stages/");
+        const res = await api.get("stagesusers/");
         console.log(res.data);
         this.stages = res.data;
       } catch (err) {

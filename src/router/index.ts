@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Profile from '@/views/Profile.vue'
 import Dashboard from '@/views/admin/Dashboard.vue'
-import Stages from '@/views/admin/Stages.vue'
-import AdminFamilies from '@/views/admin/AdminFamilies.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
+import StagesList from '@/views/admin/StagesList.vue'
+import FamilyDetails from '@/views/admin/FamilyDetails.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,17 +38,17 @@ const router = createRouter({
         {
           path: "stages",
           name: "stages",
-          component: Stages,
+          component: StagesList,
         },
         {
           path: "families",
           name: "admin-families",
-          component: AdminFamilies,
+          component: FamilyDetails,
         },
         {
-          path: "/families/:id",
+          path: "/stage/:id",
           name: "family-details",
-          component: () => import("@/views/admin/GenericFamilies.vue"),
+          component: () => import("@/views/admin/StageDetails.vue"),
         },
         {
           path: "/family/:id",

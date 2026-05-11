@@ -18,51 +18,102 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <div class="flex h-screen bg-[#F9F5EF] overflow-hidden" dir="rtl">
+  <div class="flex h-screen bg-[#f4f6fb] overflow-hidden" dir="rtl">
     <!-- Sidebar -->
-    <aside class="w-72 bg-gray-900 text-white flex flex-col">
-      <!-- Logo/Header -->
-      <div class="p-6 border-b border-gray-800">
-        <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
-      </div>
+    <aside class="w-72 bg-[#111827] text-white flex flex-col border-l border-white/10 shadow-2xl">
+      <!-- Logo -->
+      <router-link
+        to="/admin"
+        class="p-6 border-b border-white/10 hover:bg-white/5 transition-all duration-300"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-12 h-12 rounded-2xl bg-linear-to-br from-[#232A7E] to-[#4F46E5] flex items-center justify-center text-xl font-bold shadow-lg"
+          >
+            D
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-extrabold tracking-wide">Dashboard</h2>
+
+            <p class="text-xs text-gray-400 mt-1">Deacons System</p>
+          </div>
+        </div>
+      </router-link>
 
       <!-- Navigation -->
-      <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+      <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
         <router-link
-          to="/admin"
-          class="flex items-center gap-3 px-5 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-2xl transition-all duration-200 font-medium active-link"
+          to="/"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
-          الرئيسية
+          <span>🏠</span>
+          <span>الصفحة الرئيسية</span>
         </router-link>
 
         <router-link
-          v-if="auth.user?.role === 'امين اسرة' || auth.user?.is_staff"
+          v-if="auth.user?.role === 'امين الشمامسة' || auth.user?.is_staff"
           to="/admin/stages"
-          class="flex items-center gap-3 px-5 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-2xl transition-all duration-200 font-medium active-link"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
-          المراحل والأسر
+          <span>📚</span>
+          <span>المراحل والأسر</span>
         </router-link>
 
         <router-link
-          to="/admin/families"
-          class="flex items-center gap-3 px-5 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-2xl transition-all duration-200 font-medium active-link"
+          v-else-if="auth.user?.role === 'امين مرحلة'"
+          to="/admin/stages"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
-          الأسر
+          <span>🎯</span>
+          <span>المرحلة</span>
+        </router-link>
+
+        <router-link
+          v-else
+          to="/admin/families"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
+        >
+          <span>👨‍👩‍👦</span>
+          <span>الأسرة</span>
         </router-link>
 
         <router-link
           to="/admin/settings"
-          class="flex items-center gap-3 px-5 py-3 text-gray-300 hover:bg-gray-800 hover:text-white rounded-2xl transition-all duration-200 font-medium active-link"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
-          الإعدادات
+          <span>⚙️</span>
+          <span>الإعدادات</span>
         </router-link>
       </nav>
 
-      <!-- Logout -->
-      <div class="p-4 border-t border-gray-800">
+      <!-- User Card -->
+      <div class="p-4 border-t border-white/10">
+        <div class="bg-white/5 rounded-2xl p-4 mb-4 border border-white/10">
+          <div class="flex items-center gap-3">
+            <img src="https://i.pravatar.cc/100" class="w-12 h-12 rounded-xl object-cover" />
+
+            <div>
+              <h3 class="font-bold text-sm">
+                {{ auth.user?.full_name || "مستخدم" }}
+              </h3>
+
+              <p class="text-xs text-gray-400 mt-1">
+                {{ auth.user?.is_staff ? "Admin" : auth.user?.role }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logout -->
         <button
           @click="handleLogout"
-          class="w-full bg-red-600 hover:bg-red-700 transition-colors text-white py-3 px-4 rounded-2xl flex items-center justify-center gap-2 font-medium"
+          class="w-full bg-red-500 hover:bg-red-600 transition-all duration-300 text-white py-3 rounded-2xl font-semibold shadow-lg hover:scale-[1.02]"
         >
           تسجيل الخروج
         </button>
@@ -72,61 +123,73 @@ const handleLogout = () => {
     <!-- Main Content -->
     <div class="flex-1 flex flex-col overflow-hidden">
       <!-- Topbar -->
-      <header class="h-16 bg-white border-b flex items-center px-6 gap-6">
+      <header
+        class="h-20 bg-white border-b border-gray-200 px-6 flex items-center justify-between shadow-sm"
+      >
         <!-- Search -->
-        <div class="flex-1 max-w-xl relative">
+        <div class="relative w-full max-w-xl">
           <input
             type="text"
             placeholder="ابحث عن أسر أو مستخدمين..."
-            class="w-full bg-gray-50 border border-gray-200 rounded-2xl py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-[#232A7E] focus:ring-1 focus:ring-[#232A7E]/30 transition-all"
+            class="w-full bg-[#f5f7fb] border border-gray-200 rounded-2xl py-3 pr-5 pl-12 text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30 focus:border-[#4F46E5] transition-all"
           />
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0a7 7 0 0114 0z"
+            />
+          </svg>
         </div>
 
-        <!-- Right Side -->
-        <div class="flex items-center gap-5">
+        <!-- Right -->
+        <div class="flex items-center gap-4 mr-6">
           <!-- Notifications -->
-          <button class="relative p-2 hover:bg-gray-100 rounded-xl transition-colors">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <button
+            class="relative w-12 h-12 rounded-2xl bg-[#f5f7fb] hover:bg-gray-100 transition flex items-center justify-center"
+          >
+            🔔
+
+            <span
+              class="absolute top-1 right-1 w-5 h-5 rounded-full bg-red-500 text-white text-[10px] flex items-center justify-center"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-9-5.197V8.5m.002 3.5L12 15l-1.998-3.5"
-              />
-            </svg>
-            <span class="absolute top-1 right-1 bg-red-500 text-white text-[10px] font-medium w-4 h-4 flex items-center justify-center rounded-full">
               3
             </span>
           </button>
 
-          <!-- User Profile -->
-          <div class="flex items-center gap-3 bg-gray-50 px-3 py-1.5 rounded-2xl">
-            <img
-              src="https://i.pravatar.cc/40"
-              alt="User"
-              class="w-8 h-8 rounded-full object-cover ring-2 ring-white"
-            />
-            <div>
-              <p class="font-semibold text-[#232A7E] text-sm leading-tight">
+          <!-- Profile -->
+          <router-link
+            to="/profile"
+            class="flex items-center gap-3 bg-[#f5f7fb] hover:bg-gray-100 transition px-4 py-2 rounded-2xl"
+          >
+            <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-xl object-cover" />
+
+            <div class="hidden md:block">
+              <p class="font-bold text-sm text-[#232A7E]">
                 {{ auth.user?.full_name || "مستخدم" }}
               </p>
-              <p class="text-gray-500 text-xs">
-                Admin
+
+              <p class="text-xs text-gray-500">
+                {{ auth.user?.is_staff ? "Admin" : auth.user?.role }}
               </p>
             </div>
-          </div>
+          </router-link>
         </div>
       </header>
 
-      <!-- Page Content -->
+      <!-- Page -->
       <main class="flex-1 overflow-y-auto p-6">
-        <RouterView />
+        <div class="bg-white min-h-full rounded-3xl shadow-sm border border-gray-100 p-6">
+          <RouterView />
+        </div>
       </main>
     </div>
   </div>

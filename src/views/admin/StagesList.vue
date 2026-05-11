@@ -12,12 +12,8 @@ onMounted(() => {
 });
 
 const goToFamilies = (stageId: number) => {
-  router.push(`/families/${stageId}`);
+  router.push(`/stage/${stageId}`);
 };
-
-const goToFamiliesUser = () =>{
-  router.push('/families')
-}
 </script>
 
 <template>
@@ -33,7 +29,7 @@ const goToFamiliesUser = () =>{
       <div
         v-for="stage in auth.stages"
         :key="stage.id"
-        class="bg-white rounded-2xl shadow hover:shadow-lg transition p-5 border border-gray-100"
+        class="bg-white rounded-2xl shadow hover:shadow-lg transition p-5 border border-gray-100 flex flex-col h-full"
       >
         <!-- Header -->
         <div class="flex justify-between items-center mb-4">
@@ -47,24 +43,20 @@ const goToFamiliesUser = () =>{
         </div>
 
         <!-- Families Preview -->
-        <div class="space-y-2 mb-4">
+        <div class="space-y-2 flex-1">
           <div
-            v-for="family in stage.families?.slice(0, 3)"
+            v-for="family in stage.families"
             :key="family.id"
             class="text-gray-600 text-sm bg-gray-50 p-2 rounded-lg"
           >
             👨‍👩‍👧 {{ family.name }}
-          </div>
-
-          <div v-if="(stage.families?.length || 0) > 3" class="text-xs text-gray-400">
-            + {{ stage.families!.length - 3 }} أسر أخرى
           </div>
         </div>
 
         <!-- Button -->
         <button
           @click="goToFamilies(stage.id)"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl transition"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl transition mt-4"
         >
           عرض الأسر
         </button>
