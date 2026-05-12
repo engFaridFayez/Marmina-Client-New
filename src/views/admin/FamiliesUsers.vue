@@ -12,16 +12,22 @@ onMounted(async () => {
 
 const family = computed(() => authStore.selectedFamily);
 
-const sortedUsers = computed(() => {
+const leaders = computed(() => {
   if (!family.value?.users) return [];
 
-  const order: Record<string, number> = {
-    "امين اسرة": 1,
-    "خادم عادي": 2,
-    مخدوم: 3,
-  };
+  return family.value.users.filter(
+    (member) =>
+      member.role === "امين اسرة" ||
+      member.role === "خادم عادي",
+  );
+});
 
-  return [...family.value.users].sort((a, b) => order[a.role] - order[b.role]);
+const servants = computed(() => {
+  if (!family.value?.users) return [];
+
+  return family.value.users.filter(
+    (member) => member.role === "مخدوم",
+  );
 });
 </script>
 
@@ -47,7 +53,9 @@ const sortedUsers = computed(() => {
         <div
           class="bg-white/15 backdrop-blur-md border border-white/20 px-5 py-3 rounded-2xl text-center"
         >
-          <p class="text-xs text-white/70 mb-0.5">عدد الأعضاء</p>
+          <p class="text-xs text-white/70 mb-0.5">
+            عدد الأعضاء
+          </p>
 
           <p class="text-3xl font-black">
             {{ family.users?.length }}
@@ -57,50 +65,143 @@ const sortedUsers = computed(() => {
     </div>
 
     <!-- Users -->
-    <div class="p-6">
-      <h4 class="text-xl font-bold text-[#232A7E] mb-4">أعضاء الأسرة</h4>
+    <div class="p-6 space-y-10">
+      <!-- Leaders Table -->
+      <div>
+        <h4 class="text-3xl font-black text-[#232A7E] mb-6">
+          الخدام وأمناء الأسر
+        </h4>
 
-      <div class="space-y-3">
         <div
-          v-for="member in sortedUsers"
-          :key="member.id"
-          class="flex items-center gap-4 bg-[#FAF8F3] border border-[#EEE6D5] rounded-2xl px-5 py-4 hover:border-[#D0A633] transition"
+          v-if="leaders.length"
+          class="overflow-hidden rounded-3xl border border-[#ECE7DA]"
         >
-          <!-- Avatar -->
+          <!-- Header -->
           <div
-            class="w-11 h-11 rounded-full bg-linear-to-br from-[#232A7E] to-[#D0A633] flex items-center justify-center overflow-hidden"
+            class="flex items-center justify-between bg-linear-to-r from-[#232A7E] to-[#3a44a8] text-white px-8 py-5 font-black text-2xl"
           >
-            <img v-if="member.image" :src="member.image" class="w-full h-full object-cover" />
+            <div>الاسم</div>
+            <div>الدور</div>
+          </div>
 
-            <span v-else class="text-white font-bold text-sm">
-              {{ member.full_name?.charAt(0) }}
+          <!-- Rows -->
+          <div
+            v-for="member in leaders"
+            :key="member.id"
+            class="flex items-center justify-between px-8 py-6 bg-[#FAF8F3] border-t border-[#EEE6D5] hover:bg-[#f5f0e7] transition"
+          >
+            <!-- Name -->
+            <div class="flex items-center gap-4">
+              <div
+                class="w-14 h-14 rounded-full bg-linear-to-br from-[#232A7E] to-[#D0A633] flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  class="w-full h-full object-cover"
+                />
+
+                <span
+                  v-else
+                  class="text-white font-bold text-lg"
+                >
+                  {{ member.full_name?.charAt(0) }}
+                </span>
+              </div>
+
+              <span class="font-black text-[#232A7E] text-2xl">
+                {{ member.full_name }}
+              </span>
+            </div>
+
+            <!-- Role -->
+            <span
+              class="text-lg font-bold px-5 py-2 rounded-full"
+              :class="{
+                'bg-[#232A7E]/10 text-[#232A7E]':
+                  member.role === 'امين اسرة',
+
+                'bg-[#D0A633]/10 text-[#9a7820]':
+                  member.role === 'خادم عادي',
+              }"
+            >
+              {{ member.role }}
             </span>
           </div>
+        </div>
 
-          <!-- Info -->
-          <div class="flex-1">
-            <p class="font-bold text-[#232A7E] text-xl">
-              {{ member.full_name }}
-            </p>
+        <!-- Empty -->
+        <div
+          v-else
+          class="bg-[#FAF8F3] border border-dashed border-[#D8C9A6] rounded-2xl p-6 text-center text-gray-400 text-lg"
+        >
+          لا يوجد خدام أو أمناء أسر
+        </div>
+      </div>
 
-            <p class="text-lg text-gray-400">
-              {{ member.username }}
-            </p>
+      <!-- Servants Table -->
+      <div>
+        <h4 class="text-3xl font-black text-[#232A7E] mb-6">
+          المخدومين
+        </h4>
+
+        <div
+          v-if="servants.length"
+          class="overflow-hidden rounded-3xl border border-[#ECE7DA]"
+        >
+          <!-- Header -->
+          <div
+            class="flex items-center justify-between bg-linear-to-r from-[#D0A633] to-[#b88f28] text-white px-8 py-5 font-black text-2xl"
+          >
+            <div>الاسم</div>
+            <div>الدور</div>
           </div>
 
-          <!-- Role -->
-          <span
-            class="shrink-0 text-lg font-semibold px-3 py-1 rounded-full"
-            :class="{
-              'bg-[#232A7E]/10 text-[#232A7E]': member.role === 'امين اسرة',
-
-              'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم عادي',
-
-              'bg-gray-100 text-gray-500': member.role === 'مخدوم',
-            }"
+          <!-- Rows -->
+          <div
+            v-for="member in servants"
+            :key="member.id"
+            class="flex items-center justify-between px-8 py-6 bg-[#FAF8F3] border-t border-[#EEE6D5] hover:bg-[#f5f0e7] transition"
           >
-            {{ member.role }}
-          </span>
+            <!-- Name -->
+            <div class="flex items-center gap-4">
+              <div
+                class="w-14 h-14 rounded-full bg-linear-to-br from-[#232A7E] to-[#D0A633] flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  class="w-full h-full object-cover"
+                />
+
+                <span
+                  v-else
+                  class="text-white font-bold text-lg"
+                >
+                  {{ member.full_name?.charAt(0) }}
+                </span>
+              </div>
+
+              <span class="font-black text-[#232A7E] text-2xl">
+                {{ member.full_name }}
+              </span>
+            </div>
+
+            <!-- Role -->
+            <span
+              class="text-lg font-bold px-5 py-2 rounded-full bg-gray-100 text-gray-600"
+            >
+              {{ member.role }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Empty -->
+        <div
+          v-else
+          class="bg-[#FAF8F3] border border-dashed border-[#D8C9A6] rounded-2xl p-6 text-center text-gray-400 text-lg"
+        >
+          لا يوجد مخدومين
         </div>
       </div>
     </div>
