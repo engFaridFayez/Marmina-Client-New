@@ -53,7 +53,11 @@ const handleLogout = () => {
         </router-link>
 
         <router-link
-          v-if="auth.user?.role === 'امين الشمامسة' || auth.user?.is_staff"
+          v-if="
+            auth.user?.role === 'امين الشمامسة' ||
+            auth.user?.role === 'admin' ||
+            auth.user?.is_staff
+          "
           to="/admin/stages"
           class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
           active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"

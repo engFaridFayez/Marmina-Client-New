@@ -378,7 +378,8 @@ const imageUrl = computed(() => {
       <div class="md:col-span-12 lg:col-span-4 bg-white w-full rounded-2xl p-4">
         <h1 class="text-3xl font-bold text-[#1B284B] pb-5">القائمه السريعة</h1>
         <div class="flex flex-col">
-          <div
+          <router-link
+            to="/terms"
             class="flex mb-3 bg-blue-100 px-3 py-2 rounded-3xl hover:bg-blue-300 transition ease-in cursor-pointer"
           >
             <div class="bg-blue-200 text-blue-600 text-2xl rounded-full p-3">
@@ -395,9 +396,9 @@ const imageUrl = computed(() => {
               </svg>
             </div>
             <div>
-              <h1 class="text-xl p-3 font-bold text-[#1B284B]">ملفي الدراسي</h1>
+              <h1 class="text-xl p-3 font-bold text-[#1B284B]">نتيجتك</h1>
             </div>
-          </div>
+          </router-link>
           <div
             class="flex mb-3 bg-pink-100 px-3 py-2 rounded-3xl hover:bg-pink-300 transition ease-in cursor-pointer"
           >

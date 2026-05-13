@@ -1,55 +1,10 @@
 import { defineStore } from "pinia";
-import api from "@/services/api";
 
-interface User {
-  id: number;
-  username: string;
-  full_name: string;
-  first_name: string;
-  last_name: string;
-  birth_date: Date;
-  joined_date:Date;
-  email: string;
-  image: string;
-  address: string;
-  phone: string;
-  father: string;
-  role: string;
-  family: Family | null;
-  is_staff: boolean;
-  is_superuser: boolean;
-  slogan:string;
-  parent_phone:string;
-  whatsapp:string;
-}
-
-interface Stage {
-  id: number;
-  name: string;
-  families?: Family[];
-}
-
-interface Family {
-  id: number;
-  name: string;
-  year?: string;
-  stage?: Stage;
-  user_count?: number;
-  users?: User[];
-}
-interface AuthState {
-  user: User | null;
-  access: string | null;
-  refresh: string | null;
-
-  users: User[];
-  stages: Stage[];
-  families: Family[];
-  selectedFamily: Family | null;
-
-  loading: boolean;
-  error: string | null;
-}
+import { UserSerivce } from "@/services/user.service";
+import { FamilyService } from "@/services/family.service";
+import { StageService } from "@/services/stage.service";
+import { AuthService } from "@/services/auth.service";
+import type { AuthState } from "@/types/auth";
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthState => ({
@@ -76,11 +31,8 @@ export const useAuthStore = defineStore("auth", {
     async getFamilyById(id: number) {
       try {
         this.loading = true;
-
-        const res = await api.get(`families/${id}/`);
-
+        const res = await FamilyService.getById(id);
         this.selectedFamily = res.data;
-
       } catch (err) {
         this.error = "Failed to load family";
       } finally {
@@ -90,8 +42,7 @@ export const useAuthStore = defineStore("auth", {
     async getFamilies() {
       try {
         this.loading = true;
-        const res = await api.get("familiesusers/");
-        console.log(res.data);
+        const res = await FamilyService.getAll();
         this.families = res.data;
       } catch (err) {
         this.error = "Failed to load families";
@@ -103,8 +54,7 @@ export const useAuthStore = defineStore("auth", {
     async getStages() {
       try {
         this.loading = true;
-        const res = await api.get("stagesusers/");
-        console.log(res.data);
+        const res = await StageService.getAll();
         this.stages = res.data;
       } catch (err) {
         this.error = "Failed to load stages";
@@ -117,7 +67,7 @@ export const useAuthStore = defineStore("auth", {
       this.loading = true;
       this.error = null;
       try {
-        const response = await api.get<User[]>("users/");
+        const response = await UserSerivce.getAll();
         this.users = response.data;
       } catch (error) {
         console.error("Fetch users failed", error);
@@ -128,10 +78,7 @@ export const useAuthStore = defineStore("auth", {
 
     async login(username: string, password: string) {
       try {
-        const response = await api.post("token/", {
-          username,
-          password,
-        });
+        const response = await AuthService.login(username,password);
         this.access = response.data.access;
         this.refresh = response.data.refresh;
 
@@ -148,7 +95,7 @@ export const useAuthStore = defineStore("auth", {
     async fetchUser() {
       this.loading = true;
       try {
-        const response = await api.get("me/");
+        const response = await AuthService.me();
         this.user = response.data;
         console.log(response.data);
       } catch (error) {

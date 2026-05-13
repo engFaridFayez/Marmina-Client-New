@@ -5,6 +5,8 @@ import Dashboard from '@/views/admin/Dashboard.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import StagesList from '@/views/admin/StagesList.vue'
 import FamilyDetails from '@/views/admin/FamilyDetails.vue'
+import ResultView from '@/views/ResultView.vue'
+import TermsView from '@/views/TermsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +25,19 @@ const router = createRouter({
       }
     },
     {
+      path: "/terms",
+      name: "terms",
+      component: TermsView,
+    },
+
+    {
+      path: "/terms/myresult/:examId",
+      name: "my-result",
+      component: ResultView,
+      props: true,
+    },
+
+    {
       path: "/admin",
       name: "admin",
       component: AdminLayout,
@@ -33,6 +48,7 @@ const router = createRouter({
       children: [
         {
           path: "",
+          name: "admin-dashboard",
           component: Dashboard
         },
         {
