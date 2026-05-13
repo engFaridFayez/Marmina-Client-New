@@ -2,6 +2,17 @@
 import { useAuthStore } from "@/stores/auth";
 import { useToast } from "vue-toastification";
 import router from "@/router";
+import { ref } from "vue";
+
+const isSidebarOpen = ref(false);
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+
+const closeSidebar = () => {
+  isSidebarOpen.value = false;
+};
 
 const auth = useAuthStore();
 const toast = useToast();
@@ -19,11 +30,27 @@ const handleLogout = () => {
 
 <template>
   <div class="flex h-screen bg-[#f4f6fb] overflow-hidden" dir="rtl">
+    <!-- Overlay -->
+    <div
+      v-if="isSidebarOpen"
+      class="fixed inset-0 bg-black/40 z-40 md:hidden"
+      @click="closeSidebar"
+    ></div>
     <!-- Sidebar -->
-    <aside class="w-72 bg-[#111827] text-white flex flex-col border-l border-white/10 shadow-2xl">
+    <aside
+      :class="[
+        'w-72 bg-[#111827] text-white flex flex-col border-l border-white/10 shadow-2xl',
+        'fixed md:static top-0 right-0 h-full z-50 transition-transform duration-300',
+        isSidebarOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0',
+      ]"
+    >
+      <div class="md:hidden flex justify-end p-4">
+        <button @click="closeSidebar" class="text-white text-xl">✕</button>
+      </div>
       <!-- Logo -->
       <router-link
         to="/admin"
+        @click="closeSidebar"
         class="p-6 border-b border-white/10 hover:bg-white/5 transition-all duration-300"
       >
         <div class="flex items-center gap-3">
@@ -44,6 +71,7 @@ const handleLogout = () => {
       <!-- Navigation -->
       <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
         <router-link
+          @click="closeSidebar"
           to="/"
           class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
           active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
@@ -58,6 +86,7 @@ const handleLogout = () => {
             auth.user?.role === 'admin' ||
             auth.user?.is_staff
           "
+          @click="closeSidebar"
           to="/admin/stages"
           class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
           active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
@@ -69,6 +98,7 @@ const handleLogout = () => {
         <router-link
           v-else-if="auth.user?.role === 'امين مرحلة'"
           to="/admin/stages"
+          @click="closeSidebar"
           class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
           active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
@@ -79,6 +109,7 @@ const handleLogout = () => {
         <router-link
           v-else
           to="/admin/families"
+          @click="closeSidebar"
           class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
           active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
@@ -88,6 +119,7 @@ const handleLogout = () => {
 
         <router-link
           to="/admin/settings"
+          @click="closeSidebar"
           class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
           active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
         >
@@ -130,6 +162,12 @@ const handleLogout = () => {
       <header
         class="h-20 bg-white border-b border-gray-200 px-6 flex items-center justify-between shadow-sm"
       >
+        <button
+          class="md:hidden w-10 h-10 rounded-xl bg-[#f5f7fb] flex items-center justify-center"
+          @click="toggleSidebar"
+        >
+          ☰
+        </button>
         <!-- Search -->
         <div class="relative w-full max-w-xl">
           <input

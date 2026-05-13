@@ -7,6 +7,14 @@ import unknown from "@/assets/images/default.jpg";
 
 const auth = useAuthStore();
 
+const links = [
+  { name: "عن الكنيسة", to: "/" },
+  { name: "الصفوف الكنسية", to: "/classes" },
+  { name: "معرض الصور", to: "/gallery" },
+  { name: "الاعلانات", to: "/news" },
+  { name: "تواصل معنا", to: "/contact" },
+];
+
 if (auth.isAuthenticated) {
   console.log("المستخدم عامل login ✅");
 } else {
@@ -59,7 +67,11 @@ const showLogin = ref(false);
               <div>
                 <img :src="imageUrl" class="w-10 h-10 ml-5 rounded-full" />
               </div>
-              <div v-if="auth.user" class="text-xl text-white mt-1">
+              <div
+                v-if="auth.user"
+                class="text-white mt-1 max-w-35 truncate"
+                :title="auth.user.full_name"
+              >
                 {{ auth.user.full_name }}
               </div>
             </div>
@@ -122,34 +134,66 @@ const showLogin = ref(false);
 
     <!-- Mobile Menu -->
     <div v-if="isOpen" class="lg:hidden px-4 pb-4 space-y-2">
-      <a href="#" class="block py-2 border-b">عن الكنيسة</a>
-      <a href="#" class="block py-2 border-b">الصفوف الكنسية</a>
-      <a href="#" class="block py-2 border-b">معرض الصور</a>
-      <a href="#" class="block py-2 border-b">الاعلانات</a>
-      <a href="#" class="block py-2">تواصل معنا</a>
-      <div class="flex cursor-pointer">
-        <a
-          @click="showLogin = true"
-          class="flex items-center text-white bg-[#D7AB31] py-2 px-3 md:px-5 rounded-2xl text-sm md:text-base hover:text-gray-300"
+      <!-- Links -->
+      <router-link
+        v-for="link in links"
+        :key="link.name"
+        :to="link.to"
+        class="block py-2 border-b text-[#4a5c6d] font-bold"
+        @click="isOpen = false"
+      >
+        {{ link.name }}
+      </router-link>
+
+      <!-- لو المستخدم عامل login -->
+      <div v-if="auth.isAuthenticated && auth.user" class="mt-4 space-y-3">
+        <!-- User Info -->
+        <router-link
+          to="/profile"
+          class="flex items-center gap-3 bg-[#162A49] text-white p-3 rounded-2xl"
+          @click="isOpen = false"
         >
-          <svg
-            class="ml-2"
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 32 32"
-          >
+          <img :src="imageUrl" class="w-10 h-10 rounded-full object-cover" />
+
+          <div class="flex-1 min-w-0">
+            <div class="font-bold truncate" :title="auth.user.full_name">
+              {{ auth.user.full_name }}
+            </div>
+            <div class="text-xs text-gray-300">
+              {{ auth.user.role }}
+            </div>
+          </div>
+        </router-link>
+
+        <!-- Admin Button -->
+        <router-link
+          v-if="auth.user.role !== 'مخدوم'"
+          to="/admin"
+          class="flex items-center justify-between bg-black text-white p-3 rounded-2xl"
+          @click="isOpen = false"
+        >
+          <span>Admin Panel</span>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
             <path
               fill="currentColor"
-              d="M26 30H14a2 2 0 0 1-2-2v-3h2v3h12V4H14v3h-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2"
-            />
-            <path
-              fill="currentColor"
-              d="M14.59 20.59L18.17 17H4v-2h14.17l-3.58-3.59L16 10l6 6l-6 6z"
+              d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"
             />
           </svg>
+        </router-link>
+      </div>
+
+      <!-- لو مش logged in -->
+      <div v-else class="mt-4">
+        <button
+          @click="
+            showLogin = true;
+            isOpen = false;
+          "
+          class="w-full flex items-center justify-center text-white bg-[#D7AB31] py-3 rounded-2xl font-bold"
+        >
           تسجيل الدخول
-        </a>
+        </button>
       </div>
     </div>
   </nav>
