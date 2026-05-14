@@ -34,7 +34,7 @@ const imageUrl = computed(() => {
         class="bg-linear-to-r from-[#232a7e] to-[#D0A633] flex flex-col items-center justify-start w-full h-auto pb-10 md:h-auto md:pb-10 lg:h-auto lg:pb-10 overflow-hidden rounded-2xl"
       >
         <div class="UserImage mt-5">
-          <img :src="imageUrl" class="w-50 h-50 rounded-full" alt="" />
+          <img :src="imageUrl" class="w-50 h-50 rounded-full object-cover" alt="" />
         </div>
         <div class="text-white text-4xl font-bold mt-3">
           <h1>{{ auth.user.full_name }}</h1>
@@ -57,7 +57,10 @@ const imageUrl = computed(() => {
       <div class="col-span-1"></div>
     </div>
     <div class="flex justify-center gap-6 mt-6">
-      <div class="bg-white shadow-xl rounded-2xl p-6 w-100 flex flex-col items-center">
+      <router-link
+        to="/att-terms"
+        class="bg-white shadow-xl rounded-2xl p-6 w-100 flex flex-col items-center hover:bg-gray-200 transition ease-in"
+      >
         <svg
           class="text-yellow-400"
           xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +76,8 @@ const imageUrl = computed(() => {
         </svg>
         <h1 class="text-2xl font-bold mt-2">94%</h1>
         <p class="text-gray-500 text-xl">الحضور</p>
-      </div>
+        <p class="text-blue-500 text-xl">شوف حضورك كامل من هنا</p>
+      </router-link>
 
       <!-- Card 2 -->
       <div class="bg-white shadow-xl rounded-2xl p-6 w-100 flex flex-col items-center">

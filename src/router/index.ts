@@ -7,6 +7,8 @@ import StagesList from '@/views/admin/StagesList.vue'
 import FamilyDetails from '@/views/admin/FamilyDetails.vue'
 import ResultView from '@/views/ResultView.vue'
 import TermsView from '@/views/TermsView.vue'
+import AttendanceView from '@/views/AttendanceView.vue'
+import TermsForAttendance from '@/views/TermsForAttendance.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,7 +31,16 @@ const router = createRouter({
       name: "terms",
       component: TermsView,
     },
-
+    {
+      path: "/att-terms",
+      name: "att-terms",
+      component: TermsForAttendance,
+    },
+    {
+      path: "/terms/myattendance/:termId",
+      name: "my-attendance",
+      component: AttendanceView,
+    },
     {
       path: "/terms/myresult/:examId",
       name: "my-result",
@@ -76,6 +87,13 @@ const router = createRouter({
 
 
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 })
 
 router.beforeEach((to) => {

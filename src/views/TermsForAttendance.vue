@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import { useAttendanceStore } from "@/stores/attendance";
 import { useResultStore } from "@/stores/results";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 
-const store = useResultStore();
+const store = useAttendanceStore();
 const router = useRouter();
 
 onMounted(() => {
@@ -14,9 +15,9 @@ const openTerm = (id: number) => {
   console.log(id);
 
   router.push({
-    name: "my-result",
+    name: "my-attendance",
     params: {
-      examId: id,
+      termId: id,
     },
   });
 };
@@ -28,7 +29,7 @@ const openTerm = (id: number) => {
     style="background-image: url(&quot;/src/assets/images/resBack.jpeg&quot;)"
     dir="rtl"
   >
-    <h1 class="text-white text-5xl font-bold text-center w-full mb-6">النتائج</h1>
+    <h1 class="text-white text-5xl font-bold text-center w-full mb-6">الحضور والغياب</h1>
     <div class="w-full max-w-6xl p-6">
       <h1 class="text-2xl flex justify-center items-center m-auto text-white font-bold mb-6">
         📚 اختر الترم
@@ -36,7 +37,7 @@ const openTerm = (id: number) => {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div
-          v-for="exam in store.exams"
+          v-for="exam in store.terms"
           :key="exam.id"
           @click="openTerm(exam.id)"
           class="cursor-pointer bg-[#FFF9D2] rounded-2xl shadow hover:shadow-xl transition p-6 border"
@@ -49,7 +50,7 @@ const openTerm = (id: number) => {
             {{ exam.year }}
           </p>
 
-          <div class="mt-4 text-blue-600 font-semibold">اضغط لعرض النتائج →</div>
+          <div class="mt-4 text-blue-600 font-semibold">شوف حضورك وغيابك →</div>
         </div>
       </div>
     </div>
