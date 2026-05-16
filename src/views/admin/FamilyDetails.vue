@@ -187,6 +187,7 @@ onMounted(async () => {
               </div>
 
               <!-- Role Badge -->
+
               <span
                 class="shrink-0 text-lg font-semibold px-3 py-1 rounded-full"
                 :class="{

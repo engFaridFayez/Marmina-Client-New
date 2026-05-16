@@ -14,6 +14,7 @@ export interface User {
   role: string;
   family: Family | null;
   is_staff: boolean;
+  is_active:boolean;
   is_superuser: boolean;
   slogan:string;
   parent_phone:string;
@@ -36,6 +37,7 @@ export interface Family {
 }
 export interface AuthState {
   user: User | null;
+  selectedUser: User | null;
   access: string | null;
   refresh: string | null;
 

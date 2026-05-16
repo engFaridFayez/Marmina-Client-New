@@ -9,6 +9,7 @@ import ResultView from '@/views/ResultView.vue'
 import TermsView from '@/views/TermsView.vue'
 import AttendanceView from '@/views/AttendanceView.vue'
 import TermsForAttendance from '@/views/TermsForAttendance.vue'
+import EditPrompt from '@/views/admin/EditPrompt.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,6 +82,37 @@ const router = createRouter({
           path: "/family/:id",
           name: "family-users",
           component: () => import("@/views/admin/FamiliesUsers.vue"),
+        },
+        {
+          path: "addUser",
+          name: "add-user",
+          component: () => import("@/views/admin/AddUserView.vue"),
+        },
+        {
+          path: "/users/:id",
+          name: "user-details",
+          component: () => import("@/views/admin/ViewSingleUserView.vue"),
+          props: true
+        },
+        {
+          path: "/users/:id/edit",
+          name: "edit-user",
+          component: () => import("@/views/admin/AddUserView.vue"),
+        },
+        {
+          path: "/edit-prompt",
+          name: "edit-prompt",
+          component: EditPrompt
+        },
+        {
+          path: "/change-user-password/:id",
+          name: "change-user-password",
+          component: () => import("@/views/admin/ChangeUserPassword.vue"),
+        },
+        {
+          path: "/change-user-activity/:id",
+          name: "change-user-activity",
+          component: () => import("@/views/admin/ChangeUserActivity.vue"),
         }
       ]
     },

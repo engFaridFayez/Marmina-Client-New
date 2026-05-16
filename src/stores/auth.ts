@@ -9,6 +9,7 @@ import type { AuthState } from "@/types/auth";
 export const useAuthStore = defineStore("auth", {
   state: (): AuthState => ({
     user: null,
+    selectedUser: null,
     access: localStorage.getItem("access"),
     refresh: localStorage.getItem("refresh"),
 
@@ -28,6 +29,95 @@ export const useAuthStore = defineStore("auth", {
   },
 
   actions: {
+    async changeUserActivity(id: number) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await UserSerivce.changeUserActivity(id)
+        return response.data
+      } catch (error: any) {
+        this.error = "حدث خطأ"
+        throw error
+      } finally {
+        this.loading = false
+      }
+    },
+    async updateUserPassword(target_user: number, new_password: string) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await UserSerivce.updateUserPassword(target_user, new_password)
+        return response.data;
+      } catch (error: any) {
+
+        this.error =
+          Array.isArray(error.response?.data?.response)
+            ? error.response.data.response.join(", ")   // ← join array into string
+            : error.response?.data?.response || "حدث خطأ أثناء تغيير كلمة المرور";
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+    async editUser(id: number, data: object) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await UserSerivce.editUser(id, data)
+        const index = this.users.findIndex(p => p.id === id)
+        if (index !== -1) {
+          this.users[index] = response.data
+        }
+      } catch (error: any) {
+        this.error = error.response?.data || "error"
+        console.log(error.response?.data)
+        console.log(error.response)
+
+        throw error
+      } finally {
+        this.loading = false
+      }
+    },
+    async getSignleUser(id: number) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await UserSerivce.getSingleUser(id)
+        this.selectedUser = response.data
+      } catch (error: any) {
+        this.error = error.response?.data || "error"
+        console.log(error.response?.data)
+        console.log(error.response)
+      } finally {
+        this.loading = false
+      }
+    },
+    async addUser(data: object) {
+      try {
+        this.loading = true
+        this.error = null
+
+        const response = await UserSerivce.addUser(data)
+        this.user = response.data
+
+        return response.data
+      } catch (error: any) {
+        this.error = error.response?.data || "error"
+        console.log(error.response?.data)
+        console.log(error.response)
+
+        throw error
+      } finally {
+        this.loading = false
+      }
+    },
     async getFamilyById(id: number) {
       try {
         this.loading = true;
@@ -78,7 +168,7 @@ export const useAuthStore = defineStore("auth", {
 
     async login(username: string, password: string) {
       try {
-        const response = await AuthService.login(username,password);
+        const response = await AuthService.login(username, password);
         this.access = response.data.access;
         this.refresh = response.data.refresh;
 
