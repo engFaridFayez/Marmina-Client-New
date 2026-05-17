@@ -11,8 +11,6 @@ onMounted(() => {
 });
 
 const openTerm = (id: number) => {
-  console.log(id);
-
   router.push({
     name: "my-result",
     params: {

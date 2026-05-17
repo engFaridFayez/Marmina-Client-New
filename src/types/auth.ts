@@ -4,7 +4,7 @@ export interface User {
   full_name: string;
   first_name: string;
   last_name: string;
-  birth_date: Date;
+  birth_date: string;
   joined_date:Date;
   email: string;
   image: string;

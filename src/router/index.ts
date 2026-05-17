@@ -10,6 +10,7 @@ import TermsView from '@/views/TermsView.vue'
 import AttendanceView from '@/views/AttendanceView.vue'
 import TermsForAttendance from '@/views/TermsForAttendance.vue'
 import EditPrompt from '@/views/admin/EditPrompt.vue'
+import SettingsView from '@/views/admin/SettingsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
           name: "stages",
           component: StagesList,
         },
+        {
+          path: "settings",
+          name: "settings",
+          component: SettingsView
+        },
         // {
         //   path: "families",
         //   name: "admin-families",
@@ -113,6 +119,11 @@ const router = createRouter({
           path: "/change-user-activity/:id",
           name: "change-user-activity",
           component: () => import("@/views/admin/ChangeUserActivity.vue"),
+        },
+        {
+          path: "/update-me",
+          name: "update-me",
+          component: () => import("@/views/admin/EditOwnDataView.vue"),
         }
       ]
     },

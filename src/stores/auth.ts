@@ -4,7 +4,7 @@ import { UserSerivce } from "@/services/user.service";
 import { FamilyService } from "@/services/family.service";
 import { StageService } from "@/services/stage.service";
 import { AuthService } from "@/services/auth.service";
-import type { AuthState } from "@/types/auth";
+import type { AuthState, User } from "@/types/auth";
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthState => ({
@@ -62,6 +62,20 @@ export const useAuthStore = defineStore("auth", {
 
         this.loading = false;
 
+      }
+    },
+    async editOwnData(user: FormData | Partial<User>) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await UserSerivce.editOwnData(user)
+        this.user = response.data
+      } catch (error: any) {
+        this.error = error.response?.data || "error"
+        console.log(error.response?.data)
+      } finally {
+        this.loading = false
       }
     },
     async editUser(id: number, data: object) {

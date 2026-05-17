@@ -93,10 +93,6 @@ const isEdit = computed(() => !!route.params.id);
 onMounted(async () => {
   await Promise.all([authStore.getFamilies(), authStore.getStages()]);
 
-  console.log("STAGES:", JSON.stringify(authStore.stages));
-  console.log("ALL FAMILIES FROM STAGES:", JSON.stringify(allFamilies.value));
-  console.log("USER:", JSON.stringify(authStore.user));
-
   if (authStore.user?.role === "امين اسرة" && authStore.user?.family?.stage?.id) {
     form.stage = authStore.user.family.stage.id;
   }

@@ -16,7 +16,6 @@ export const useResultStore = defineStore("result", {
             try {
                 this.loading = true
                 const response = await ResultService.getMyResult()
-                console.log(response.data);
 
                 this.results = response.data
             } catch (error) {

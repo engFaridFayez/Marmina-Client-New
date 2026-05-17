@@ -17,7 +17,6 @@ export const useAttendanceStore = defineStore("attendance", {
       try {
         this.loading = true
         const response = await AttendanceService.getMyAttendance()
-        console.log(response.data);
 
         this.attendances = response.data
       } catch (error) {

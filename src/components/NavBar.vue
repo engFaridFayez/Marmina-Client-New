@@ -15,20 +15,12 @@ const links = [
   { name: "تواصل معنا", to: "/contact" },
 ];
 
-if (auth.isAuthenticated) {
-  console.log("المستخدم عامل login ✅");
-} else {
-  console.log("مش عامل login ❌");
-}
-
 const imageUrl = computed(() => {
   if (!auth.user?.image) return unknown;
   return auth.user.image.startsWith("http")
     ? auth.user.image
     : `http://127.0.0.1:8000${auth.user.image}`;
 });
-
-console.log(auth.fetchUser());
 
 const isOpen = ref(false);
 
