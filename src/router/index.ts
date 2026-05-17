@@ -4,7 +4,7 @@ import Profile from '@/views/Profile.vue'
 import Dashboard from '@/views/admin/Dashboard.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import StagesList from '@/views/admin/StagesList.vue'
-import FamilyDetails from '@/views/admin/FamilyDetails.vue'
+// import FamilyDetails from '@/views/admin/FamilyDetails.vue'
 import ResultView from '@/views/ResultView.vue'
 import TermsView from '@/views/TermsView.vue'
 import AttendanceView from '@/views/AttendanceView.vue'
@@ -68,11 +68,11 @@ const router = createRouter({
           name: "stages",
           component: StagesList,
         },
-        {
-          path: "families",
-          name: "admin-families",
-          component: FamilyDetails,
-        },
+        // {
+        //   path: "families",
+        //   name: "admin-families",
+        //   component: FamilyDetails,
+        // },
         {
           path: "/stage/:id",
           name: "family-details",

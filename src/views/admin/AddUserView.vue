@@ -1,16 +1,61 @@
 <script setup lang="ts">
 import { useAuthStore } from "@/stores/auth";
-import { computed, onMounted, reactive } from "vue";
+import { computed, onMounted, reactive, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useToast } from "vue-toastification";
 
 const authStore = useAuthStore();
-const families = computed(() => authStore.families);
-const stages = computed(() => authStore.stages);
 const toast = useToast();
 const route = useRoute();
 
-// Extract first error message for a given field from the store error object
+const stages = computed(() => authStore.stages);
+const families = computed(() => authStore.families);
+
+// Flatten all families from stages (since familiesusers/ returns [])
+const allFamilies = computed(() => authStore.stages.flatMap((stage: any) => stage.families ?? []));
+
+const filteredStages = computed(() => {
+  // امين مرحلة: for now show all stages since user.family is null
+  // Once backend assigns a family to the user, this will auto-restrict
+  if (authStore.user?.role === "امين مرحلة") {
+    const userStageId = authStore.user?.family?.stage?.id;
+    if (userStageId) {
+      return stages.value.filter((stage: any) => stage.id === userStageId);
+    }
+    // fallback: show all if no stage assigned yet
+    return stages.value;
+  }
+  return stages.value;
+});
+
+const filteredFamilies = computed(() => {
+  const all = allFamilies.value;
+
+  if (authStore.user?.role === "امين اسرة") {
+    const userFamilyId = authStore.user?.family?.id;
+    return all.filter((f: any) => f.id === userFamilyId);
+  }
+
+  if (authStore.user?.role === "امين مرحلة") {
+    const userStageId = authStore.user?.family?.stage?.id;
+    if (userStageId) {
+      return all.filter((f: any) => f.stage?.id === userStageId);
+    }
+    // fallback: show all families if no stage assigned
+    return all;
+  }
+
+  return all;
+});
+
+const filteredFamiliesByStage = computed(() => {
+  let base = filteredFamilies.value;
+  if (form.stage) {
+    base = base.filter((f: any) => f.stage?.id === Number(form.stage));
+  }
+  return base;
+});
+
 const fieldError = (field: string): string | null => {
   const err = authStore.error;
   if (!err || typeof err !== "object") return null;
@@ -31,21 +76,34 @@ const form = reactive({
   joined_date: "",
   parent_phone: "",
   role: "",
-  family: "",
-  stage: "",
+  family: "" as string | number,
+  stage: "" as string | number,
   slogan: "",
 });
+
+watch(
+  () => form.stage,
+  () => {
+    form.family = "";
+  },
+);
 
 const isEdit = computed(() => !!route.params.id);
 
 onMounted(async () => {
   await Promise.all([authStore.getFamilies(), authStore.getStages()]);
 
+  console.log("STAGES:", JSON.stringify(authStore.stages));
+  console.log("ALL FAMILIES FROM STAGES:", JSON.stringify(allFamilies.value));
+  console.log("USER:", JSON.stringify(authStore.user));
+
+  if (authStore.user?.role === "امين اسرة" && authStore.user?.family?.stage?.id) {
+    form.stage = authStore.user.family.stage.id;
+  }
+
   if (isEdit.value) {
     const id = Number(route.params.id);
-
     await authStore.getSignleUser(id);
-
     const user = authStore.selectedUser;
 
     if (user) {
@@ -60,8 +118,8 @@ onMounted(async () => {
         joined_date: user.joined_date ?? "",
         parent_phone: user.parent_phone ?? "",
         role: user.role ?? "",
-        family: user.family ?? "",
-        stage: user.family?.stage ?? "",
+        family: user.family?.id ?? user.family ?? "",
+        stage: user.family?.stage?.id ?? "",
         slogan: user.slogan ?? "",
       });
     }
@@ -317,13 +375,59 @@ const submit = async () => {
               fieldError('role') ? 'border-red-400 bg-red-50' : 'border-slate-300',
             ]"
           >
-            <option value="">خادم / مخدوم</option>
-            <option value="مخدوم">مخدوم</option>
-            <option value="خادم عادي">خادم</option>
-            <option value="امين مرحلة">امين مرحلة</option>
+            <option disabled value="">خادم / مخدوم</option>
+            <option
+              v-if="
+                authStore.user?.role == 'امين اسرة' ||
+                authStore.user?.role == 'امين الشمامسة' ||
+                authStore.user?.role == 'admin'
+              "
+              value="مخدوم"
+            >
+              مخدوم
+            </option>
+            <option
+              v-if="
+                authStore.user?.role == 'امين مرحلة' ||
+                authStore.user?.role == 'امين الشمامسة' ||
+                authStore.user?.role == 'admin'
+              "
+              value="خادم عادي"
+            >
+              خادم
+            </option>
+            <option
+              v-if="authStore.user?.role == 'امين الشمامسة' || authStore.user?.role == 'admin'"
+              value="امين مرحلة"
+            >
+              امين مرحلة
+            </option>
           </select>
           <p v-if="fieldError('role')" class="text-red-500 text-sm pr-1">
             {{ fieldError("role") }}
+          </p>
+        </div>
+
+        <!-- Stage -->
+        <div v-if="authStore.user?.role !== 'امين اسرة'" class="space-y-1">
+          <label class="font-semibold text-slate-700">المرحلة <b class="text-red-500">*</b></label>
+          <select
+            v-model="form.stage"
+            :class="[
+              'w-full rounded-2xl border px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 transition',
+              fieldError('stage') ? 'border-red-400 bg-red-50' : 'border-slate-300',
+            ]"
+          >
+            <option disabled value="">اختر المرحلة</option>
+            <option v-for="stage in filteredStages" :key="stage.id" :value="stage.id">
+              {{ stage.name }}
+            </option>
+            <option v-if="authStore.user?.role === 'امين اسرة'">
+              {{ authStore.user.family?.name }}
+            </option>
+          </select>
+          <p v-if="fieldError('stage')" class="text-red-500 text-sm pr-1">
+            {{ fieldError("stage") }}
           </p>
         </div>
 
@@ -337,9 +441,12 @@ const submit = async () => {
               fieldError('family') ? 'border-red-400 bg-red-50' : 'border-slate-300',
             ]"
           >
-            <option value="">اختر الأسرة</option>
-            <option v-for="family in families" :key="family.id" :value="family.id">
+            <option disabled value="">اختر الأسرة</option>
+            <option v-for="family in filteredFamiliesByStage" :key="family.id" :value="family.id">
               {{ family.name }}
+            </option>
+            <option v-if="authStore.user?.role === 'امين اسرة'" :value="authStore.user.family?.id">
+              {{ authStore.user.family?.name }}
             </option>
           </select>
           <p v-if="fieldError('family')" class="text-red-500 text-sm pr-1">
@@ -347,25 +454,6 @@ const submit = async () => {
           </p>
         </div>
 
-        <!-- Stage -->
-        <div class="space-y-1">
-          <label class="font-semibold text-slate-700">المرحلة <b class="text-red-500">*</b></label>
-          <select
-            v-model="form.stage"
-            :class="[
-              'w-full rounded-2xl border px-4 py-3 bg-white outline-none focus:ring-4 focus:ring-indigo-200 focus:border-indigo-500 transition',
-              fieldError('stage') ? 'border-red-400 bg-red-50' : 'border-slate-300',
-            ]"
-          >
-            <option value="">اختر المرحلة</option>
-            <option v-for="stage in stages" :key="stage.id" :value="stage.id">
-              {{ stage.name }}
-            </option>
-          </select>
-          <p v-if="fieldError('stage')" class="text-red-500 text-sm pr-1">
-            {{ fieldError("stage") }}
-          </p>
-        </div>
         <!-- Slogan -->
         <div class="space-y-1">
           <label class="font-semibold text-slate-700">ال slogan</label>

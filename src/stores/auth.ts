@@ -105,7 +105,7 @@ export const useAuthStore = defineStore("auth", {
         this.error = null
 
         const response = await UserSerivce.addUser(data)
-        this.user = response.data
+        this.selectedUser = response.data
 
         return response.data
       } catch (error: any) {
