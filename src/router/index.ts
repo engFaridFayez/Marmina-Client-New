@@ -11,6 +11,7 @@ import AttendanceView from '@/views/AttendanceView.vue'
 import TermsForAttendance from '@/views/TermsForAttendance.vue'
 import EditPrompt from '@/views/admin/EditPrompt.vue'
 import SettingsView from '@/views/admin/SettingsView.vue'
+import AlhanView from '@/views/AlhanView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       name: "my-result",
       component: ResultView,
       props: true,
+    },
+    {
+      path:"/drive/:id",
+      name:"drive",
+      component:AlhanView
     },
 
     {

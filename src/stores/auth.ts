@@ -29,6 +29,15 @@ export const useAuthStore = defineStore("auth", {
   },
 
   actions: {
+    async initializeAuth() {
+      if (this.access) {
+        try {
+          await this.fetchUser();
+        } catch (error) {
+          this.logout();
+        }
+      }
+    },
     async changeUserActivity(id: number) {
       this.loading = true
       this.error = null

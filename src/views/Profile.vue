@@ -403,21 +403,23 @@ const imageUrl = computed(() => {
               <h1 class="text-xl p-3 font-bold text-[#1B284B]">نتيجتك</h1>
             </div>
           </router-link>
-          <div
+          <router-link
+            :to="`/drive/${auth.user.family?.id}`"
             class="flex mb-3 bg-pink-100 px-3 py-2 rounded-3xl hover:bg-pink-300 transition ease-in cursor-pointer"
           >
             <div class="bg-pink-200 text-pink-600 text-2xl rounded-full p-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none" />
                 <path
                   fill="currentColor"
-                  d="m12 21l-1.45-1.3q-2.525-2.275-4.175-3.925T3.75 12.812T2.388 10.4T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.3 0 2.475.55T12 4.75q.85-1 2.025-1.55t2.475-.55q2.35 0 3.925 1.575T22 8.15q0 1.15-.387 2.25t-1.363 2.412t-2.625 2.963T13.45 19.7zm0-2.7q2.4-2.15 3.95-3.687t2.45-2.675t1.25-2.026T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2.175.662T12.95 7h-1.9q-.375-1.025-1.375-1.687T7.5 4.65q-1.5 0-2.5 1t-1 2.5q0 .875.35 1.763t1.25 2.025t2.45 2.675T12 18.3m0-6.825"
+                  d="M8 4v10.184A3 3 0 0 0 7 14a3 3 0 1 0 3 3V7h7v4.184A3 3 0 0 0 16 11a3 3 0 1 0 3 3V4z"
                 />
               </svg>
             </div>
             <div>
-              <h1 class="text-xl p-3 font-bold text-[#1B284B]">المفضلة</h1>
+              <h1 class="text-xl p-3 font-bold text-[#1B284B]">الحان اسرتك</h1>
             </div>
-          </div>
+          </router-link>
           <div
             class="flex mb-3 bg-yellow-100 px-3 py-2 rounded-3xl hover:bg-yellow-300 transition ease-in cursor-pointer"
           >
@@ -449,7 +451,7 @@ const imageUrl = computed(() => {
             </div>
           </div>
 
-          <div
+          <div @click="handleLogout"
             class="flex mb-3 mt-10 self-center bg-red-100 px-10 py-2 rounded-2xl hover:bg-red-600 transition ease-in cursor-pointer"
           >
             <div class="bg-red-200 text-red-600 text-2xl rounded-full p-3">
@@ -458,7 +460,7 @@ const imageUrl = computed(() => {
                 <path fill="currentColor" d="m21 12l-4-4v3H9v2h8v3z" />
               </svg>
             </div>
-            <div @click="handleLogout">
+            <div>
               <h1 class="text-2xl p-3 font-bold text-[#1B284B]">تسجيل الخروج</h1>
             </div>
           </div>
