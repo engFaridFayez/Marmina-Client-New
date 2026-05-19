@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import Carousel from "@/components/Home Components/Carousel.vue";
-import About from "@/components/Home Components/About.vue";
-import Pops from "@/components/Home Components/Pops.vue";
-import Families from "@/components/Home Components/Families.vue";
-import Verse from "@/components/Home Components/Verse.vue";
-import TimeTable from "@/components/Home Components/TimeTable.vue";
-import NotificationCenter from "@/components/Home Components/NotificationCenter.vue";
-import SchhoolHistory from "@/components/Home Components/SchhoolHistory.vue";
-import Gallery from "@/components/Home Components/Gallery.vue";
-import Ads from "@/components/Home Components/Ads.vue";
-import Contact from "@/components/Home Components/Contact.vue";
-import Footer from "@/components/Home Components/Footer.vue";
+import Carousel from "@/components/HomeComponents/Carousel.vue";
+import About from "@/components/HomeComponents/About.vue";
+import Pops from "@/components/HomeComponents/Pops.vue";
+import Families from "@/components/HomeComponents/Families.vue";
+import Verse from "@/components/HomeComponents/Verse.vue";
+import TimeTable from "@/components/HomeComponents/TimeTable.vue";
+import NotificationCenter from "@/components/HomeComponents/NotificationCenter.vue";
+import SchhoolHistory from "@/components/HomeComponents/SchhoolHistory.vue";
+import Gallery from "@/components/HomeComponents/Gallery.vue";
+import Ads from "@/components/HomeComponents/Ads.vue";
+import Contact from "@/components/HomeComponents/Contact.vue";
+import Footer from "@/components/HomeComponents/Footer.vue";
 </script>
 
 <template>

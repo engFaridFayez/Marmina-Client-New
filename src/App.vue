@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NavBar from "./components/Common/NavBar.vue";
-import Popup from "./components/Home Components/Popup.vue";
+import Popup from "./components/HomeComponents/Popup.vue";
 import { watch } from "vue";
 import { useRoute } from "vue-router";
 import { sessionExpired } from "@/lib/globalState";
