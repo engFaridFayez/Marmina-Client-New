@@ -2,7 +2,7 @@
 import { useAuthStore } from "@/stores/auth";
 import { onMounted, computed, ref } from "vue";
 import { useRoute } from "vue-router";
-import Popup from "@/components/Popup.vue";
+import Popup from "@/components/Home Components/Popup.vue";
 
 const route = useRoute();
 const authStore = useAuthStore();

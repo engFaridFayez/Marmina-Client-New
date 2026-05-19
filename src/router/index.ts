@@ -1,3 +1,4 @@
+import { useAuthStore } from "@/stores/auth";
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Profile from '@/views/Profile.vue'
@@ -51,9 +52,9 @@ const router = createRouter({
       props: true,
     },
     {
-      path:"/drive/:id",
-      name:"drive",
-      component:AlhanView
+      path: "/drive/:id",
+      name: "drive",
+      component: AlhanView
     },
 
     {
@@ -62,23 +63,36 @@ const router = createRouter({
       component: AdminLayout,
       meta: {
         requiresAuth: true,
+        requireAdmin: true,
         showNav: false,
       },
       children: [
         {
           path: "",
           name: "admin-dashboard",
-          component: Dashboard
+          component: Dashboard,
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "stages",
           name: "stages",
           component: StagesList,
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "settings",
           name: "settings",
-          component: SettingsView
+          component: SettingsView,
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         // {
         //   path: "families",
@@ -89,47 +103,83 @@ const router = createRouter({
           path: "/stage/:id",
           name: "family-details",
           component: () => import("@/views/admin/StageDetails.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "/family/:id",
           name: "family-users",
           component: () => import("@/views/admin/FamiliesUsers.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "addUser",
           name: "add-user",
           component: () => import("@/views/admin/AddUserView.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "/users/:id",
           name: "user-details",
           component: () => import("@/views/admin/ViewSingleUserView.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          },
           props: true
         },
         {
           path: "/users/:id/edit",
           name: "edit-user",
           component: () => import("@/views/admin/AddUserView.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "/edit-prompt",
           name: "edit-prompt",
-          component: EditPrompt
+          component: EditPrompt,
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "/change-user-password/:id",
           name: "change-user-password",
           component: () => import("@/views/admin/ChangeUserPassword.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "/change-user-activity/:id",
           name: "change-user-activity",
           component: () => import("@/views/admin/ChangeUserActivity.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         },
         {
           path: "/update-me",
           name: "update-me",
           component: () => import("@/views/admin/EditOwnDataView.vue"),
+          meta: {
+            requiresAuth: true,
+            requiresAdmin: true,
+          }
         }
       ]
     },
@@ -145,13 +195,37 @@ const router = createRouter({
   },
 })
 
-router.beforeEach((to) => {
-  const token = localStorage.getItem("access")
+router.beforeEach(async (to) => {
+  const authStore = useAuthStore();
+  const token = localStorage.getItem("access");
 
+  // لو مش عامل login
   if (to.meta.requiresAuth && !token) {
-    return "/"
+    return "/";
   }
-})
+
+  // تحميل user لو مش موجود
+  if (token && !authStore.user) {
+    try {
+      await authStore.fetchUser();
+    } catch (e) {
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      return "/";
+    }
+  }
+
+  // حماية الأدمن (بتشتغل على parent + children)
+  const requiresAdmin = to.matched.some(
+    (record) => record.meta.requiresAdmin
+  );
+
+  if (requiresAdmin) {
+    if (authStore.user?.role === 'مخدوم') {
+      return "/";
+    }
+  }
+});
 
 
 export default router
