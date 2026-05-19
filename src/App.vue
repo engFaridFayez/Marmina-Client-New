@@ -1,24 +1,14 @@
 <script setup lang="ts">
-import NavBar from "./components/NavBar.vue";
-import Popup from "./components/Popup.vue";
-import { ref, onMounted, onUnmounted } from "vue";
+import NavBar from "./components/Common/NavBar.vue";
+import Popup from "./components/Home Components/Popup.vue";
+import { watch } from "vue";
 import { useRoute } from "vue-router";
+import { sessionExpired } from "@/lib/globalState";
 
-const showPopup = ref(false);
-
-const handleUnauthorized = () => {
-  showPopup.value = true;
-};
-
-onMounted(() => {
-  window.addEventListener("unauthorized", handleUnauthorized);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("unauthorized", handleUnauthorized);
-});
+const showPopup = sessionExpired; // directly use it — no need for a separate ref
 
 const goToHome = () => {
+  sessionExpired.value = false;
   window.location.href = "/";
 };
 
@@ -32,12 +22,11 @@ const route = useRoute();
     content="Please login again"
     button="Ok"
     type="error"
-    @close="showPopup = false"
+    @close="sessionExpired = false"
     @action="goToHome"
   />
   <div dir="rtl" class="sticky text-xl top-0 z-50 shadow">
-    <NavBar v-if="route.meta.showNav !== false"/>
+    <NavBar v-if="route.meta.showNav !== false" />
   </div>
-
   <RouterView />
 </template>

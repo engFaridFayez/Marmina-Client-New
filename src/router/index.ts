@@ -149,7 +149,7 @@ router.beforeEach((to) => {
   const token = localStorage.getItem("access")
 
   if (to.meta.requiresAuth && !token) {
-    return "/login"
+    return "/"
   }
 })
 
