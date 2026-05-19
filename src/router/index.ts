@@ -163,15 +163,15 @@ const router = createRouter({
             requiresAdmin: true,
           }
         },
-        {
-          path: "/change-user-activity/:id",
-          name: "change-user-activity",
-          component: () => import("@/views/admin/ChangeUserActivity.vue"),
-          meta: {
-            requiresAuth: true,
-            requiresAdmin: true,
-          }
-        },
+        // {
+        //   path: "/change-user-activity/:id",
+        //   name: "change-user-activity",
+        //   component: () => import("@/views/admin/ChangeUserActivity.vue"),
+        //   meta: {
+        //     requiresAuth: true,
+        //     requiresAdmin: true,
+        //   }
+        // },
         {
           path: "/update-me",
           name: "update-me",
