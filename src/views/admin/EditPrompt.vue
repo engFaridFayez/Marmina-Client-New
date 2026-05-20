@@ -15,9 +15,7 @@ const auth = useAuthStore();
   <div class="min-h-screen bg-slate-100 py-10 px-4" dir="rtl">
     <div class="max-w-4xl mx-auto">
       <!-- Alert Card -->
-      <div
-        class="bg-white border border-amber-200 shadow-xl rounded-3xl p-8 text-center mb-8"
-      >
+      <div class="bg-white border border-amber-200 shadow-xl rounded-3xl p-8 text-center mb-8">
         <div
           class="w-20 h-20 mx-auto mb-5 rounded-full bg-amber-100 flex items-center justify-center text-4xl"
         >
@@ -35,9 +33,7 @@ const auth = useAuthStore();
       </div>
 
       <!-- Navigation Card -->
-      <div
-        class="bg-linear-to-br from-slate-900 to-slate-800 rounded-3xl shadow-2xl p-6"
-      >
+      <div class="bg-linear-to-br from-slate-900 to-slate-800 rounded-3xl shadow-2xl p-6">
         <div class="flex flex-col gap-4">
           <!-- Admin / أمين شمامسة -->
           <router-link
@@ -68,13 +64,9 @@ const auth = useAuthStore();
             </div>
 
             <div>
-              <h3 class="text-white text-lg font-bold">
-                المراحل والأسر
-              </h3>
+              <h3 class="text-white text-lg font-bold">المراحل والأسر</h3>
 
-              <p class="text-gray-400 text-sm mt-1">
-                إدارة جميع المراحل والأسر المتاحة
-              </p>
+              <p class="text-gray-400 text-sm mt-1">إدارة جميع المراحل والأسر المتاحة</p>
             </div>
           </router-link>
 
@@ -93,20 +85,16 @@ const auth = useAuthStore();
             </div>
 
             <div>
-              <h3 class="text-white text-lg font-bold">
-                المرحلة
-              </h3>
+              <h3 class="text-white text-lg font-bold">المرحلة</h3>
 
-              <p class="text-gray-400 text-sm mt-1">
-                عرض وإدارة المرحلة الخاصة بك
-              </p>
+              <p class="text-gray-400 text-sm mt-1">عرض وإدارة المرحلة الخاصة بك</p>
             </div>
           </router-link>
 
           <!-- الأسرة -->
           <router-link
             v-else
-            to="/admin/families"
+            :to="`/family/${auth.user?.family?.id}`"
             @click="closeSidebar"
             class="group flex items-center gap-4 px-6 py-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300"
             active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] shadow-lg"
@@ -121,20 +109,14 @@ const auth = useAuthStore();
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
-                <path
-                  d="M4 21V9l8-6l8 6v12h-6v-7h-4v7z"
-                />
+                <path d="M4 21V9l8-6l8 6v12h-6v-7h-4v7z" />
               </svg>
             </div>
 
             <div>
-              <h3 class="text-white text-lg font-bold">
-                الأسرة
-              </h3>
+              <h3 class="text-white text-lg font-bold">الأسرة</h3>
 
-              <p class="text-gray-400 text-sm mt-1">
-                الانتقال إلى صفحة الأسرة الخاصة بك
-              </p>
+              <p class="text-gray-400 text-sm mt-1">الانتقال إلى صفحة الأسرة الخاصة بك</p>
             </div>
           </router-link>
         </div>
