@@ -1,3 +1,4 @@
+import { sessionExpired } from "@/lib/globalState";
 import axios from "axios";
 
 const api = axios.create({
@@ -29,8 +30,7 @@ api.interceptors.response.use(
             localStorage.removeItem("refresh");
 
             if (hadToken) {
-                // 🔥 session expired
-                window.dispatchEvent(new Event("unauthorized"));
+                sessionExpired.value = true;
             }
 
             return Promise.reject(error);

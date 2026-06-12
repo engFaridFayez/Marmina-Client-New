@@ -134,7 +134,6 @@ const handleLogout = () => {
 
         <router-link
           v-if="
-            auth.user?.role === 'امين اسرة' ||
             auth.user?.role === 'امين مرحلة' ||
             auth.user?.role === 'امين الشمامسة' ||
             auth.user?.role === 'admin'
@@ -154,10 +153,26 @@ const handleLogout = () => {
 
           <span>اضافة خادم / مخدوم</span>
         </router-link>
+        <router-link
+          v-if="auth.user?.role === 'امين اسرة'"
+          to="/admin/addUser"
+          @click="closeSidebar"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              fill="currentColor"
+              d="M15 4a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4m0 1.9a2.1 2.1 0 1 1 0 4.2A2.1 2.1 0 0 1 12.9 8A2.1 2.1 0 0 1 15 5.9M4 7v3H1v2h3v3h2v-3h3v-2H6V7zm11 6c-2.67 0-8 1.33-8 4v3h16v-3c0-2.67-5.33-4-8-4m0 1.9c2.97 0 6.1 1.46 6.1 2.1v1.1H8.9V17c0-.64 3.1-2.1 6.1-2.1"
+            />
+          </svg>
+
+          <span>اضافة مخدوم</span>
+        </router-link>
 
         <router-link
           v-if="
-            auth.user?.role === 'امين اسرة' ||
             auth.user?.role === 'امين مرحلة' ||
             auth.user?.role === 'امين الشمامسة' ||
             auth.user?.role === 'admin'
@@ -180,6 +195,28 @@ const handleLogout = () => {
           </svg>
 
           <span>تعديل خادم / مخدوم</span>
+        </router-link>
+
+        <router-link
+          v-if="auth.user?.role === 'امين اسرة'"
+          to="/edit-prompt"
+          @click="closeSidebar"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h3.5m4.92.61a2.1 2.1 0 0 1 2.97 2.97L18 22h-3v-3z"
+            />
+          </svg>
+
+          <span>تعديل مخدوم</span>
         </router-link>
 
         <router-link

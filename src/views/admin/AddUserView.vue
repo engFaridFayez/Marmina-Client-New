@@ -371,26 +371,18 @@ const submit = async () => {
               fieldError('role') ? 'border-red-400 bg-red-50' : 'border-slate-300',
             ]"
           >
-            <option disabled value="">خادم / مخدوم</option>
+            <option disabled value="">اختر</option>
             <option
-              v-if="
-                authStore.user?.role == 'امين اسرة' ||
-                authStore.user?.role == 'امين الشمامسة' ||
-                authStore.user?.role == 'admin'
-              "
+              v-if="authStore.user?.role == 'امين اسرة' || authStore.user?.role === 'امين مرحلة'"
               value="مخدوم"
             >
               مخدوم
             </option>
             <option
-              v-if="
-                authStore.user?.role == 'امين مرحلة' ||
-                authStore.user?.role == 'امين الشمامسة' ||
-                authStore.user?.role == 'admin'
-              "
+              v-if="authStore.user?.role == 'امين اسرة' || authStore.user?.role === 'امين مرحلة'"
               value="خادم عادي"
             >
-              خادم
+              خادم عادي
             </option>
             <option
               v-if="authStore.user?.role == 'امين الشمامسة' || authStore.user?.role == 'admin'"

@@ -17,10 +17,10 @@ import img from "@/assets/images/img.jpg";
       <div>
         <img
           :src="img"
-          class="w-full max-w-[600px] h-[300px] md:h-[400px] lg:h-[450px] object-cover rounded-3xl"
+          class="w-full max-w-150 h-75 md:h-100 lg:h-112.5 object-cover rounded-3xl"
         />
       </div>
-      <div class="bg-white w-full max-w-[600px] h-auto rounded-3xl p-6">
+      <div class="bg-white w-full max-w-150 h-auto rounded-3xl p-6">
         <h1 class="mt-5 mx-10 text-xl text-[#1B2947]">
           مدرسة شمامسة كنيسة الملاك سوريال والشهيد العظيم مارمينا بالعمرانية هي منارة روحية تخدم
           ابناء المنطقه منذ سنوات طويله. تسعي لتقديم تعليم روحي عميق وخدمة محبة لكل افراد المدرسة
@@ -96,7 +96,9 @@ import img from "@/assets/images/img.jpg";
             </svg>
           </div>
           <div>
-            <h1 class="text-xl mr-3 mt-2 font-bold text-[#1B2947]">ترفية ومتعة في تعلم المناهج المختلفة</h1>
+            <h1 class="text-xl mr-3 mt-2 font-bold text-[#1B2947]">
+              ترفية ومتعة في تعلم المناهج المختلفة
+            </h1>
           </div>
         </h1>
       </div>

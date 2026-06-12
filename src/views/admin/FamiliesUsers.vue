@@ -103,7 +103,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
             <div class="flex items-center gap-2 justify-end">
               <button
                 @click="goToDetails(member.id)"
-                class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#232A7E]/10 text-[#232A7E] hover:bg-[#232A7E] hover:text-white font-bold text-lg transition "
+                class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#232A7E]/10 text-[#232A7E] hover:bg-[#232A7E] hover:text-white font-bold text-lg transition"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,6 +121,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
                 تفاصيل
               </button>
               <button
+                v-if="authStore.user?.role !== 'امين اسرة' && authStore.user?.role !== 'خادم عادي'"
                 @click="goToEdit(member.id)"
                 class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D0A633]/10 text-[#9a7820] hover:bg-[#D0A633] hover:text-white font-bold text-lg transition"
               >
@@ -214,6 +215,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
                 تفاصيل
               </button>
               <button
+                v-if="authStore.user?.role !== 'خادم عادي'"
                 @click="goToEdit(member.id)"
                 class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D0A633]/10 text-[#9a7820] hover:bg-[#D0A633] hover:text-white font-bold text-lg transition"
               >

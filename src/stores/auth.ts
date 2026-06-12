@@ -211,8 +211,12 @@ export const useAuthStore = defineStore("auth", {
         const response = await AuthService.me();
         this.user = response.data;
         console.log(response.data);
-      } catch (error) {
-        console.error("Fetch user failed", error);
+      } catch (error: any) {
+        console.error("Fetch user failed", error)
+
+        if (error.response?.status === 401) {
+          window.dispatchEvent(new Event("unauthorized"))
+        }
       } finally {
         this.loading = false;
       }

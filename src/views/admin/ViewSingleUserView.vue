@@ -2,7 +2,7 @@
 import { useAuthStore } from "@/stores/auth";
 import { onMounted, computed, ref } from "vue";
 import { useRoute } from "vue-router";
-import Popup from "@/components/Popup.vue";
+import Popup from "@/components/HomeComponents/Popup.vue";
 
 const route = useRoute();
 const authStore = useAuthStore();
@@ -116,6 +116,7 @@ const closePopup = () => {
         </div>
 
         <router-link
+          v-if="authStore.user?.role !== 'خادم عادي'"
           :to="{ name: 'change-user-password', params: { id: user.id } }"
           class="bg-yellow-400 p-4 rounded-xl shadow hover:shadow-md transition hover:bg-yellow-600 hover:text-white"
         >
@@ -123,6 +124,7 @@ const closePopup = () => {
         </router-link>
 
         <button
+          v-if="authStore.user?.role !== 'خادم عادي'"
           @click="askChangeActivity(user.id)"
           :disabled="authStore.loading"
           :class="[
