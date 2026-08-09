@@ -21,7 +21,7 @@ const imageUrl = computed(() => {
   if (!auth.user?.image) return unknown;
   return auth.user.image.startsWith("http")
     ? auth.user.image
-    : `http://127.0.0.1:8000${auth.user.image}`;
+    : `http://187.127.226.132:8000${auth.user.image}`;
 });
 </script>
 

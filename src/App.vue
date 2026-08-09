@@ -30,3 +30,9 @@ const route = useRoute();
   </div>
   <RouterView />
 </template>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>

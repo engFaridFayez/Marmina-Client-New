@@ -2,12 +2,14 @@
 
 <template>
   <div class="bg-[#18294A]">
-    <div class="flex justify-center pt-20">
+    <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
       <h1 class="text-white text-2xl font-bold md:text-4xl lg:text-5xl mx-3">تاريخ</h1>
       <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl">مدرسة الشمامسة</h1>
     </div>
     <div class="flex justify-center">
-      <h1 class="text-white text-xl mt-5">رحلة تعليم وتربية روحية عبر الزمن</h1>
+      <h1 class="text-white text-base sm:text-lg md:text-xl mt-5 px-4 text-center">
+        رحلة تعليم وتربية روحية عبر الزمن
+      </h1>
     </div>
     <div class="flex justify-center">
       <div class="border-4 mt-6 w-40 text-[#D4AB34] rounded-full"></div>
@@ -16,7 +18,7 @@
     <div class="flex justify-center">
       <div class="relative flex flex-col items-center px-4 mt-10 w-full">
         <div
-          class="absolute top-10 bottom-10 right-[calc(50%-400px)] w-1 bg-yellow-400 rounded-2xl"
+          class="hidden md:block absolute top-10 bottom-10 right-1/2 w-1 bg-yellow-400 rounded-2xl"
         ></div>
         <div class="flex flex-col justify-center items-center px-4 mt-10">
           <div
@@ -24,7 +26,7 @@
           >
             <!-- الدائرة -->
             <div
-              class="bg-yellow-300 w-30 h-30 md:w-24 md:h-24 flex items-center justify-center rounded-full text-2xl md:text-2xl font-bold shrink-0"
+              class="bg-yellow-300 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center rounded-full text-lg sm:text-xl md:text-2xl font-bold shrink-0"
             >
               1965
             </div>
@@ -32,7 +34,7 @@
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
               <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التأسيس</h1>
-              <p class="text-2xl md:text- leading-relaxed">
+              <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 تأسست المدرسة في عام 1965 بجهود ومباركة الاباء المؤسسين وابناء المنطقه المؤمنين
               </p>
             </div>
@@ -42,7 +44,7 @@
           >
             <!-- الدائرة -->
             <div
-              class="bg-yellow-300 w-30 h-30 md:w-24 md:h-24 flex items-center justify-center rounded-full text-2xl md:text-2xl font-bold shrink-0"
+              class="bg-yellow-300 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center rounded-full text-lg sm:text-xl md:text-2xl font-bold shrink-0"
             >
               1980
             </div>
@@ -50,7 +52,7 @@
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
               <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التوسعه الاولي</h1>
-              <p class="text-2xl md:text- leading-relaxed">
+              <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 شهدت المدرسة توسعة كبيره لاستيعاب عدد كبير من الشمامسة الجدد
               </p>
             </div>
@@ -60,7 +62,7 @@
           >
             <!-- الدائرة -->
             <div
-              class="bg-yellow-300 w-30 h-30 md:w-24 md:h-24 flex items-center justify-center rounded-full text-2xl md:text-2xl font-bold shrink-0"
+              class="bg-yellow-300 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center rounded-full text-lg sm:text-xl md:text-2xl font-bold shrink-0"
             >
               2000
             </div>
@@ -68,7 +70,7 @@
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
               <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التطوير الحديث</h1>
-              <p class="text-2xl md:text- leading-relaxed">
+              <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 بدأت مرحلة جديده من التطوير شملت تحديث المرافق واضافة تقنيات حديثه لخدمة الشمامسة
                 والمناهج بشكل افضل
               </p>
@@ -79,7 +81,7 @@
           >
             <!-- الدائرة -->
             <div
-              class="bg-yellow-300 w-30 h-30 md:w-24 md:h-24 flex items-center justify-center rounded-full text-2xl md:text-2xl font-bold shrink-0"
+              class="bg-yellow-300 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center rounded-full text-lg sm:text-xl md:text-2xl font-bold shrink-0"
             >
               2026
             </div>
@@ -87,7 +89,7 @@
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
               <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">العصر الرقمي</h1>
-              <p class="text-2xl md:text- leading-relaxed">
+              <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 اطلقت الكنيسة النظام التعليمي الرقمي لخدمة ابناء الكنيسة بطرق حديثه ومتطوره
               </p>
             </div>

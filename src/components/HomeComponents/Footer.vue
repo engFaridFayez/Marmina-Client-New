@@ -2,15 +2,15 @@
 
 <template>
   <footer class="bg-[#18294C] text-white pt-10 pb-6">
-    <div class="container mx-auto px-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center sm:text-right">
         <!-- About -->
         <div>
-          <div class="flex items-start gap-3 mb-4">
+          <div class="flex items-start gap-3 mb-4 text-right">
             <div class="bg-amber-400 rounded-full text-center">
               <svg
-                class="text-[#182843]"
+                class="text-[#182843] w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-17.5 lg:h-17.5"
                 xmlns="http://www.w3.org/2000/svg"
                 width="70"
                 height="70"
@@ -28,7 +28,7 @@
             </div>
           </div>
 
-          <p class="text-gray-300 leading-relaxed text-sm">
+          <p class="text-gray-300 leading-relaxed text-sm text-right">
             مدرسة شمامسة كنيسة الملاك سوريال والشهيد العظيم مارمينا بالعمرانية هي منارة روحية تهدف
             إلى تعليم وخدمة أبناء الكنيسة بمحبة وإيمان.
           </p>

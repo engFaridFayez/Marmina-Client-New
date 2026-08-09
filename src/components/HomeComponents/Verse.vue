@@ -5,7 +5,7 @@ import marmina from "@/assets/images/marmina.jpg";
 <template>
   <div class="bg-linear-to-br from-[#263755] to-[#734959] min-h-screen">
     <!-- Title -->
-    <div class="flex justify-center pt-10 md:pt-16 text-center px-4">
+    <div class="flex flex-wrap justify-center pt-10 md:pt-16 text-center px-4">
       <h1 class="text-[#D4AB34] text-2xl md:text-4xl lg:text-5xl font-bold mx-2">قديس اليوم</h1>
       <h1 class="text-white text-2xl md:text-4xl lg:text-5xl font-bold">& آية اليوم</h1>
     </div>
@@ -22,14 +22,14 @@ import marmina from "@/assets/images/marmina.jpg";
         <div class="flex flex-col bg-white/10 backdrop-blur-md rounded-3xl w-full">
           <!-- Header -->
           <div class="flex justify-between items-center p-4 md:p-6">
-            <h1 class="text-[#f3c43a] text-2xl md:text-4xl font-bold">آية اليوم</h1>
+            <h1 class="text-[#f3c43a] text-xl sm:text-2xl md:text-4xl font-bold">آية اليوم</h1>
 
             <div class="text-[#D4AB34]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
                 height="40"
-                class="md:w-15 md:h-15"
+                class="w-8 h-8 sm:w-10 sm:h-10 md:w-15 md:h-15"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -42,18 +42,20 @@ import marmina from "@/assets/images/marmina.jpg";
 
           <!-- Verse -->
           <div class="text-center text-white px-4 md:px-8 py-6">
-            <p class="text-lg md:text-3xl leading-relaxed">
-              "لأَنَّهُ هَكَذَا أَحَبَّ اللهُ الْعَالَمَ حَتَّى بَذَلَ ابْنَهُ الْوَحِيدَ، لِكَيْ
-              لَا يَهْلِكَ كُلُّ مَنْ يُؤْمِنُ بِهِ، بَلْ تَكُونُ لَهُ الْحَيَاةُ الأَبَدِيَّةُ."
+            <p class="text-base sm:text-lg md:text-3xl leading-relaxed">
+              "لأَنَّهُ هَكَذَا أَحَبَّ اللهُ الْعَالَمَ حَتَّى بَذَلَ ابْنَهُ الْوَحِيدَ، لِكَيْ
+              لَا يَهْلِكَ كُلُّ مَنْ يُؤْمِنُ بِهِ، بَلْ تَكُونُ لَهُ الْحَيَاةُ الأَبَدِيَّةُ."
             </p>
-            <p class="mt-4 text-amber-400 text-sm md:text-3xl">(يو 3: 16)</p>
+            <p class="mt-4 text-amber-400 text-sm sm:text-base md:text-3xl">(يو 3: 16)</p>
           </div>
 
           <!-- Sections -->
           <div class="px-4 md:px-6 space-y-6 pb-6">
             <div>
-              <h2 class="text-[#e9b61e] text-xl md:text-3xl font-bold mb-2">تأمل روحي</h2>
-              <p class="text-white text-sm md:text-2xl leading-relaxed">
+              <h2 class="text-[#e9b61e] text-lg sm:text-xl md:text-3xl font-bold mb-2">
+                تأمل روحي
+              </h2>
+              <p class="text-white text-sm sm:text-base md:text-2xl leading-relaxed">
                 محبة الله غير المحدوده تتجلي في تقديم ابنه الوحيد فداءً عنا. هذه الليله تذكرنا بعمق
                 محبة الله وتضحيته من اجل خلاصنا الابدي
               </p>
@@ -62,8 +64,10 @@ import marmina from "@/assets/images/marmina.jpg";
             <div class="h-px bg-white/20"></div>
 
             <div>
-              <h2 class="text-[#e9b61e] text-xl md:text-3xl font-bold mb-2">تطبيق اليوم</h2>
-              <ul class="list-disc text-white text-sm md:text-2xl pr-5 space-y-1">
+              <h2 class="text-[#e9b61e] text-lg sm:text-xl md:text-3xl font-bold mb-2">
+                تطبيق اليوم
+              </h2>
+              <ul class="list-disc text-white text-sm sm:text-base md:text-2xl pr-5 space-y-1">
                 <li>عبر عن محبتك لشخص قريب منك اليوم</li>
                 <li>خصص 5 دقائق للصلاه والشكر</li>
                 <li>سامح من اساء اليك كما سامحك الله</li>
@@ -73,8 +77,10 @@ import marmina from "@/assets/images/marmina.jpg";
             <div class="h-px bg-white/20"></div>
 
             <div>
-              <h2 class="text-[#e9b61e] text-xl md:text-3xl font-bold mb-2">صلاه قصيره</h2>
-              <p class="text-white text-sm md:text-2xl leading-relaxed">
+              <h2 class="text-[#e9b61e] text-lg sm:text-xl md:text-3xl font-bold mb-2">
+                صلاه قصيره
+              </h2>
+              <p class="text-white text-sm sm:text-base md:text-2xl leading-relaxed">
                 يارب علمني ان اعيش في نور محبتك كل يوم وان اثق في عملك الكامل من اجلي . اجعل قلبي
                 ثابتاً فيك. وممتلئاً سلاماً ورجاءً
               </p>
@@ -86,14 +92,14 @@ import marmina from "@/assets/images/marmina.jpg";
         <div class="flex flex-col bg-white/10 backdrop-blur-md rounded-3xl w-full mx-auto">
           <!-- Header -->
           <div class="flex justify-between items-center p-4 md:p-6">
-            <h1 class="text-[#f3c43a] text-2xl md:text-4xl font-bold">قديس اليوم</h1>
+            <h1 class="text-[#f3c43a] text-xl sm:text-2xl md:text-4xl font-bold">قديس اليوم</h1>
 
             <div class="text-[#D4AB34]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
                 height="40"
-                class="md:w-15 md:h-15"
+                class="w-8 h-8 sm:w-10 sm:h-10 md:w-15 md:h-15"
                 viewBox="0 0 640 640"
               >
                 <path
@@ -111,11 +117,11 @@ import marmina from "@/assets/images/marmina.jpg";
 
           <!-- Content -->
           <div class="text-center px-4 md:px-6 py-6">
-            <h2 class="text-[#e9b61e] font-bold text-xl md:text-3xl mb-4">
+            <h2 class="text-[#e9b61e] font-bold text-lg sm:text-xl md:text-3xl mb-4">
               القديس مارمينا العجائبي
             </h2>
 
-            <p class="text-white text-sm md:text-lg leading-relaxed">
+            <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed">
               شهيد مصري عظيم عاش في القرن الثالث الميلادي. اشتهر بصنع المعجزات والشفاءات. واستشهد من
               اجل ايمانه المسيحي ويعتبر من اعظيم شهداء الكنيسة القبطية
             </p>

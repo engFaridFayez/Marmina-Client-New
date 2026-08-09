@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import logo from "@/assets/images/logo.png";
 import LoginForm from "@/views/LoginForm.vue";
 import { useAuthStore } from "@/stores/auth";
@@ -7,61 +7,93 @@ import unknown from "@/assets/images/default.jpg";
 
 const auth = useAuthStore();
 
-const links = [
-  { name: "عن الكنيسة", to: "/" },
-  { name: "الصفوف الكنسية", to: "/classes" },
-  { name: "معرض الصور", to: "/gallery" },
-  { name: "الاعلانات", to: "/news" },
-  { name: "تواصل معنا", to: "/contact" },
+// Single source of truth for the section links, used by BOTH the desktop
+// bar and the mobile menu so they never fall out of sync again.
+const navLinks = [
+  { name: "الرئيسية", href: "#home" },
+  { name: "عن الكنيسة", href: "#about" },
+  { name: "ألاباء", href: "#fathers" },
+  { name: "أُسر الشمامسة", href: "#families" },
+  { name: "الجدول", href: "#table" },
+  { name: "معرض الصور", href: "#gallery" },
+  { name: "الاعلانات", href: "#ads" },
+  { name: "تواصل معنا", href: "#contact" },
 ];
 
 const imageUrl = computed(() => {
   if (!auth.user?.image) return unknown;
   return auth.user.image.startsWith("http")
     ? auth.user.image
-    : `http://127.0.0.1:8000${auth.user.image}`;
+    : `http://187.127.226.132:8000${auth.user.image}`;
 });
 
 const isOpen = ref(false);
 
 const showLogin = ref(false);
+onMounted(() => {
+  if (auth.isAuthenticated && auth.user) {
+    console.log(auth.user);
+    console.log("USER:", auth.user);
+    console.log("ROLE:", auth.user?.role);
+    console.log("IS STAFF:", auth.user?.is_staff);
+  }
+});
 </script>
 
 <template>
   <nav class="bg-[#F1F4F5] text-[#5E616F] sticky py-2 text-xl top-0 z-50 shadow">
-    <div class="mx-auto px-5">
-      <div class="flex justify-between items-center h-16">
+    <div class="max-w-screen-2xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 gap-2">
         <!-- Start Logo -->
-        <router-link to="/" class="flex justify-center gap-2">
-          <img class="w-10 h-10 md:w-15 md:h-15" :src="logo" alt="Marmina Logo" />
-          <div class="flex flex-col mt-1">
-            <h2 class="text-sm md:text-xl lg:text-xl text-[#1B2947] font-bold">
+        <router-link to="/" class="flex items-center gap-2 shrink-0 min-w-0">
+          <img
+            class="w-9 h-9 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-15 lg:h-15 shrink-0"
+            :src="logo"
+            alt="Marmina Logo"
+          />
+          <div class="flex flex-col mt-1 min-w-0">
+            <h2
+              class="text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-xl text-[#1B2947] font-bold truncate"
+            >
               مدرسة شمامسة كنيسة الملاك سوريال
             </h2>
-            <h5 class="text-[20px] md:text-[12px] text-[#6886a4] font-bold">
+            <h5
+              class="text-[10px] xs:text-[11px] sm:text-xs md:text-[11px] lg:text-[12px] text-[#6886a4] font-bold truncate"
+            >
               والشهيد العظيم مارمينا - العمرانية
             </h5>
           </div>
         </router-link>
 
         <!-- Middle Links -->
-        <div class="hidden lg:flex gap-6 xl:gap-8">
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">عن الكنيسة</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">الصفوف الكنسية</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">معرض الصور</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">الاعلانات</a>
-          <a class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer">تواصل معنا</a>
+        <div class="hidden lg:flex flex-wrap justify-center gap-4 xl:gap-8">
+          <a
+            v-for="link in navLinks"
+            :key="link.href"
+            :href="link.href"
+            class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer scroll-smooth whitespace-nowrap text-sm xl:text-base"
+          >
+            {{ link.name }}
+          </a>
         </div>
 
-        <div v-if="auth.isAuthenticated && auth.user" class="hidden lg:flex gap-6 cursor-pointer">
+        <div
+          v-if="auth.isAuthenticated && auth.user"
+          class="hidden lg:flex gap-3 xl:gap-6 cursor-pointer shrink-0"
+        >
           <router-link to="/profile">
-            <div class="flex justify-between bg-[#162A49] py-2 px-7 rounded-2xl">
+            <div
+              class="flex items-center justify-between bg-[#162A49] py-2 px-4 xl:px-7 rounded-2xl"
+            >
               <div>
-                <img :src="imageUrl" class="w-10 h-10 ml-5 rounded-full" />
+                <img
+                  :src="imageUrl"
+                  class="w-9 h-9 xl:w-10 xl:h-10 ml-3 xl:ml-5 rounded-full object-cover"
+                />
               </div>
               <div
                 v-if="auth.user"
-                class="text-white mt-1 max-w-35 truncate"
+                class="text-white mt-1 max-w-24 xl:max-w-35 truncate text-sm xl:text-base"
                 :title="auth.user.full_name"
               >
                 {{ auth.user.full_name }}
@@ -69,9 +101,11 @@ const showLogin = ref(false);
             </div>
           </router-link>
           <div v-if="auth.user.role == 'مخدوم'"></div>
-          <div v-else>
+          <div v-else-if="auth.user.is_staff">
             <router-link to="/admin">
-              <div class="flex text-white justify-between bg-[#000000] py-2 mt-1 px-7 rounded-2xl">
+              <div
+                class="flex items-center text-white justify-between bg-[#000000] py-2 mt-1 px-4 xl:px-7 rounded-2xl"
+              >
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +120,7 @@ const showLogin = ref(false);
                   </svg>
                 </div>
                 <div>
-                  <h1>Admin</h1>
+                  <h1 class="text-sm xl:text-base">Admin</h1>
                 </div>
               </div>
             </router-link>
@@ -94,7 +128,7 @@ const showLogin = ref(false);
         </div>
 
         <!-- End Links -->
-        <div v-else class="hidden lg:flex gap-6 cursor-pointer">
+        <div v-else class="hidden lg:flex gap-6 cursor-pointer shrink-0">
           <a
             @click="showLogin = true"
             class="flex items-center text-white bg-[#D7AB31] py-2 px-3 md:px-5 rounded-2xl text-sm md:text-base hover:text-gray-300"
@@ -120,22 +154,31 @@ const showLogin = ref(false);
         </div>
 
         <!-- Mobile Button -->
-        <button class="lg:hidden text-2xl cursor-pointer" @click="isOpen = !isOpen">☰</button>
+        <button
+          class="lg:hidden text-2xl cursor-pointer shrink-0 leading-none"
+          @click="isOpen = !isOpen"
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div v-if="isOpen" class="lg:hidden px-4 pb-4 space-y-2">
-      <!-- Links -->
-      <router-link
-        v-for="link in links"
-        :key="link.name"
-        :to="link.to"
-        class="block py-2 border-b text-[#4a5c6d] font-bold"
+    <div
+      v-if="isOpen"
+      class="lg:hidden px-4 pb-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto"
+    >
+      <!-- Links (now the SAME links shown on desktop) -->
+      <a
+        v-for="link in navLinks"
+        :key="link.href"
+        :href="link.href"
+        class="block py-2 border-b text-[#4a5c6d] font-bold text-base sm:text-lg"
         @click="isOpen = false"
       >
         {{ link.name }}
-      </router-link>
+      </a>
 
       <!-- لو المستخدم عامل login -->
       <div v-if="auth.isAuthenticated && auth.user" class="mt-4 space-y-3">
@@ -145,7 +188,7 @@ const showLogin = ref(false);
           class="flex items-center gap-3 bg-[#162A49] text-white p-3 rounded-2xl"
           @click="isOpen = false"
         >
-          <img :src="imageUrl" class="w-10 h-10 rounded-full object-cover" />
+          <img :src="imageUrl" class="w-10 h-10 rounded-full object-cover shrink-0" />
 
           <div class="flex-1 min-w-0">
             <div class="font-bold truncate" :title="auth.user.full_name">
@@ -159,7 +202,7 @@ const showLogin = ref(false);
 
         <!-- Admin Button -->
         <router-link
-          v-if="auth.user.role !== 'مخدوم'"
+          v-if="auth.user.role !== 'مخدوم' || auth.user.is_staff"
           to="/admin"
           class="flex items-center justify-between bg-black text-white p-3 rounded-2xl"
           @click="isOpen = false"

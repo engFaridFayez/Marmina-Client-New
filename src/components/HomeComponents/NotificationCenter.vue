@@ -2,7 +2,7 @@
 
 <template>
   <div class="bg-white">
-    <div class="flex justify-center pt-20">
+    <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
       <h1 class="text-[#18294A] text-2xl font-bold md:text-4xl lg:text-5xl mx-3">إشعارات</h1>
       <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl">هامة</h1>
     </div>
@@ -12,11 +12,17 @@
 
     <div class="flex flex-col justify-center items-center mt-15">
       <div
-        class="bg-red-200 flex w-[90%] md:w-[80%] lg:w-[50%] justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-red-300 mb-10"
+        class="bg-red-200 flex flex-col sm:flex-row gap-3 sm:gap-0 w-[90%] md:w-[80%] lg:w-[50%] sm:justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-red-300 mb-10"
       >
         <div class="flex">
-          <div class="text-red-500 p-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <div class="text-red-500 p-2 sm:p-3 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <defs>
                 <mask id="SVGG1he6d3K">
                   <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -96,20 +102,34 @@
             </svg>
           </div>
           <div class="flex flex-col">
-            <h1 class="text-3xl font-bold text-red-600">تنبية عاجل</h1>
-            <h1 class="text-2xl text-red-500">تم تغيير موعد اجتماع الشمامسة العام</h1>
+            <h1
+              class="text-xl sm:text-sm sm:text-lg md:text-2xl md:text-3xl font-bold text-red-600"
+            >
+              تنبية عاجل
+            </h1>
+            <h1 class="text-sm sm:text-lg md:text-2xl text-red-500">
+              تم تغيير موعد اجتماع الشمامسة العام
+            </h1>
           </div>
         </div>
         <div>
-          <h1 class="text-2xl text-red-400 text-end">منذ ساعتين</h1>
+          <h1 class="text-sm sm:text-lg md:text-2xl text-red-400 text-end sm:text-end">
+            منذ ساعتين
+          </h1>
         </div>
       </div>
       <div
-        class="bg-yellow-100 flex w-[90%] md:w-[80%] lg:w-[50%] justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-yellow-300 mb-10"
+        class="bg-yellow-100 flex flex-col sm:flex-row gap-3 sm:gap-0 w-[90%] md:w-[80%] lg:w-[50%] sm:justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-yellow-300 mb-10"
       >
         <div class="flex">
-          <div class="text-yellow-500 p-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <div class="text-yellow-500 p-2 sm:p-3 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <g
                 stroke="currentColor"
                 stroke-linecap="round"
@@ -160,20 +180,32 @@
             </svg>
           </div>
           <div class="flex flex-col">
-            <h1 class="text-3xl font-bold text-yellow-700">تذكير مهم</h1>
-            <h1 class="text-2xl text-yellow-600">ميعاد مؤتمر الشمامسة اول اسبوع في شهر 9</h1>
+            <h1
+              class="text-xl sm:text-sm sm:text-lg md:text-2xl md:text-3xl font-bold text-yellow-700"
+            >
+              تذكير مهم
+            </h1>
+            <h1 class="text-sm sm:text-lg md:text-2xl text-yellow-600">
+              ميعاد مؤتمر الشمامسة اول اسبوع في شهر 9
+            </h1>
           </div>
         </div>
         <div>
-          <h1 class="text-2xl text-yellow-500 text-end">منذ 5 ساعات</h1>
+          <h1 class="text-sm sm:text-lg md:text-2xl text-yellow-500 text-end">منذ 5 ساعات</h1>
         </div>
       </div>
       <div
-        class="bg-blue-200 flex w-[90%] md:w-[80%] lg:w-[50%] justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-blue-300 mb-10"
+        class="bg-blue-200 flex flex-col sm:flex-row gap-3 sm:gap-0 w-[90%] md:w-[80%] lg:w-[50%] sm:justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-blue-300 mb-10"
       >
         <div class="flex">
-          <div class="text-blue-500 p-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <div class="text-blue-500 p-2 sm:p-3 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <defs>
                 <mask id="SVGG1he6d3K">
                   <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -253,22 +285,32 @@
             </svg>
           </div>
           <div class="flex flex-col">
-            <h1 class="text-3xl font-bold text-blue-600">اعلان هام</h1>
-            <h1 class="text-2xl text-blue-500">
+            <h1
+              class="text-xl sm:text-sm sm:text-lg md:text-2xl md:text-3xl font-bold text-blue-600"
+            >
+              اعلان هام
+            </h1>
+            <h1 class="text-sm sm:text-lg md:text-2xl text-blue-500">
               تم اضافة الحان مناسبة اسبوع الالام في مكتبة الالحان في الصفحه
             </h1>
           </div>
         </div>
         <div>
-          <h1 class="text-2xl text-blue-400 text-end">امس</h1>
+          <h1 class="text-sm sm:text-lg md:text-2xl text-blue-400 text-end">امس</h1>
         </div>
       </div>
       <div
-        class="bg-green-200 flex w-[90%] md:w-[80%] lg:w-[50%] justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-green-300 mb-30"
+        class="bg-green-200 flex flex-col sm:flex-row gap-3 sm:gap-0 w-[90%] md:w-[80%] lg:w-[50%] sm:justify-between p-5 rounded-3xl shadow-[5px_0_5px_2px] shadow-green-300 mb-30"
       >
         <div class="flex">
-          <div class="text-green-500 p-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <div class="text-green-500 p-2 sm:p-3 shrink-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <defs>
                 <mask id="SVG9LXuEA4n">
                   <g
@@ -324,12 +366,18 @@
             </svg>
           </div>
           <div class="flex flex-col">
-            <h1 class="text-3xl font-bold text-green-600">تأكيد حضور</h1>
-            <h1 class="text-2xl text-green-500">تم تأكيد حضورك في اجتماع الشمامسة الجمعه السابقه</h1>
+            <h1
+              class="text-xl sm:text-sm sm:text-lg md:text-2xl md:text-3xl font-bold text-green-600"
+            >
+              تأكيد حضور
+            </h1>
+            <h1 class="text-sm sm:text-lg md:text-2xl text-green-500">
+              تم تأكيد حضورك في اجتماع الشمامسة الجمعه السابقه
+            </h1>
           </div>
         </div>
         <div>
-          <h1 class="text-2xl text-green-400 text-end">منذ يومين</h1>
+          <h1 class="text-sm sm:text-lg md:text-2xl text-green-400 text-end">منذ يومين</h1>
         </div>
       </div>
     </div>

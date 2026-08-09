@@ -57,15 +57,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-[#F5EFE5] pb-20">
+  <div class="bg-[#F5EFE5] pb-20" id="gallery">
     <!-- العنوان -->
-    <div class="flex justify-center pt-20">
+    <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
       <h1 class="text-[#18294A] text-2xl font-bold md:text-4xl lg:text-5xl mx-3">معرض</h1>
       <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl">الصور</h1>
     </div>
 
     <div class="flex justify-center">
-      <h1 class="text-[#18294A] text-xl mt-5">لحظات مباركة من حياة كنيستنا</h1>
+      <h1 class="text-[#18294A] text-base sm:text-lg md:text-xl mt-5 px-4 text-center">
+        لحظات مباركة من حياة كنيستنا
+      </h1>
     </div>
 
     <div class="flex justify-center">
@@ -73,7 +75,7 @@ onUnmounted(() => {
     </div>
 
     <!-- الجاليري -->
-    <div class="px-4 md:px-10 lg:px-20 mt-10">
+    <div class="px-4 sm:px-6 md:px-10 lg:px-20 mt-10">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         <div
           v-for="(img, index) in images"
@@ -84,7 +86,7 @@ onUnmounted(() => {
           <!-- الصورة -->
           <img
             :src="img"
-            class="w-full h-64 object-cover transition duration-500 group-hover:scale-110"
+            class="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover transition duration-500 group-hover:scale-110"
           />
 
           <!-- overlay -->
@@ -99,7 +101,7 @@ onUnmounted(() => {
 
     <div class="flex justify-center mt-10 w-full">
       <button
-        class="bg-amber-300 px-6 py-3 rounded-3xl text-2xl hover:text-white hover:bg-[#18294A] cursor-pointer transition ease-in"
+        class="bg-amber-300 px-5 sm:px-6 py-2.5 sm:py-3 rounded-3xl text-base sm:text-lg md:text-2xl hover:text-white hover:bg-[#18294A] cursor-pointer transition ease-in"
       >
         عرض جميع الصور
       </button>
@@ -112,8 +114,17 @@ onUnmounted(() => {
       @click="closeImage"
     >
       <!-- زرار الإغلاق -->
-      <button class="absolute top-5 right-5 text-white text-3xl cursor-pointer hover:text-black transition ease-in" @click.stop="closeImage">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+      <button
+        class="absolute top-3 right-3 sm:top-5 sm:right-5 text-white text-2xl sm:text-3xl cursor-pointer hover:text-black transition ease-in z-10"
+        @click.stop="closeImage"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+        >
           <path
             fill="none"
             stroke="currentColor"
@@ -128,26 +139,38 @@ onUnmounted(() => {
       <!-- الصورة -->
       <img
         :src="images[selectedIndex]"
-        class="max-w-[90%] max-h-[80%] rounded-2xl shadow-lg transition duration-300"
+        class="max-w-[85%] sm:max-w-[90%] max-h-[70%] sm:max-h-[80%] rounded-2xl shadow-lg transition duration-300"
         @click.stop
       />
 
       <!-- prev -->
       <button
-        class="absolute left-5 text-[#18294A] text-4xl bg-amber-300 p-4 rounded-full cursor-pointer hover:text-white hover:bg-[#18294A] transition ease-in"
+        class="absolute left-2 sm:left-5 text-[#18294A] text-2xl sm:text-3xl md:text-4xl bg-amber-300 p-2.5 sm:p-3 md:p-4 rounded-full cursor-pointer hover:text-white hover:bg-[#18294A] transition ease-in"
         @click.stop="nextImage"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 15 15">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+          width="25"
+          height="25"
+          viewBox="0 0 15 15"
+        >
           <path fill="currentColor" d="M3 7.5L11 0v15z" />
         </svg>
       </button>
 
       <!-- next -->
       <button
-        class="absolute right-5 text-[#18294A] text-4xl bg-amber-300 p-4 rounded-full cursor-pointer hover:text-white hover:bg-[#18294A] transition ease-in"
+        class="absolute right-2 sm:right-5 text-[#18294A] text-2xl sm:text-3xl md:text-4xl bg-amber-300 p-2.5 sm:p-3 md:p-4 rounded-full cursor-pointer hover:text-white hover:bg-[#18294A] transition ease-in"
         @click.stop="prevImage"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 15 15">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+          width="25"
+          height="25"
+          viewBox="0 0 15 15"
+        >
           <path fill="currentColor" d="M12 7.5L4 0v15z" />
         </svg>
       </button>

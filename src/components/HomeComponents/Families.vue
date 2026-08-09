@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="bg-[#F5EFE5]">
-    <div class="flex justify-center pt-20">
+  <div class="bg-[#F5EFE5]" id="families">
+    <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
       <h1 class="text-[#18294A] text-2xl font-bold md:text-4xl lg:text-5xl mx-3">أُسر</h1>
       <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl">الشمامسة</h1>
     </div>
@@ -10,17 +10,25 @@
       <div class="border-4 mt-6 w-40 text-[#D4AB34] rounded-full"></div>
     </div>
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6 px-6 pb-20 mt-15"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 px-4 sm:px-6 pb-20 mt-10 sm:mt-15"
     >
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-[#6b0d19] text-3xl font-bold">#</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">الاسره التمهيدية</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-[#ffb8c2] mx-15 py-2 rounded-2xl text-[#F63049]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-[#6b0d19] text-2xl sm:text-3xl font-bold">#</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">الاسره التمهيدية</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-[#ffb8c2] mx-auto w-fit px-10 py-2 rounded-2xl text-[#F63049]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <g
                 fill="none"
                 stroke="currentColor"
@@ -38,14 +46,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-blue-700 text-3xl font-bold">1</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنةاولي</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-blue-200 mx-5 py-2 rounded-2xl text-blue-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-blue-700 text-2xl sm:text-3xl font-bold">1</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنةاولي</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-blue-200 mx-auto w-fit px-8 py-2 rounded-2xl text-blue-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="currentColor"
                 d="M10.366 17.17q-.797-.447-1.293-1.209q-.13-.192-.012-.394q.118-.201.36-.201h5.389q.217 0 .348.201q.13.202 0 .395q-.477.761-1.283 1.207t-1.76.447t-1.75-.447m-1.127-4.128Q9 12.813 9 12.481t.238-.56t.57-.229t.56.228t.228.56t-.228.561t-.56.228t-.57-.228m4.625 0q-.228-.228-.228-.56t.228-.56t.56-.229t.56.228t.229.56t-.228.561t-.561.228q-.332 0-.56-.228M12.116 21q-3.283 0-5.569-2.28T4.25 13.158q0-.096-.01-.212t.01-.212l1.006-.384q-.025.194-.025.383v.383q0 2.886 1.999 4.885T12.116 20T17 18.001t2-4.885q0-.477-.066-.942q-.067-.464-.186-.916q-1.442-.137-2.703-.676q-1.26-.54-2.308-1.432l4.036-1.5q1.044 1.085 1.636 2.486q.591 1.4.591 2.999q0 1.644-.616 3.07q-.617 1.426-1.685 2.494t-2.504 1.685t-3.08.616M4.67 10.971q-.078-.327-.114-.63q-.036-.304-.036-.643q0-2.025 1.035-3.671T8.27 3.592q-.03-.061-.033-.13q-.003-.068-.003-.135q0-.31.21-.52t.52-.21q.254 0 .456.151q.202.152.264.394q.28-.067.568-.094t.593-.027q1.579 0 2.986.66t2.403 1.865l3.183-1.185q.188-.073.377.016t.263.277t-.013.378t-.274.262z"
@@ -55,14 +71,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-green-700 text-3xl font-bold">2</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة ثانية</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-green-200 mx-5 py-2 rounded-2xl text-green-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-green-700 text-2xl sm:text-3xl font-bold">2</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة ثانية</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-green-200 mx-auto w-fit px-8 py-2 rounded-2xl text-green-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="none"
                 stroke="currentColor"
@@ -74,14 +98,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-yellow-500 text-3xl font-bold">3</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة ثالثه</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-yellow-200 mx-5 py-2 rounded-2xl text-yellow-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-yellow-500 text-2xl sm:text-3xl font-bold">3</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة ثالثه</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-yellow-200 mx-auto w-fit px-8 py-2 rounded-2xl text-yellow-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="none"
                 stroke="currentColor"
@@ -93,14 +125,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-purple-700 text-3xl font-bold">4</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة رابعة</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-purple-200 mx-5 py-2 rounded-2xl text-purple-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-purple-700 text-2xl sm:text-3xl font-bold">4</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة رابعة</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-purple-200 mx-auto w-fit px-8 py-2 rounded-2xl text-purple-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2">
                 <path d="M18 16V4H8a2 2 0 0 0-2 2v12" />
                 <path d="M18 20H8a2 2 0 1 1 0-4h10c-.673 1.613-.66 2.488 0 4z" />
@@ -110,14 +150,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-pink-700 text-3xl font-bold">5</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة خامسة</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-pink-200 mx-5 py-2 rounded-2xl text-pink-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-pink-700 text-2xl sm:text-3xl font-bold">5</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة خامسة</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-pink-200 mx-auto w-fit px-8 py-2 rounded-2xl text-pink-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="currentColor"
                 d="M6 20h5v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6.3c-.22.12-.43.26-.61.44L18 12.13V4h-5v8l-2.5-2.25L8 12V4H6zm16.85-6.53l-1.32-1.32c-.2-.2-.53-.2-.72 0l-.98.98l2.04 2.04l.98-.98c.2-.19.2-.52 0-.72M13 19.96V22h2.04l6.13-6.12l-2.04-2.05z"
@@ -128,14 +176,22 @@
       </div>
 
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-red-500 text-3xl font-bold">6</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة سادسه</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">ابتدائي</h1>
-          <div class="flex justify-center mt-4 bg-red-200 mx-5 py-2 rounded-2xl text-red-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-red-500 text-2xl sm:text-3xl font-bold">6</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة سادسه</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">ابتدائي</h1>
+          <div
+            class="flex justify-center mt-4 bg-red-200 mx-auto w-fit px-8 py-2 rounded-2xl text-red-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <g fill="currentColor" fill-rule="evenodd" stroke-width="1.5" clip-rule="evenodd">
                 <path
                   d="M3.75 12.641v3.271a2.75 2.75 0 0 0 1.57 2.484l5 2.374a2.75 2.75 0 0 0 2.36 0l5-2.374a2.75 2.75 0 0 0 1.57-2.484v-3.27l-6.475 3.237a2.85 2.85 0 0 1-2.55 0z"
@@ -152,14 +208,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-cyan-700 text-3xl font-bold">1</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنةاولي</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">بالغين</h1>
-          <div class="flex justify-center mt-4 bg-cyan-200 mx-5 py-2 rounded-2xl text-cyan-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 64">
+          <h1 class="text-cyan-700 text-2xl sm:text-3xl font-bold">1</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنةاولي</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">بالغين</h1>
+          <div
+            class="flex justify-center mt-4 bg-cyan-200 mx-auto w-fit px-8 py-2 rounded-2xl text-cyan-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 64 64"
+            >
               <path
                 fill="currentColor"
                 d="M57.881 28.421C57.107 6.895 51.98 2 32 2S6.893 6.896 6.119 28.421C4.668 28.788 3 30.148 3 34.464c0 4.961 2.764 6.564 5.385 6.968c1.434 8.971 6.619 14.679 17.697 19.577c1.422.63 3.58.991 5.918.991c2.34 0 4.496-.361 5.918-.991C48.996 56.11 54.18 50.401 55.617 41.432C58.236 41.028 61 39.425 61 34.464c0-4.318-1.668-5.677-3.119-6.043M54.668 39.56l-.814.057l-.107.795c-1.354 10.095-7.635 14.817-16.648 18.804c-1.156.512-3.061.817-5.098.817c-2.035 0-3.941-.306-5.098-.817c-9.014-3.986-15.295-8.709-16.648-18.804l-.105-.795l-.816-.057C6.336 39.35 5 37.778 5 34.464c0-2.786.709-4.197 2.111-4.197q.103 0 .215.009c.191 1.018.418 1.76.689 2.256c.686 1.25 1.977 1.931 2.121 2.004l1.725.874l-.277-1.89c-.002-.021-.291-2.031-.186-4.765c.789-11.259 1.5-12 6.08-12c1.205 0 2.691.096 4.414.206c2.654.17 5.959.382 10.109.382s7.455-.212 10.109-.383c1.723-.11 3.209-.206 4.412-.206c4.582 0 5.293.743 6.078 11.994c.104 2.75-.184 4.751-.188 4.771l-.279 1.891l1.727-.875c.146-.073 1.436-.754 2.121-2.004c.273-.497.5-1.238.693-2.256c1.547-.116 2.322 1.266 2.324 4.188c.002 3.316-1.334 4.888-4.33 5.097"
@@ -173,14 +237,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-lime-700 text-3xl font-bold">2</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة ثانية</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">بالغين</h1>
-          <div class="flex justify-center mt-4 bg-lime-200 mx-5 py-2 rounded-2xl text-lime-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-lime-700 text-2xl sm:text-3xl font-bold">2</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة ثانية</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">بالغين</h1>
+          <div
+            class="flex justify-center mt-4 bg-lime-200 mx-auto w-fit px-8 py-2 rounded-2xl text-lime-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="none"
                 stroke="currentColor"
@@ -192,14 +264,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-teal-700 text-3xl font-bold">3</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة ثالثه</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">بالغين</h1>
-          <div class="flex justify-center mt-4 bg-teal-200 mx-5 py-2 rounded-2xl text-teal-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-teal-700 text-2xl sm:text-3xl font-bold">3</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة ثالثه</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">بالغين</h1>
+          <div
+            class="flex justify-center mt-4 bg-teal-200 mx-auto w-fit px-8 py-2 rounded-2xl text-teal-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="none"
                 stroke="currentColor"
@@ -211,14 +291,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-gray-700 text-3xl font-bold">4</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة رابعة</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">بالغين</h1>
-          <div class="flex justify-center mt-4 bg-gray-200 mx-5 py-2 rounded-2xl text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-gray-700 text-2xl sm:text-3xl font-bold">4</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة رابعة</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">بالغين</h1>
+          <div
+            class="flex justify-center mt-4 bg-gray-200 mx-auto w-fit px-8 py-2 rounded-2xl text-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2">
                 <path d="M18 16V4H8a2 2 0 0 0-2 2v12" />
                 <path d="M18 20H8a2 2 0 1 1 0-4h10c-.673 1.613-.66 2.488 0 4z" />
@@ -228,14 +316,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-[#9AB17A] text-3xl font-bold">5</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">سنة خامسة</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">بالغين</h1>
-          <div class="flex justify-center mt-4 bg-[#E4DFB5] mx-5 py-2 rounded-2xl text-[#48661f]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+          <h1 class="text-[#9AB17A] text-2xl sm:text-3xl font-bold">5</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">سنة خامسة</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">بالغين</h1>
+          <div
+            class="flex justify-center mt-4 bg-[#E4DFB5] mx-auto w-fit px-8 py-2 rounded-2xl text-[#48661f]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+            >
               <path
                 fill="currentColor"
                 d="M6 20h5v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6.3c-.22.12-.43.26-.61.44L18 12.13V4h-5v8l-2.5-2.25L8 12V4H6zm16.85-6.53l-1.32-1.32c-.2-.2-.53-.2-.72 0l-.98.98l2.04 2.04l.98-.98c.2-.19.2-.52 0-.72M13 19.96V22h2.04l6.13-6.12l-2.04-2.05z"
@@ -245,14 +341,22 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center bg-white p-10 md:p-7 rounded-3xl shadow-2xl"
+        class="flex flex-col items-center justify-center bg-white p-6 sm:p-8 md:p-7 lg:p-8 rounded-3xl shadow-2xl"
       >
         <div class="flex flex-col justify-center text-center">
-          <h1 class="text-[#63007a] text-3xl font-bold">*</h1>
-          <h1 class="text-[#18294A] text-3xl font-bold mt-5">حبيب جرجس</h1>
-          <h1 class="text-gray-500 text-lg font-bold mt-2">بالغين</h1>
-          <div class="flex justify-center mt-4 bg-[#d3b6d9] mx-5 py-2 rounded-2xl text-[#63007a]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+          <h1 class="text-[#63007a] text-2xl sm:text-3xl font-bold">*</h1>
+          <h1 class="text-[#18294A] text-2xl sm:text-3xl font-bold mt-5">حبيب جرجس</h1>
+          <h1 class="text-gray-500 text-base sm:text-lg font-bold mt-2">بالغين</h1>
+          <div
+            class="flex justify-center mt-4 bg-[#d3b6d9] mx-auto w-fit px-8 py-2 rounded-2xl text-[#63007a]"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+            >
               <path
                 fill="currentColor"
                 d="m60.837 36.945l.498-5.47c0-7.263-1.399-13.073-6.523-16.893C52.008 8.973 45.759 2.001 31.994 2C18.236 2 11.99 8.973 9.188 14.583c-5.124 3.819-6.523 9.63-6.523 16.893l.498 5.47C2.472 37.629 2 38.689 2 40.246c0 4.176 2.442 4.737 3.444 4.791C5.942 53.354 14.301 62 32.001 62c18.793 0 26.05-9.859 26.553-16.962c.614-.028 1.435-.214 2.138-.877c.869-.818 1.308-2.136 1.308-3.915c0-1.557-.472-2.617-1.163-3.301m-1.17 6.134c-.672.632-1.655.442-1.658.443l-.919-.22v.943c0 6.538-6.682 16.267-25.089 16.267S6.913 50.784 6.913 44.246l-.007-.925l-.906.2a2 2 0 0 1-.378.033c-1.761 0-2.131-1.799-2.131-3.308c0-2.34 1.249-2.831 2.296-2.831c.105 0 .175.007.187.008l.19.024l.18-.069c2.273-.892 3.791-2.253 4.513-4.044c1.396-3.471-.546-7.668-1.707-10.177c-.295-.638-.601-1.296-.681-1.608c.223-1.659 2.953-18.062 23.532-18.062c20.576.002 23.309 16.4 23.531 18.062c-.081.313-.385.971-.681 1.608c-1.161 2.508-3.105 6.706-1.708 10.177c.721 1.791 2.239 3.152 4.513 4.044l.18.067l.186-.021a2 2 0 0 1 .191-.009c1.047 0 2.296.491 2.296 2.831c0 1.335-.292 2.316-.842 2.833"

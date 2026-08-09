@@ -3,7 +3,10 @@ import back from "@/assets/images/back.jpeg";
 </script>
 
 <template>
-  <div class="relative w-full h-75 md:h-112.5 lg:h-150 overflow-hidden rounded-1xl">
+  <div
+    class="relative w-full h-64 sm:h-75 md:h-100 lg:h-112.5 xl:h-150 overflow-hidden rounded-xl"
+    id="home"
+  >
     <!-- Image -->
     <img :src="back" class="w-full h-full object-cover" alt="banner" />
 
@@ -19,13 +22,13 @@ import back from "@/assets/images/back.jpeg";
         <h1 class="text-[#D7AB31] text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
           والشهيد العظيم مارمينا
         </h1>
-        <p class="text-white text-sm md:text-lg lg:text-xl mb-6">
+        <p class="text-white text-sm md:text-lg lg:text-xl mb-6 max-w-3xl mx-auto">
           مرحبا بكم في مدرسة الشمامسه حيث نجتمع بروح واحده لنسبح اسمه القدوس ونتعلم من كلمته المقدسه
         </p>
 
         <div class="flex items-center justify-center gap-4 flex-wrap">
           <button
-            class="bg-[#D7AB31] text-white px-5 py-2 rounded-xl text-sm md:text-base hover:bg-yellow-500 transition flex items-center gap-2 cursor-pointer"
+            class="bg-[#D7AB31] text-white px-4 sm:px-5 py-2 rounded-xl text-sm md:text-base lg:text-lg hover:bg-yellow-500 transition flex items-center gap-2 cursor-pointer"
           >
             <!-- SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -70,7 +73,7 @@ import back from "@/assets/images/back.jpeg";
           </button>
 
           <button
-            class="bg-white px-5 py-2 rounded-xl text-sm md:text-base hover:bg-gray-300 transition flex items-center gap-2 cursor-pointer"
+            class="bg-white px-4 sm:px-5 py-2 rounded-xl text-sm md:text-base lg:text-lg hover:bg-gray-300 transition flex items-center gap-2 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
               <path

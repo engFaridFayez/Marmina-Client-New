@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="bg-[#F5EFE5] pb-10">
-    <div class="flex justify-center pt-10 md:pt-16 text-center px-4">
+  <div class="bg-[#F5EFE5] pb-10" id="table">
+    <div class="flex flex-wrap justify-center pt-10 md:pt-16 text-center px-4">
       <h1 class="text-[#18294A] text-2xl md:text-4xl lg:text-5xl font-bold mx-2">جدول مواعيد</h1>
       <h1 class="text-[#D4AB34] text-2xl md:text-4xl lg:text-5xl font-bold">صفوف الشمامسة</h1>
     </div>
@@ -10,11 +10,11 @@
       <div class="border-2 w-24 md:w-40 border-[#D4AB34] rounded-full mt-2"></div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-5 px-4 lg:px-30">
-      <div class="bg-white h-auto rounded-4xl p-5 px-6 w-full">
-        <div class="flex justify-between items-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-5 px-4 sm:px-6 lg:px-30">
+      <div class="bg-white h-auto rounded-4xl p-4 sm:p-5 px-4 sm:px-6 w-full">
+        <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
-            <h1 class="text-2xl font-bold text-[#18294A]">المرحلة الأولي</h1>
+            <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#18294A]">المرحلة الأولي</h1>
           </div>
           <div class="text-purple-700 bg-purple-300 p-2 rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80">
@@ -31,30 +31,36 @@
           <div class="border w-24 md:w-full border-[#c9c7c4] rounded-full"></div>
         </div>
         <div class="flex flex-col">
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:30 - 11:00</h5>
-              <h5 class="text-[#ADAEA9]">كنيسة العدرا - مبني العدرا</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:30 - 11:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">كنيسة العدرا - مبني العدرا</h5>
             </div>
             <div class="text-end">
               <h1>اسرة القديس اسطفانوس (اولي ابتذائي)</h1>
               <h1 class="text-[#ADAEA9]">قداس الاطفال (7:00 - 9:00)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:30 - 11:00</h5>
-              <h5 class="text-[#ADAEA9]">كنيسة ابو سيفين - مبني العدرا</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:30 - 11:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">كنيسة ابو سيفين - مبني العدرا</h5>
             </div>
             <div class="text-end">
               <h1>اسرة مارمينا (تانية ابتذائي)</h1>
               <h1 class="text-[#ADAEA9]">قداس الاطفال (7:00 - 9:00)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:30 - 11:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الثالث - مبني العدرا</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:30 - 11:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الثالث - مبني العدرا</h5>
             </div>
             <div class="text-end">
               <h1>اسرة الانبا بيشوي (تالتة ابتدائي)</h1>
@@ -63,10 +69,10 @@
           </div>
         </div>
       </div>
-      <div class="bg-white rounded-4xl p-5 px-6 w-full">
-        <div class="flex justify-between items-center">
+      <div class="bg-white rounded-4xl p-4 sm:p-5 px-4 sm:px-6 w-full">
+        <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
-            <h1 class="text-2xl font-bold text-[#18294A]">المرحلة الثانية</h1>
+            <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#18294A]">المرحلة الثانية</h1>
           </div>
           <div class="text-cyan-600 bg-cyan-200 p-2 rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 640 512">
@@ -81,30 +87,36 @@
           <div class="border w-24 md:w-full border-[#c9c7c4] rounded-full"></div>
         </div>
         <div class="flex flex-col">
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعة 10:30 - 12:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع (مبني البابا كيرلس)</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعة 10:30 - 12:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع (مبني البابا كيرلس)</h5>
             </div>
             <div class="text-end">
               <h1>اسرة الانبا انطونيوس (رابعة)</h1>
               <h1 class="text-[#ADAEA9]">القداس الكبير (7:00 - 10:00)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعة 10:30 - 12:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع (مبني البابا كيرلس)</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعة 10:30 - 12:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع (مبني البابا كيرلس)</h5>
             </div>
             <div class="text-end">
               <h1>اسرة البابا كيرلس عمود الدين (خامسة)</h1>
               <h1 class="text-[#ADAEA9]">القداس الكبير (7:00 - 10:00)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">12:00 - 2:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع - مبني العدرا</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">12:00 - 2:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع - مبني العدرا</h5>
             </div>
             <div class="text-end">
               <h1>اسرة البابا اثناسيوس (سادسه)</h1>
@@ -113,10 +125,12 @@
           </div>
         </div>
       </div>
-      <div class="bg-white rounded-4xl p-5 px-6 w-full">
-        <div class="flex justify-between items-center">
+      <div class="bg-white rounded-4xl p-4 sm:p-5 px-4 sm:px-6 w-full">
+        <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
-            <h1 class="text-2xl font-bold text-[#18294A]">المرحلة الثالثه (مرحلة اعدادي وثانوي)</h1>
+            <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#18294A]">
+              المرحلة الثالثه (مرحلة اعدادي وثانوي)
+            </h1>
           </div>
           <div class="text-red-700 bg-red-300 p-2 rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
@@ -131,40 +145,50 @@
           <div class="border w-24 md:w-full border-[#c9c7c4] rounded-full"></div>
         </div>
         <div class="flex flex-col">
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:30 - 11:00</h5>
-              <h5 class="text-[#ADAEA9]">كنيسة الانبا صموئيل - مبني البابا كيرلس</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:30 - 11:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">
+                كنيسة الانبا صموئيل - مبني البابا كيرلس
+              </h5>
             </div>
             <div class="text-end">
               <h1>اسرة القديس اسطفانوس (اولي وتانيه ع - ث)</h1>
               <h1 class="text-[#ADAEA9]">قداس الاطفال 7:00 - 9:00</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:30 - 11:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الثالث - المبني الرئيسي</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:30 - 11:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الثالث - المبني الرئيسي</h5>
             </div>
             <div class="text-end">
               <h1>اسرة الانبا بيشوي (تالته ع - ث)</h1>
               <h1 class="text-[#ADAEA9]">قداس الاطفال 7:00 - 9:00</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:00 - 10:30</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع - مبني البابا كيرلس</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:00 - 10:30</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع - مبني البابا كيرلس</h5>
             </div>
             <div class="text-end">
               <h1>اسرة الانبا انطونيوس (رابعة ع - ث)</h1>
               <h1 class="text-[#ADAEA9]">القداس المتأخر (10:30 - 12:30)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 9:00 - 10:30</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع - مبني البابا كيرلس</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 9:00 - 10:30</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع - مبني البابا كيرلس</h5>
             </div>
             <div class="text-end">
               <h1>اسرة البابا كيرلس عمود الدين (خامسة ع - ث)</h1>
@@ -173,10 +197,10 @@
           </div>
         </div>
       </div>
-      <div class="bg-white rounded-4xl p-5 px-6 w-full">
-        <div class="flex justify-between items-center">
+      <div class="bg-white rounded-4xl p-4 sm:p-5 px-4 sm:px-6 w-full">
+        <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
-            <h1 class="text-2xl font-bold text-[#18294A]">أُسر خاصة</h1>
+            <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#18294A]">أُسر خاصة</h1>
           </div>
           <div class="text-green-700 bg-green-300 p-2 rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
@@ -191,30 +215,36 @@
           <div class="border w-24 md:w-full border-[#c9c7c4] rounded-full"></div>
         </div>
         <div class="flex flex-col">
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعه 12:00 - 2:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع (مبني البابا كيرلس)</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعه 12:00 - 2:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع (مبني البابا كيرلس)</h5>
             </div>
             <div class="text-end">
               <h1>الخورس (سابعه وثامنه)</h1>
               <h1 class="text-[#ADAEA9]">القداس المتأخر (10:30 - 12:30)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الخميس 7:00 - 9:00</h5>
-              <h5 class="text-[#ADAEA9]">كنيسة العدرا - مبني العدرا</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الخميس 7:00 - 9:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">كنيسة العدرا - مبني العدرا</h5>
             </div>
             <div class="text-end">
               <h1>أسرة حبيب جرجس</h1>
               <h1 class="text-[#ADAEA9]">القداس الكبير (7:00 - 10:00)</h1>
             </div>
           </div>
-          <div class="bg-[#F5EFE5] flex justify-between items-start rounded-2xl mt-5 p-3">
+          <div
+            class="bg-[#F5EFE5] flex flex-col sm:flex-row sm:justify-between items-start gap-1 sm:gap-3 rounded-2xl mt-5 p-3"
+          >
             <div class="flex flex-col">
-              <h5 class="text-[#D8AE41]">الجمعة 9:30 - 11:00</h5>
-              <h5 class="text-[#ADAEA9]">الدور الرابع - مبني العدرا</h5>
+              <h5 class="text-[#D8AE41] text-sm sm:text-base">الجمعة 9:30 - 11:00</h5>
+              <h5 class="text-[#ADAEA9] text-sm sm:text-base">الدور الرابع - مبني العدرا</h5>
             </div>
             <div class="text-end">
               <h1>الفصل التمهيدي</h1>
