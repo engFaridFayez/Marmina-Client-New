@@ -96,7 +96,7 @@ function scorePercent(points: number, final: number): number {
         <!-- Rows -->
         <div
           v-for="result in store.results"
-          :key="result.subject.id + '-' + result.exam.id"
+          :key="result.id"
           class="grid grid-cols-[2fr_1.6fr_1fr_1fr_100px] px-4 py-3.5 border-b border-gray-100 last:border-b-0 items-center hover:bg-gray-50 transition-colors"
         >
           <!-- Subject -->
