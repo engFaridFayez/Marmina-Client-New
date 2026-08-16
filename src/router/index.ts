@@ -117,6 +117,190 @@ const router = createRouter({
             requiresAdmin: true,
           }
         },
+
+        // =====================================
+        // Results — Dashboard / Families / Enrollments
+        // =====================================
+        {
+          path: "results",
+          name: "result-dashboard",
+          component: () => import("@/views/admin/results/ResultDashboardView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/families",
+          name: "result-families",
+          component: () => import("@/views/admin/results/ResultFamiliesView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/families/:familyId",
+          name: "result-family",
+          component: () => import("@/views/admin/results/ResultFamilyView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/students/:studentId/enrollments",
+          name: "student-enrollments",
+          component: () => import("@/views/admin/results/StudentEnrollments.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/enrollments/:enrollmentId",
+          name: "enrollment-results",
+          component: () => import("@/views/admin/results/EnrollmentResultsView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Result (add / edit)
+        // =====================================
+        {
+          path: "results/enrollments/:enrollmentId/results/new",
+          name: "result-create",
+          component: () => import("@/views/admin/results/ResultFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/enrollments/:enrollmentId/results/:resultId/edit",
+          name: "result-edit",
+          component: () => import("@/views/admin/results/ResultFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Subjects
+        // =====================================
+        {
+          path: "results/subjects",
+          name: "result-subjects",
+          component: () => import("@/views/admin/results/ResultSubjectsView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/subjects/new",
+          name: "subject-create",
+          component: () => import("@/views/admin/results/SubjectFormView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/subjects/:subjectId/edit",
+          name: "subject-edit",
+          component: () => import("@/views/admin/results/SubjectFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Exams
+        // =====================================
+        {
+          path: "results/exams",
+          name: "result-exams",
+          component: () => import("@/views/admin/results/ResultExamsView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/exams/new",
+          name: "exam-create",
+          component: () => import("@/views/admin/results/ExamFormView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/exams/:examId/edit",
+          name: "exam-edit",
+          component: () => import("@/views/admin/results/ExamFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Subject Exams (grade per subject per exam)
+        // =====================================
+        {
+          path: "results/subject-exams",
+          name: "subject-exams",
+          component: () => import("@/views/admin/results/SubjectExamsView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/subject-exams/new",
+          name: "subject-exam-create",
+          component: () => import("@/views/admin/results/SubjectExamFormView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/subject-exams/:subjectExamId/edit",
+          name: "subject-exam-edit",
+          component: () => import("@/views/admin/results/SubjectExamFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Subject Components (مزامير)
+        // =====================================
+        {
+          path: "results/subject-components",
+          name: "subject-components",
+          component: () => import("@/views/admin/results/SubjectComponentsView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/subject-components/new",
+          name: "subject-component-create",
+          component: () => import("@/views/admin/results/SubjectComponentFormView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/subject-components/:componentId/edit",
+          name: "subject-component-edit",
+          component: () => import("@/views/admin/results/SubjectComponentFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Component Exams (grade per component per exam)
+        // =====================================
+        {
+          path: "results/component-exams",
+          name: "component-exams",
+          component: () => import("@/views/admin/results/ComponentExamsView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/component-exams/new",
+          name: "component-exam-create",
+          component: () => import("@/views/admin/results/ComponentExamFormView.vue"),
+          meta: { requiresAuth: true },
+        },
+        {
+          path: "results/component-exams/:componentExamId/edit",
+          name: "component-exam-edit",
+          component: () => import("@/views/admin/results/ComponentExamFormView.vue"),
+          props: true,
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Results — Promotion
+        // =====================================
+        {
+          path: "results/promotion",
+          name: "result-promotion",
+          component: () => import("@/views/admin/results/ResultPromotionView.vue"),
+          meta: { requiresAuth: true },
+        },
+
+        // =====================================
+        // Users
+        // =====================================
         {
           path: "addUser",
           name: "add-user",

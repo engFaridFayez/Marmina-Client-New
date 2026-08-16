@@ -10,6 +10,15 @@ import type {
   FamilyStudentsResponse,
   ResultWrite,
   PromoteStudentsResponse,
+  ResultFamily,
+  SubjectWrite,
+  ExamWrite,
+  SubjectExam,
+  SubjectExamWrite,
+  SubjectComponent,
+  SubjectComponentWrite,
+  ComponentExam,
+  ComponentExamWrite,
 } from "@/types/results";
 
 
@@ -24,7 +33,7 @@ export const useResultStore = defineStore("result", {
     results: [] as Result[],
     exams: [] as Exam[],
     selectedExam: null as number | null,
-
+    resultFamilies: [] as ResultFamily[],
 
     // =========================
     // Family
@@ -53,6 +62,15 @@ export const useResultStore = defineStore("result", {
     // =========================
 
     subjects: [] as Subject[],
+
+
+    // =========================
+    // Subject Exams / Components
+    // =========================
+
+    subjectExams: [] as SubjectExam[],
+    subjectComponents: [] as SubjectComponent[],
+    componentExams: [] as ComponentExam[],
 
 
     // =========================
@@ -418,6 +436,700 @@ export const useResultStore = defineStore("result", {
 
 
     // =====================================
+    // Subjects (write)
+    // =====================================
+
+    async createSubject(
+      data: SubjectWrite
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.createSubject(
+            data
+          );
+
+        this.subjects.push(
+          response.data
+        );
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error creating subject";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async updateSubject(
+      subjectId: number,
+      data: Partial<SubjectWrite>
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.updateSubject(
+            subjectId,
+            data
+          );
+
+        const index =
+          this.subjects.findIndex(
+            subject =>
+              subject.id === subjectId
+          );
+
+        if (index !== -1) {
+
+          this.subjects[index] =
+            response.data;
+
+        }
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error updating subject";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async deleteSubject(
+      subjectId: number
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        await ResultService.deleteSubject(
+          subjectId
+        );
+
+        this.subjects =
+          this.subjects.filter(
+            subject =>
+              subject.id !== subjectId
+          );
+
+      } catch (error) {
+
+        this.error =
+          "Error deleting subject";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    // =====================================
+    // Exams (write)
+    // =====================================
+
+    async createExam(
+      data: ExamWrite
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.createExam(
+            data
+          );
+
+        this.exams.push(
+          response.data
+        );
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error creating exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async updateExam(
+      examId: number,
+      data: Partial<ExamWrite>
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.updateExam(
+            examId,
+            data
+          );
+
+        const index =
+          this.exams.findIndex(
+            exam =>
+              exam.id === examId
+          );
+
+        if (index !== -1) {
+
+          this.exams[index] =
+            response.data;
+
+        }
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error updating exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async deleteExam(
+      examId: number
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        await ResultService.deleteExam(
+          examId
+        );
+
+        this.exams =
+          this.exams.filter(
+            exam =>
+              exam.id !== examId
+          );
+
+      } catch (error) {
+
+        this.error =
+          "Error deleting exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    // =====================================
+    // Subject Exams
+    // =====================================
+
+    async getSubjectExams(
+      params?: { exam?: number; subject?: number }
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.getSubjectExams(
+            params
+          );
+
+        this.subjectExams = response.data;
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error fetching subject exams";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async createSubjectExam(
+      data: SubjectExamWrite
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.createSubjectExam(
+            data
+          );
+
+        this.subjectExams.push(
+          response.data
+        );
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error creating subject exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async updateSubjectExam(
+      subjectExamId: number,
+      data: Partial<SubjectExamWrite>
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.updateSubjectExam(
+            subjectExamId,
+            data
+          );
+
+        const index =
+          this.subjectExams.findIndex(
+            subjectExam =>
+              subjectExam.id === subjectExamId
+          );
+
+        if (index !== -1) {
+
+          this.subjectExams[index] =
+            response.data;
+
+        }
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error updating subject exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async deleteSubjectExam(
+      subjectExamId: number
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        await ResultService.deleteSubjectExam(
+          subjectExamId
+        );
+
+        this.subjectExams =
+          this.subjectExams.filter(
+            subjectExam =>
+              subjectExam.id !== subjectExamId
+          );
+
+      } catch (error) {
+
+        this.error =
+          "Error deleting subject exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    // =====================================
+    // Subject Components
+    // =====================================
+
+    async getSubjectComponents(
+      subjectId?: number
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.getSubjectComponents(
+            subjectId
+          );
+
+        this.subjectComponents = response.data;
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error fetching subject components";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async createSubjectComponent(
+      data: SubjectComponentWrite
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.createSubjectComponent(
+            data
+          );
+
+        this.subjectComponents.push(
+          response.data
+        );
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error creating subject component";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async updateSubjectComponent(
+      componentId: number,
+      data: Partial<SubjectComponentWrite>
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.updateSubjectComponent(
+            componentId,
+            data
+          );
+
+        const index =
+          this.subjectComponents.findIndex(
+            component =>
+              component.id === componentId
+          );
+
+        if (index !== -1) {
+
+          this.subjectComponents[index] =
+            response.data;
+
+        }
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error updating subject component";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async deleteSubjectComponent(
+      componentId: number
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        await ResultService.deleteSubjectComponent(
+          componentId
+        );
+
+        this.subjectComponents =
+          this.subjectComponents.filter(
+            component =>
+              component.id !== componentId
+          );
+
+      } catch (error) {
+
+        this.error =
+          "Error deleting subject component";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    // =====================================
+    // Component Exams
+    // =====================================
+
+    async getComponentExams(
+      params?: { exam?: number; component?: number }
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.getComponentExams(
+            params
+          );
+
+        this.componentExams = response.data;
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error fetching component exams";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async createComponentExam(
+      data: ComponentExamWrite
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.createComponentExam(
+            data
+          );
+
+        this.componentExams.push(
+          response.data
+        );
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error creating component exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async updateComponentExam(
+      componentExamId: number,
+      data: Partial<ComponentExamWrite>
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.updateComponentExam(
+            componentExamId,
+            data
+          );
+
+        const index =
+          this.componentExams.findIndex(
+            componentExam =>
+              componentExam.id === componentExamId
+          );
+
+        if (index !== -1) {
+
+          this.componentExams[index] =
+            response.data;
+
+        }
+
+        return response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error updating component exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    async deleteComponentExam(
+      componentExamId: number
+    ) {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        await ResultService.deleteComponentExam(
+          componentExamId
+        );
+
+        this.componentExams =
+          this.componentExams.filter(
+            componentExam =>
+              componentExam.id !== componentExamId
+          );
+
+      } catch (error) {
+
+        this.error =
+          "Error deleting component exam";
+
+        throw error;
+
+      } finally {
+
+        this.loading = false;
+
+      }
+    },
+
+
+    // =====================================
     // Promotion
     // =====================================
 
@@ -441,6 +1153,30 @@ export const useResultStore = defineStore("result", {
         this.selectedStudentIds.push(
           studentId
         );
+
+      }
+    },
+
+    async getResultFamilies() {
+
+      try {
+
+        this.loading = true;
+        this.error = null;
+
+        const response =
+          await ResultService.getResultFamilies();
+
+        this.resultFamilies = response.data;
+
+      } catch (error) {
+
+        this.error =
+          "Error fetching result families";
+
+      } finally {
+
+        this.loading = false;
 
       }
     },

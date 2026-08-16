@@ -131,7 +131,26 @@ const handleLogout = () => {
 
           <span>الأسرة</span>
         </router-link>
+        <router-link
+          to="/admin/results"
+          @click="closeSidebar"
+          class="flex items-center gap-3 px-5 py-3 rounded-2xl text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-medium"
+          active-class="bg-gradient-to-r from-[#232A7E] to-[#4F46E5] text-white shadow-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm2 4v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z"
+            />
+          </svg>
 
+          <span>النتائج</span>
+        </router-link>
         <router-link
           v-if="
             auth.user?.role === 'امين مرحلة' ||
