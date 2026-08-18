@@ -1,6 +1,6 @@
 import api from "./api";
 
-import type { User } from "@/types/auth";
+import type { UpdateUserResponse, User } from "@/types/auth";
 
 export const UserSerivce = {
   getAll() {
@@ -10,7 +10,7 @@ export const UserSerivce = {
     return api.post<User>("users/new/", user)
   },
   editUser(id: number, user: object) {
-    return api.patch<User>(`admin/users/update/${id}/`, user)
+    return api.patch<UpdateUserResponse>(`admin/users/update/${id}/`, user)
   },
   editOwnData(user: FormData | Partial<User>) {
     return api.patch<User>("users/update-me/", user, {

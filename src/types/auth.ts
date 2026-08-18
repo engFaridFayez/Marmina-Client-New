@@ -25,6 +25,7 @@ export interface Stage {
   id: number;
   name: string;
   families?: Family[];
+  leaders?: User[];
 }
 
 export interface Family {
@@ -48,4 +49,9 @@ export interface AuthState {
 
   loading: boolean;
   error: string | null;
+}
+
+export interface UpdateUserResponse {
+  message: string
+  user: User
 }

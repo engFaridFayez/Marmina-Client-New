@@ -12,7 +12,6 @@ export const useAuthStore = defineStore("auth", {
     selectedUser: null,
     access: localStorage.getItem("access"),
     refresh: localStorage.getItem("refresh"),
-
     users: [],
     stages: [],
     families: [],
@@ -95,7 +94,7 @@ export const useAuthStore = defineStore("auth", {
         const response = await UserSerivce.editUser(id, data)
         const index = this.users.findIndex(p => p.id === id)
         if (index !== -1) {
-          this.users[index] = response.data
+          this.users[index] = response.data.user
         }
       } catch (error: any) {
         this.error = error.response?.data || "error"

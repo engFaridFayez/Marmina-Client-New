@@ -77,10 +77,12 @@ onMounted(() => {
           </a>
         </div>
 
+        <!-- Auth Links -->
         <div
           v-if="auth.isAuthenticated && auth.user"
           class="hidden lg:flex gap-3 xl:gap-6 cursor-pointer shrink-0"
         >
+        <!-- Full name  -->
           <router-link to="/profile">
             <div
               class="flex items-center justify-between bg-[#162A49] py-2 px-4 xl:px-7 rounded-2xl"
@@ -100,8 +102,12 @@ onMounted(() => {
               </div>
             </div>
           </router-link>
+
+
           <div v-if="auth.user.role == 'مخدوم'"></div>
-          <div v-else-if="auth.user.is_staff">
+
+
+          <div v-else-if="auth.user.is_staff || auth.user.role !== 'مخدوم'">
             <router-link to="/admin">
               <div
                 class="flex items-center text-white justify-between bg-[#000000] py-2 mt-1 px-4 xl:px-7 rounded-2xl"
