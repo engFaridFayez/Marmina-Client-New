@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { useToast } from "vue-toastification";
 import router from "@/router";
-
+import Swal from "sweetalert2";
 const emit = defineEmits<{
   (e: "close"): void;
 }>();
@@ -24,6 +24,14 @@ const handleLogin = async () => {
   } catch (error) {
     toast.error("فشل تسجيل الدخول ❌");
   }
+};
+
+const forgetPassword = async () => {
+  await Swal.fire({
+    text: "لو نسيت كلمة السر بتاعتك كلم خادم اسرتك",
+    icon: "info",
+    confirmButtonText: "حاضر",
+  });
 };
 </script>
 
@@ -118,8 +126,8 @@ const handleLogin = async () => {
           </div>
         </div>
 
-        <div class="flex justify-end text-amber-500">
-          <a> هل نسيت كلمة السر؟ </a>
+        <div class="flex justify-end text-amber-500 cursor-pointer hover:text-amber-800">
+          <a @click="forgetPassword"> هل نسيت كلمة السر؟ </a>
         </div>
 
         <!-- Button -->

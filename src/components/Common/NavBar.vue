@@ -4,20 +4,18 @@ import logo from "@/assets/images/logo.png";
 import LoginForm from "@/views/LoginForm.vue";
 import { useAuthStore } from "@/stores/auth";
 import unknown from "@/assets/images/default.jpg";
-
 const auth = useAuthStore();
-
 // Single source of truth for the section links, used by BOTH the desktop
 // bar and the mobile menu so they never fall out of sync again.
 const navLinks = [
-  { name: "الرئيسية", href: "#home" },
-  { name: "عن الكنيسة", href: "#about" },
-  { name: "ألاباء", href: "#fathers" },
-  { name: "أُسر الشمامسة", href: "#families" },
-  { name: "الجدول", href: "#table" },
-  { name: "معرض الصور", href: "#gallery" },
-  { name: "الاعلانات", href: "#ads" },
-  { name: "تواصل معنا", href: "#contact" },
+  { name: "الرئيسية", href: "/#home" },
+  { name: "عن الكنيسة", href: "/#about" },
+  { name: "ألاباء", href: "/#fathers" },
+  { name: "أُسر الشمامسة", href: "/#families" },
+  { name: "الجدول", href: "/#table" },
+  { name: "معرض الصور", href: "/#gallery" },
+  { name: "الاعلانات", href: "/#ads" },
+  { name: "تواصل معنا", href: "/#contact" },
 ];
 
 const imageUrl = computed(() => {
@@ -53,7 +51,7 @@ onMounted(() => {
           />
           <div class="flex flex-col mt-1 min-w-0">
             <h2
-              class="text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-xl text-[#1B2947] font-bold truncate"
+              class="text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-[#1B2947] font-bold truncate"
             >
               مدرسة شمامسة كنيسة الملاك سوريال
             </h2>
@@ -65,13 +63,20 @@ onMounted(() => {
           </div>
         </router-link>
 
+        <!--
+          Desktop nav (links + auth) now switches on at `xl` instead of `lg`.
+          Between 1024px–1280px there just isn't room for links + a 4-word
+          name pill + admin button, so that range now uses the mobile menu,
+          which already has plenty of space and works correctly.
+        -->
+
         <!-- Middle Links -->
-        <div class="hidden lg:flex flex-wrap justify-center gap-4 xl:gap-8">
+        <div class="hidden xl:flex flex-wrap justify-center gap-3 2xl:gap-3">
           <a
             v-for="link in navLinks"
             :key="link.href"
             :href="link.href"
-            class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer scroll-smooth whitespace-nowrap text-sm xl:text-base"
+            class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer scroll-smooth whitespace-nowrap text-sm 2xl:text-base"
           >
             {{ link.name }}
           </a>
@@ -80,22 +85,20 @@ onMounted(() => {
         <!-- Auth Links -->
         <div
           v-if="auth.isAuthenticated && auth.user"
-          class="hidden lg:flex gap-3 xl:gap-6 cursor-pointer shrink-0"
+          class="hidden xl:flex items-center gap-3 2xl:gap-6 cursor-pointer shrink-0"
         >
-        <!-- Full name  -->
-          <router-link to="/profile">
+          <!-- Full name -->
+          <router-link to="/profile" class="min-w-0">
             <div
-              class="flex items-center justify-between bg-[#162A49] py-2 px-4 xl:px-7 rounded-2xl"
+              class="flex items-center gap-3 2xl:gap-4 bg-[#162A49] py-2 px-3 2xl:px-5 rounded-2xl"
             >
-              <div>
-                <img
-                  :src="imageUrl"
-                  class="w-9 h-9 xl:w-10 xl:h-10 ml-3 xl:ml-5 rounded-full object-cover"
-                />
-              </div>
+              <img
+                :src="imageUrl"
+                class="w-9 h-9 2xl:w-10 2xl:h-10 rounded-full object-cover shrink-0"
+              />
               <div
                 v-if="auth.user"
-                class="text-white mt-1 max-w-24 xl:max-w-35 truncate text-sm xl:text-base"
+                class="text-white text-sm 2xl:text-base leading-tight line-clamp-2 wrap-break-word max-w-28 2xl:max-w-28"
                 :title="auth.user.full_name"
               >
                 {{ auth.user.full_name }}
@@ -103,44 +106,39 @@ onMounted(() => {
             </div>
           </router-link>
 
-
           <div v-if="auth.user.role == 'مخدوم'"></div>
 
-
-          <div v-else-if="auth.user.is_staff || auth.user.role !== 'مخدوم'">
+          <div v-else-if="auth.user.is_staff || auth.user.role !== 'مخدوم'" class="shrink-0">
             <router-link to="/admin">
               <div
-                class="flex items-center text-white justify-between bg-[#000000] py-2 mt-1 px-4 xl:px-7 rounded-2xl"
+                class="flex items-center text-white justify-between bg-[#000000] py-2 px-3 2xl:px-7 rounded-2xl"
               >
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h1 class="text-sm xl:text-base">Admin</h1>
-                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="shrink-0"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"
+                  />
+                </svg>
+                <h1 class="text-sm 2xl:text-base mr-2">Admin</h1>
               </div>
             </router-link>
           </div>
         </div>
 
         <!-- End Links -->
-        <div v-else class="hidden lg:flex gap-6 cursor-pointer shrink-0">
+        <div v-else class="hidden xl:flex gap-6 cursor-pointer shrink-0">
           <a
             @click="showLogin = true"
-            class="flex items-center text-white bg-[#D7AB31] py-2 px-3 md:px-5 rounded-2xl text-sm md:text-base hover:text-gray-300"
+            class="flex items-center text-white bg-[#D7AB31] py-2 px-3 2xl:px-5 rounded-2xl text-sm 2xl:text-base hover:text-gray-300"
           >
             <svg
-              class="ml-2"
+              class="ml-2 shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               width="25"
               height="25"
@@ -161,7 +159,7 @@ onMounted(() => {
 
         <!-- Mobile Button -->
         <button
-          class="lg:hidden text-2xl cursor-pointer shrink-0 leading-none"
+          class="xl:hidden text-2xl cursor-pointer shrink-0 leading-none"
           @click="isOpen = !isOpen"
           aria-label="Toggle menu"
         >
@@ -173,7 +171,7 @@ onMounted(() => {
     <!-- Mobile Menu -->
     <div
       v-if="isOpen"
-      class="lg:hidden px-4 pb-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto"
+      class="xl:hidden px-4 pb-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto"
     >
       <!-- Links (now the SAME links shown on desktop) -->
       <a
@@ -197,7 +195,7 @@ onMounted(() => {
           <img :src="imageUrl" class="w-10 h-10 rounded-full object-cover shrink-0" />
 
           <div class="flex-1 min-w-0">
-            <div class="font-bold truncate" :title="auth.user.full_name">
+            <div class="font-bold break-words" :title="auth.user.full_name">
               {{ auth.user.full_name }}
             </div>
             <div class="text-xs text-gray-300">
