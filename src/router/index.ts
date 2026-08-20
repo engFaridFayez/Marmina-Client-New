@@ -364,8 +364,13 @@ const router = createRouter({
             requiresAuth: true,
             requiresAdmin: true,
           }
-        }
+        },
       ]
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: () => import("@/views/NotFoundView.vue"),
     },
 
 
@@ -392,7 +397,7 @@ router.beforeEach(async (to) => {
   if (token && !authStore.user) {
     try {
       await authStore.fetchUser();
-    } catch (e) {
+    } catch {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
       return "/";

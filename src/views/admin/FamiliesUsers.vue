@@ -18,9 +18,25 @@ onMounted(async () => {
 const family = computed(() => authStore.selectedFamily);
 const leaders = computed(() => {
   if (!family.value?.users) return [];
-  return family.value.users.filter(
-    (member) => member.role === "امين اسرة" || member.role === "خادم عادي",
-  );
+
+  // prettier-ignore
+  const roleOrder: Record<string, number> = {
+    "امين اسرة": 1,
+    "امين مساعد اسرة": 2,
+    "خادم عادي": 3,
+    "سكرتاريه": 4,
+  };
+
+  return family.value.users
+    .filter(
+      (member) =>
+        member.role === "امين اسرة" ||
+        member.role === "خادم عادي" ||
+        member.role === "امين مساعد اسرة",
+    )
+    .sort((a, b) => {
+      return (roleOrder[a.role] ?? 99) - (roleOrder[b.role] ?? 99);
+    });
 });
 
 const stageLeaders = computed(() => {
@@ -34,6 +50,35 @@ const servants = computed(() => {
 
 const goToEdit = (id: number) => router.push(`/users/${id}/edit`);
 const goToDetails = (id: number) => router.push(`/users/${id}`);
+
+// prettier-ignore
+const roleLevel: Record<string, number> = {
+  "مخدوم" : 1,
+  "خادم عادي": 2,
+  "امين مساعد اسرة": 3,
+  "امين اسرة": 4,
+  "امين مرحلة": 5,
+  "امين الشمامسة": 6,
+  "admin":7,
+};
+
+const canManageUser = (memberRole: string) => {
+  const currentRole = authStore.user?.role;
+
+  if (!currentRole || !memberRole) {
+    return false;
+  }
+
+  // أمين الشمامسة يقدر يعدل أي حد أقل منه
+  if (currentRole === "امين الشمامسة") {
+    return memberRole !== "امين الشمامسة";
+  }
+
+  const currentLevel = roleLevel[currentRole] ?? 0;
+  const selectedLevel = roleLevel[memberRole] ?? 0;
+
+  return currentLevel > selectedLevel;
+};
 </script>
 
 <template>
@@ -107,15 +152,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
             </div>
 
             <!-- Actions -->
-            <div
-              class="flex items-center gap-2 justify-end"
-              v-if="
-                authStore.user?.role !== 'امين اسرة' &&
-                authStore.user?.role !== 'خادم عادي' &&
-                authStore.user?.role !== 'امين مرحلة' &&
-                authStore.user?.role !== 'امين مساعد اسرة'
-              "
-            >
+            <div class="flex items-center gap-2 justify-end">
               <button
                 @click="goToDetails(member.id)"
                 class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#232A7E]/10 text-[#232A7E] hover:bg-[#232A7E] hover:text-white font-bold text-lg transition"
@@ -137,6 +174,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
               </button>
               <button
                 @click="goToEdit(member.id)"
+                v-if="canManageUser(member.role)"
                 class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D0A633]/10 text-[#9a7820] hover:bg-[#D0A633] hover:text-white font-bold text-lg transition"
               >
                 <svg
@@ -205,6 +243,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
                 class="text-lg font-bold px-5 py-2 rounded-full"
                 :class="{
                   'bg-[#232A7E]/10 text-[#232A7E]': member.role === 'امين اسرة',
+                  'bg-[#e77920]/10 text-[#e77920]': member.role === 'امين مساعد اسرة',
                   'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم عادي',
                 }"
               >
@@ -234,7 +273,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
                 تفاصيل
               </button>
               <button
-                v-if="authStore.user?.role !== 'امين اسرة' && authStore.user?.role !== 'خادم عادي'"
+                v-if="canManageUser(member.role)"
                 @click="goToEdit(member.id)"
                 class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D0A633]/10 text-[#9a7820] hover:bg-[#D0A633] hover:text-white font-bold text-lg transition"
               >
@@ -328,7 +367,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
                 تفاصيل
               </button>
               <button
-                v-if="authStore.user?.role !== 'خادم عادي'"
+                v-if="canManageUser(member.role)"
                 @click="goToEdit(member.id)"
                 class="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D0A633]/10 text-[#9a7820] hover:bg-[#D0A633] hover:text-white font-bold text-lg transition"
               >

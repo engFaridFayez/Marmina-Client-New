@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-
+import axios from "axios";
+import router from "@/router";
 import { UserSerivce } from "@/services/user.service";
 import { FamilyService } from "@/services/family.service";
 import { StageService } from "@/services/stage.service";
@@ -32,7 +33,7 @@ export const useAuthStore = defineStore("auth", {
       if (this.access) {
         try {
           await this.fetchUser();
-        } catch (error) {
+        } catch {
           this.logout();
         }
       }
@@ -146,7 +147,17 @@ export const useAuthStore = defineStore("auth", {
         const res = await FamilyService.getById(id);
         this.selectedFamily = res.data;
       } catch (err) {
+
+        if (axios.isAxiosError(err) && err.response?.status === 404) {
+          router.replace({
+            name: "not-found",
+          });
+
+          return;
+        }
+
         this.error = "Failed to load family";
+
       } finally {
         this.loading = false;
       }
@@ -156,7 +167,7 @@ export const useAuthStore = defineStore("auth", {
         this.loading = true;
         const res = await FamilyService.getAll();
         this.families = res.data;
-      } catch (err) {
+      } catch {
         this.error = "Failed to load families";
       } finally {
         this.loading = false;
@@ -168,7 +179,7 @@ export const useAuthStore = defineStore("auth", {
         this.loading = true;
         const res = await StageService.getAll();
         this.stages = res.data;
-      } catch (err) {
+      } catch {
         this.error = "Failed to load stages";
       } finally {
         this.loading = false;

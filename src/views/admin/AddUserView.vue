@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from "@/router";
 import { useAuthStore } from "@/stores/auth";
 import { computed, onMounted, reactive, watch } from "vue";
 import { useRoute } from "vue-router";
@@ -149,6 +150,9 @@ const submit = async () => {
     } else {
       await authStore.addUser(data);
       toast.success("تم اضافة المخدوم");
+    }
+    if (form.family) {
+      router.push(`/family/${form.family}`);
     }
   } catch {
     toast.error("حدث خطأ أثناء الإضافة");
