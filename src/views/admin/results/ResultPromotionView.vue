@@ -68,6 +68,16 @@ const promoteStudents = async () => {
     promoting.value = false;
   }
 };
+
+const selectPassedStudents = () => {
+  passedStudentIds.value = currentFamilyStudents.value
+    .filter((student) => student.status === "ناجح")
+    .map((student) => student.id);
+
+  failedStudentIds.value = currentFamilyStudents.value
+    .filter((student) => student.status === "راسب")
+    .map((student) => student.id);
+};
 </script>
 
 <template>
@@ -90,9 +100,7 @@ const promoteStudents = async () => {
     <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
       <h3 class="font-bold text-[#232A7E] mb-4">اختر الأسرة</h3>
 
-      <div v-if="resultStore.loading" class="text-center py-6 text-gray-400">
-        جاري التحميل...
-      </div>
+      <div v-if="resultStore.loading" class="text-center py-6 text-gray-400">جاري التحميل...</div>
 
       <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <button
@@ -113,22 +121,21 @@ const promoteStudents = async () => {
     </div>
 
     <!-- Students -->
-    <div
-      v-if="selectedFamilyId"
-      class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
-    >
+    <div v-if="selectedFamilyId" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
       <div class="flex items-center justify-between mb-5">
         <div>
           <h3 class="font-bold text-[#232A7E]">حدد حالة كل مخدوم</h3>
-          <p class="text-sm text-gray-400 mt-1">ناجح ← ترقية للأسرة التالية · راسب ← بقاء بنفس المرحلة</p>
+          <p class="text-sm text-gray-400 mt-1">
+            ناجح ← ترقية للأسرة التالية · راسب ← بقاء بنفس المرحلة
+          </p>
         </div>
 
         <div class="flex gap-2">
           <button
-            @click="markAllPassed"
+            @click="selectPassedStudents"
             class="px-3 py-1.5 rounded-lg bg-[#F5F2E8] text-[#232A7E] text-sm font-bold hover:bg-[#eee7d8] transition"
           >
-            الكل ناجح
+            تحديد حسب النتيجة
           </button>
 
           <button
@@ -140,10 +147,7 @@ const promoteStudents = async () => {
         </div>
       </div>
 
-      <div
-        v-if="currentFamilyStudents.length === 0"
-        class="text-center py-8 text-gray-400"
-      >
+      <div v-if="currentFamilyStudents.length === 0" class="text-center py-8 text-gray-400">
         لا يوجد مخدومين في هذه الأسرة
       </div>
 
@@ -160,7 +164,35 @@ const promoteStudents = async () => {
                 : 'border-gray-100'
           "
         >
-          <span class="font-semibold text-gray-800">{{ student.full_name }}</span>
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-semibold text-gray-800">
+              {{ student.full_name }}
+            </span>
+
+            <!-- ناجح -->
+            <span
+              v-if="student.status === 'ناجح'"
+              class="px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700"
+            >
+              ناجح
+            </span>
+
+            <!-- راسب -->
+            <span
+              v-else-if="student.status === 'راسب'"
+              class="px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700"
+            >
+              راسب
+            </span>
+
+            <!-- لم تحدد النتيجة -->
+            <span
+              v-else
+              class="px-2.5 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-500"
+            >
+              لم تحدد
+            </span>
+          </div>
 
           <div class="flex gap-2 mt-3">
             <button

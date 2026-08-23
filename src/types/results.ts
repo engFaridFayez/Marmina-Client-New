@@ -43,6 +43,7 @@ export interface StudentEnrollment {
   id: number;
   student: number;
   student_name: string;
+  student_username:string;
   family: number;
   family_name: string;
   stage_name: string;
@@ -53,6 +54,8 @@ export interface StudentEnrollment {
 export interface FamilyStudent {
   id: number;
   full_name: string;
+  username: string;
+  status: "ناجح" | "راسب" | null;
   image: string | null;
 }
 

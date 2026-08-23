@@ -2,10 +2,11 @@
 import { onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useResultStore } from "@/stores/results";
+import { useAuthStore } from "@/stores/auth";
 
 const route = useRoute();
 const router = useRouter();
-
+const authStore = useAuthStore();
 const resultStore = useResultStore();
 
 const studentId = Number(route.params.studentId);
@@ -80,7 +81,7 @@ const openEnrollmentResults = (enrollmentId: number) => {
             <p class="text-sm text-gray-400">المخدوم</p>
 
             <h2 class="text-xl font-bold text-gray-800">
-              {{ student.student_name }}
+              {{ student.student_name }} - {{ student.student_username }}
             </h2>
 
             <p class="text-sm text-gray-500 mt-1">
