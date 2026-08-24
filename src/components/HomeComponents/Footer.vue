@@ -62,6 +62,16 @@
       <!-- Bottom -->
       <div class="text-center text-gray-400 text-sm">
         © 2026 جميع الحقوق محفوظة - مدرسة الشمامسة
+        <br />
+        Website designed and developed by
+        <a
+          href="https://www.facebook.com/profile.php?id=61587219160997"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold text-blue-400 hover:underline"
+        >
+          Farid Faiz
+        </a>
       </div>
     </div>
   </footer>

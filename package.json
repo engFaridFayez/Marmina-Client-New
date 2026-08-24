@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@lucide/vue": "^1.16.0",
     "@tailwindcss/vite": "^4.2.4",
     "axios": "^1.16.0",
