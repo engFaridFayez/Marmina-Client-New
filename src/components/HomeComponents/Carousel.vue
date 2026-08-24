@@ -8,7 +8,11 @@ import back from "@/assets/images/back.jpeg";
     id="home"
   >
     <!-- Image -->
-    <img :src="back" class="w-full h-full object-cover" alt="banner" />
+    <img
+      :src="back"
+      class="w-full h-full object-cover"
+      alt="مدرسة شمامسة كنيسة الملاك سوريال والشهيد العظيم مارمينا بالعمرانية"
+    />
 
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black/50"></div>
@@ -16,11 +20,10 @@ import back from "@/assets/images/back.jpeg";
     <!-- Center Content -->
     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
       <div>
-        <h1 class="text-white text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
-          مدرسة شمامسة كنيسة الملاك سوريال
-        </h1>
-        <h1 class="text-[#D7AB31] text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
-          والشهيد العظيم مارمينا
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <span class="text-white block -mb-5"> مدرسة شمامسة كنيسة الملاك سوريال </span>
+          <br />
+          <span class="text-[#D7AB31] block"> والشهيد العظيم مارمينا بالعمرانية </span>
         </h1>
         <p class="text-white text-sm md:text-lg lg:text-xl mb-6 max-w-3xl mx-auto">
           مرحبا بكم في مدرسة الشمامسه حيث نجتمع بروح واحده لنسبح اسمه القدوس ونتعلم من كلمته المقدسه

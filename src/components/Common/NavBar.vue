@@ -20,9 +20,10 @@ const navLinks = [
 
 const imageUrl = computed(() => {
   if (!auth.user?.image) return unknown;
+
   return auth.user.image.startsWith("http")
     ? auth.user.image
-    : `http://187.127.226.132:8000${auth.user.image}`;
+    : `https://api.sourialdeacons.com${auth.user.image}`;
 });
 
 const isOpen = ref(false);

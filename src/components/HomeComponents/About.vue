@@ -5,9 +5,11 @@ import img from "@/assets/images/img.jpg";
 <template>
   <div class="bg-[#F5EFE5] h-auto pb-20" id="about">
     <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
-      <h1 class="text-[#1B2947] text-2xl md:text-4xl lg:text-5xl">عن</h1>
-      <h1 class="text-[#D4AB34] text-2xl md:text-4xl lg:text-5xl mx-3">مدرستنا</h1>
-      <h1 class="text-[#1B2947] text-2xl md:text-4xl lg:text-5xl">المباركة</h1>
+      <h2 class="text-2xl md:text-4xl lg:text-5xl">
+        <span class="text-[#1B2947]">عن </span>
+        <span class="text-[#D4AB34]">مدرستنا </span>
+        <span class="text-[#1B2947]">المباركة</span>
+      </h2>
     </div>
     <div class="flex justify-center">
       <div class="border-4 mt-6 w-40 text-[#D4AB34] rounded-full"></div>
@@ -18,15 +20,16 @@ import img from "@/assets/images/img.jpg";
         <img
           :src="img"
           class="w-full max-w-150 h-75 md:h-100 lg:h-112.5 object-cover rounded-3xl"
+          alt="مدرسة شمامسة كنيسة الملاك سوريال والشهيد العظيم مارمينا بالعمرانية"
         />
       </div>
       <div class="bg-white w-full max-w-150 h-auto rounded-3xl p-4 sm:p-6">
-        <h1
+        <p
           class="mt-5 mx-2 sm:mx-6 md:mx-10 text-base sm:text-lg md:text-xl text-[#1B2947] font-normal"
         >
           مدرسة شمامسة كنيسة الملاك سوريال والشهيد العظيم مارمينا بالعمرانية هي منارة روحية تخدم
           ابناء المنطقه منذ سنوات طويله. تسعي لتقديم تعليم روحي عميق وخدمة محبة لكل افراد المدرسة
-        </h1>
+        </p>
         <h1 class="flex mt-5 mr-4 sm:mr-6 md:mr-8">
           <div class="text-[#D4AB34]">
             <svg

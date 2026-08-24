@@ -3,8 +3,10 @@
 <template>
   <div class="bg-[#18294C]" id="contact">
     <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
-      <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl mx-3">تواصل</h1>
-      <h1 class="text-white text-2xl font-bold md:text-4xl lg:text-5xl">معنا</h1>
+      <h2 class="text-2xl font-bold md:text-4xl lg:text-5xl">
+        <span class="text-[#D4AB34]">تواصل</span>
+        <span class="text-white mx-3">معنا</span>
+      </h2>
     </div>
     <div class="flex justify-center">
       <h1 class="text-white text-base sm:text-lg md:text-xl mt-5 px-4 text-center">
@@ -86,7 +88,7 @@
               </svg>
             </div>
             <div>
-              <h1 class="font-bold text-xl sm:text-2xl md:text-3xl text-[#18294A]">العنوان</h1>
+              <h3 class="font-bold text-xl sm:text-2xl md:text-3xl text-[#18294A]">العنوان</h3>
               <p class="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl">
                 العمرانية - محافظة الجيزة - جمهورية مصر العربية
               </p>
@@ -110,7 +112,7 @@
               </svg>
             </div>
             <div>
-              <h1 class="font-bold text-[#18294A] text-xl sm:text-2xl md:text-3xl">الهاتف</h1>
+              <h3 class="font-bold text-[#18294A] text-xl sm:text-2xl md:text-3xl">الهاتف</h3>
               <p class="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl" dir="ltr">
                 +20 123 456 7890
               </p>
@@ -134,9 +136,9 @@
               </svg>
             </div>
             <div>
-              <h1 class="font-bold text-[#18294A] text-xl sm:text-2xl md:text-3xl">
+              <h3 class="font-bold text-[#18294A] text-xl sm:text-2xl md:text-3xl">
                 البريد الالكتروني
-              </h1>
+              </h3>
               <p class="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl break-all">
                 example@gmail.com
               </p>

@@ -3,8 +3,10 @@
 <template>
   <div class="bg-[#18294A]">
     <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
-      <h1 class="text-white text-2xl font-bold md:text-4xl lg:text-5xl mx-3">تاريخ</h1>
-      <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl">مدرسة الشمامسة</h1>
+      <h2 class="text-2xl font-bold md:text-4xl lg:text-5xl">
+        <span class="text-white">تاريخ </span>
+        <span class="text-[#D4AB34]">مدرسة الشمامسة</span>
+      </h2>
     </div>
     <div class="flex justify-center">
       <h1 class="text-white text-base sm:text-lg md:text-xl mt-5 px-4 text-center">
@@ -17,9 +19,6 @@
 
     <div class="flex justify-center">
       <div class="relative flex flex-col items-center px-4 mt-10 w-full">
-        <div
-          class="hidden md:block absolute top-10 bottom-10 right-1/2 w-1 bg-yellow-400 rounded-2xl"
-        ></div>
         <div class="flex flex-col justify-center items-center px-4 mt-10">
           <div
             class="bg-[#2E405C] mb-10 flex flex-col md:flex-row items-center md:items-start gap-5 w-[90%] md:w-[80%] lg:w-[55%] p-6 md:p-10 rounded-3xl"
@@ -33,7 +32,7 @@
 
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
-              <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التأسيس</h1>
+              <h3 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التأسيس</h3>
               <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 تأسست المدرسة في عام 1965 بجهود ومباركة الاباء المؤسسين وابناء المنطقه المؤمنين
               </p>
@@ -51,7 +50,7 @@
 
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
-              <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التوسعه الاولي</h1>
+              <h3 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التوسعه الاولي</h3>
               <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 شهدت المدرسة توسعة كبيره لاستيعاب عدد كبير من الشمامسة الجدد
               </p>
@@ -69,7 +68,7 @@
 
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
-              <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التطوير الحديث</h1>
+              <h3 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">التطوير الحديث</h3>
               <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 بدأت مرحلة جديده من التطوير شملت تحديث المرافق واضافة تقنيات حديثه لخدمة الشمامسة
                 والمناهج بشكل افضل
@@ -88,7 +87,7 @@
 
             <!-- النص -->
             <div class="flex flex-col text-center md:text-right text-white">
-              <h1 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">العصر الرقمي</h1>
+              <h3 class="text-3xl md:text-4xl font-bold mb-2 text-yellow-400">العصر الرقمي</h3>
               <p class="text-base sm:text-lg md:text-2xl leading-relaxed">
                 اطلقت الكنيسة النظام التعليمي الرقمي لخدمة ابناء الكنيسة بطرق حديثه ومتطوره
               </p>

@@ -3,8 +3,9 @@
 <template>
   <div class="bg-[#F5EFE5]" id="families">
     <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
-      <h1 class="text-[#18294A] text-2xl font-bold md:text-4xl lg:text-5xl mx-3">أُسر</h1>
-      <h1 class="text-[#D4AB34] text-2xl font-bold md:text-4xl lg:text-5xl">الشمامسة</h1>
+      <h1 class="text-[#18294A] text-2xl font-bold md:text-4xl lg:text-5xl">
+        أُسر <span class="text-[#D4AB34]">الشمامسة</span>
+      </h1>
     </div>
     <div class="flex justify-center">
       <div class="border-4 mt-6 w-40 text-[#D4AB34] rounded-full"></div>
