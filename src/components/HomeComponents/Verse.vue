@@ -28,10 +28,6 @@ onMounted(async () => {
     vespersReadings.value = getSectionReadings(data, "العشية");
     matinsReadings.value = getSectionReadings(data, "باكر");
     liturgyReadings.value = getSectionReadings(data, "قداس");
-
-    console.log("🌙 العشية:", vespersReadings.value);
-    console.log("🌅 باكر:", matinsReadings.value);
-    console.log("✝️ القداس:", liturgyReadings.value);
   } catch (err) {
     console.error("❌ Katameros API Error:", err);
     error.value = true;
@@ -44,8 +40,10 @@ onMounted(async () => {
 <template>
   <div class="bg-linear-to-br from-[#263755] to-[#734959] min-h-screen">
     <!-- Title -->
-    <div class="flex flex-wrap justify-center pt-10 md:pt-16 text-center px-4">
-      <h1 class="text-[#D4AB34] text-2xl md:text-4xl lg:text-5xl font-bold mx-2">قديس اليوم</h1>
+    <div class="flex flex-wrap justify-center pt-10 md:pt-16 text-center px-4 ml-10">
+      <h1 class="text-[#D4AB34] text-2xl md:text-4xl lg:text-5xl font-bold mx-2">
+        القطمارس اليومي
+      </h1>
 
       <h1 class="text-white text-2xl md:text-4xl lg:text-5xl font-bold">& آية اليوم</h1>
     </div>
