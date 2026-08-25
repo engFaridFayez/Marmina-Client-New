@@ -72,10 +72,11 @@ import back from "@/assets/images/back.jpeg";
                 </path>
               </g>
             </svg>
-            <span>استكشف خدامتنا</span>
+            <a href="#ads">استكشف خدامتنا</a>
           </button>
 
-          <button
+          <a
+            href="#about"
             class="bg-white px-4 sm:px-5 py-2 rounded-xl text-sm md:text-base lg:text-lg hover:bg-gray-300 transition flex items-center gap-2 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -85,7 +86,7 @@ import back from "@/assets/images/back.jpeg";
               />
             </svg>
             معرفة المزيد
-          </button>
+          </a>
         </div>
       </div>
     </div>

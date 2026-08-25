@@ -376,11 +376,23 @@ const router = createRouter({
 
   ],
   scrollBehavior(to, from, savedPosition) {
+    // لو رجوع بالـ browser Back / Forward
     if (savedPosition) {
       return savedPosition;
-    } else {
-      return { top: 0 };
     }
+
+    // لو الرابط فيه #section
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+    }
+
+    // أي صفحة جديدة
+    return {
+      top: 0,
+    };
   },
 })
 

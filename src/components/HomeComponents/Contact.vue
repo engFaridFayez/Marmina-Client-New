@@ -1,10 +1,49 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import emailjs from "@emailjs/browser";
 
+const form = ref<HTMLFormElement | null>(null);
+const dateInput = ref<HTMLInputElement | null>(null);
+const isSending = ref(false);
+const successMessage = ref("");
+const errorMessage = ref("");
+
+const sendEmail = async () => {
+  if (!form.value) return;
+
+  isSending.value = true;
+  successMessage.value = "";
+  errorMessage.value = "";
+
+  if (dateInput.value) {
+    dateInput.value.value = new Date().toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  }
+
+  try {
+    await emailjs.sendForm("service_rrb0q39", "template_c7gnhcu", form.value, {
+      publicKey: "jXUtwiPm_YEwEk5uz",
+    });
+
+    successMessage.value = "تم إرسال رسالتك بنجاح ❤️";
+
+    form.value.reset();
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+
+    errorMessage.value = "حدث خطأ أثناء إرسال الرسالة، حاول مرة أخرى.";
+  } finally {
+    isSending.value = false;
+  }
+};
+</script>
 <template>
   <div class="bg-[#18294C]" id="contact">
     <div class="flex flex-wrap justify-center pt-14 sm:pt-20 px-4 text-center">
       <h2 class="text-2xl font-bold md:text-4xl lg:text-5xl">
-        <span class="text-[#D4AB34]">تواصل</span>
+        <span class="text-[#D4AB34]">تواصل </span>
         <span class="text-white mx-3">معنا</span>
       </h2>
     </div>
@@ -20,12 +59,15 @@
     <div class="flex justify-center px-4 sm:px-6 md:px-10 lg:px-20 mt-10 pb-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-2.5 w-full max-w-6xl">
         <div class="bg-[#F5EFE5] p-6 md:p-8 rounded-3xl shadow">
-          <form class="flex flex-col gap-4">
+          <form ref="form" @submit.prevent="sendEmail" class="flex flex-col gap-4">
+            <input type="hidden" name="date" ref="dateInput" />
             <div>
               <label class="block mb-1 text-[#18294A] font-bold">الاسم الكامل</label>
               <input
                 type="text"
+                name="user_name"
                 placeholder="ادخل اسمك بالكامل"
+                required
                 class="w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#D4AB34]"
               />
             </div>
@@ -34,7 +76,9 @@
               <label class="block mb-1 text-[#18294A] font-bold">البريد الالكتروني</label>
               <input
                 type="email"
+                name="user_email"
                 placeholder="example@gmail.com"
+                required
                 class="w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#D4AB34]"
               />
             </div>
@@ -42,8 +86,10 @@
             <div>
               <label class="block mb-1 text-[#18294A] font-bold">رقم الهاتف</label>
               <input
-                type="text"
+                type="tel"
+                name="user_phone"
                 placeholder="+201234567890"
+                required
                 class="w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#D4AB34]"
               />
             </div>
@@ -51,17 +97,28 @@
             <div>
               <label class="block mb-1 text-[#18294A] font-bold">الرسالة</label>
               <textarea
+                name="message"
                 placeholder="اكتب رسالتك هنا"
+                required
                 class="w-full p-3 rounded-xl border h-32 resize-none focus:outline-none focus:ring-2 focus:ring-[#D4AB34]"
               ></textarea>
             </div>
 
             <button
-              class="bg-[#D4AB34] text-white py-3 rounded-xl font-bold hover:bg-[#18294A] transition cursor-pointer"
+              type="submit"
+              :disabled="isSending"
+              class="bg-[#D4AB34] text-white py-3 rounded-xl font-bold hover:bg-[#18294A] transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              ارسال
+              {{ isSending ? "جاري الإرسال..." : "إرسال" }}
             </button>
           </form>
+          <p v-if="successMessage" class="text-green-600 text-center font-bold mt-4">
+            {{ successMessage }}
+          </p>
+
+          <p v-if="errorMessage" class="text-red-600 text-center font-bold mt-4">
+            {{ errorMessage }}
+          </p>
         </div>
 
         <!-- الكارت التاني (المعلومات) -->

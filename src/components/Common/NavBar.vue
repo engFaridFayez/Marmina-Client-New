@@ -4,18 +4,19 @@ import logo from "@/assets/images/logo.png";
 import LoginForm from "@/views/LoginForm.vue";
 import { useAuthStore } from "@/stores/auth";
 import unknown from "@/assets/images/default.jpg";
+
 const auth = useAuthStore();
-// Single source of truth for the section links, used by BOTH the desktop
-// bar and the mobile menu so they never fall out of sync again.
+
+// Single source of truth for the section links
 const navLinks = [
-  { name: "الرئيسية", href: "/#home" },
-  { name: "عن الكنيسة", href: "/#about" },
-  { name: "ألاباء", href: "/#fathers" },
-  { name: "أُسر الشمامسة", href: "/#families" },
-  { name: "الجدول", href: "/#table" },
-  { name: "معرض الصور", href: "/#gallery" },
-  { name: "الاعلانات", href: "/#ads" },
-  { name: "تواصل معنا", href: "/#contact" },
+  { name: "الرئيسية", href: "#home" },
+  { name: "عن المدرسة", href: "#about" },
+  { name: "ألاباء", href: "#fathers" },
+  { name: "أُسر الشمامسة", href: "#families" },
+  { name: "الجدول", href: "#table" },
+  { name: "معرض الصور", href: "#gallery" },
+  { name: "الاعلانات", href: "#ads" },
+  { name: "تواصل معنا", href: "#contact" },
 ];
 
 const imageUrl = computed(() => {
@@ -29,6 +30,7 @@ const imageUrl = computed(() => {
 const isOpen = ref(false);
 
 const showLogin = ref(false);
+
 onMounted(() => {
   if (auth.isAuthenticated && auth.user) {
     console.log(auth.user);
@@ -50,12 +52,14 @@ onMounted(() => {
             :src="logo"
             alt="Marmina Logo"
           />
+
           <div class="flex flex-col mt-1 min-w-0">
             <h2
               class="text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-[#1B2947] font-bold truncate"
             >
               مدرسة شمامسة كنيسة الملاك سوريال
             </h2>
+
             <h5
               class="text-[10px] xs:text-[11px] sm:text-xs md:text-[11px] lg:text-[12px] text-[#6886a4] font-bold truncate"
             >
@@ -64,20 +68,13 @@ onMounted(() => {
           </div>
         </router-link>
 
-        <!--
-          Desktop nav (links + auth) now switches on at `xl` instead of `lg`.
-          Between 1024px–1280px there just isn't room for links + a 4-word
-          name pill + admin button, so that range now uses the mobile menu,
-          which already has plenty of space and works correctly.
-        -->
-
         <!-- Middle Links -->
         <div class="hidden xl:flex flex-wrap justify-center gap-3 2xl:gap-3">
           <a
             v-for="link in navLinks"
             :key="link.href"
             :href="link.href"
-            class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer scroll-smooth whitespace-nowrap text-sm 2xl:text-base"
+            class="text-[#4a5c6d] font-bold hover:text-gray-900 cursor-pointer whitespace-nowrap text-sm 2xl:text-base"
           >
             {{ link.name }}
           </a>
@@ -97,6 +94,7 @@ onMounted(() => {
                 :src="imageUrl"
                 class="w-9 h-9 2xl:w-10 2xl:h-10 rounded-full object-cover shrink-0"
               />
+
               <div
                 v-if="auth.user"
                 class="text-white text-sm 2xl:text-base leading-tight line-clamp-2 wrap-break-word max-w-28 2xl:max-w-28"
@@ -123,16 +121,17 @@ onMounted(() => {
                 >
                   <path
                     fill="currentColor"
-                    d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"
+                    d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 0 0-2 0v1z"
                   />
                 </svg>
+
                 <h1 class="text-sm 2xl:text-base mr-2">Admin</h1>
               </div>
             </router-link>
           </div>
         </div>
 
-        <!-- End Links -->
+        <!-- Login -->
         <div v-else class="hidden xl:flex gap-6 cursor-pointer shrink-0">
           <a
             @click="showLogin = true"
@@ -149,11 +148,13 @@ onMounted(() => {
                 fill="currentColor"
                 d="M26 30H14a2 2 0 0 1-2-2v-3h2v3h12V4H14v3h-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2"
               />
+
               <path
                 fill="currentColor"
                 d="M14.59 20.59L18.17 17H4v-2h14.17l-3.58-3.59L16 10l6 6l-6 6z"
               />
             </svg>
+
             تسجيل الدخول
           </a>
         </div>
@@ -174,7 +175,7 @@ onMounted(() => {
       v-if="isOpen"
       class="xl:hidden px-4 pb-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto"
     >
-      <!-- Links (now the SAME links shown on desktop) -->
+      <!-- Links -->
       <a
         v-for="link in navLinks"
         :key="link.href"
@@ -185,7 +186,7 @@ onMounted(() => {
         {{ link.name }}
       </a>
 
-      <!-- لو المستخدم عامل login -->
+      <!-- Logged in -->
       <div v-if="auth.isAuthenticated && auth.user" class="mt-4 space-y-3">
         <!-- User Info -->
         <router-link
@@ -199,6 +200,7 @@ onMounted(() => {
             <div class="font-bold break-words" :title="auth.user.full_name">
               {{ auth.user.full_name }}
             </div>
+
             <div class="text-xs text-gray-300">
               {{ auth.user.role }}
             </div>
@@ -217,13 +219,13 @@ onMounted(() => {
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
             <path
               fill="currentColor"
-              d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 1 0-2 0v1z"
+              d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8m0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6m0-2c2.21 0-4 1.79-4 4s1.79 4 4 4m9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0zm-2 0v-1a1 1 0 0 0-2 0v1z"
             />
           </svg>
         </router-link>
       </div>
 
-      <!-- لو مش logged in -->
+      <!-- Not logged in -->
       <div v-else class="mt-4">
         <button
           @click="
@@ -245,6 +247,10 @@ onMounted(() => {
 </template>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.25s ease;
