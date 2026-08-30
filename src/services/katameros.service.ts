@@ -15,7 +15,7 @@ export const getDailyReadings = async (): Promise<KatamerosResponse> => {
 export const getLiturgyGospel = (
   data: KatamerosResponse,
 ): KatamerosReading | null => {
-  const liturgySection = data.sections.find(
+  const liturgySection = data.readings.sections.find(
     (section) => section.title === "قداس",
   );
 
@@ -61,20 +61,17 @@ export const getTodayVerse = (
   };
 };
 
-
-
 export interface DailyReading {
   title: string;
   reference: string;
   firstVerse: string | null;
 }
 
-
 export const getSectionReadings = (
   data: KatamerosResponse,
   sectionTitle: string,
 ): DailyReading[] => {
-  const section = data.sections.find(
+  const section = data.readings.sections.find(
     (section) => section.title === sectionTitle,
   );
 

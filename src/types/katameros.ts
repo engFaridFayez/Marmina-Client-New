@@ -44,10 +44,18 @@ export interface KatamerosBible {
   versificationSchemeId: number | null;
 }
 
+export interface KatamerosDate {
+  gregorian: string;
+  coptic: string;
+}
+
 export interface KatamerosResponse {
-  title: string | null;
-  periodInfo: string | null;
-  bible: KatamerosBible;
-  bibles: KatamerosBible[];
-  sections: KatamerosSection[];
+  date: KatamerosDate;
+  readings: {
+    title: string | null;
+    periodInfo: string | null;
+    bible: KatamerosBible;
+    bibles: KatamerosBible[];
+    sections: KatamerosSection[];
+  };
 }

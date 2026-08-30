@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import marmina from "@/assets/images/marmina.jpg";
 import { onMounted, ref } from "vue";
 
 import {
@@ -8,12 +7,22 @@ import {
   getTodayVerse,
   type DailyReading,
 } from "@/services/katameros.service";
+
 const vespersReadings = ref<DailyReading[]>([]);
 const matinsReadings = ref<DailyReading[]>([]);
 const liturgyReadings = ref<DailyReading[]>([]);
+
 const todayVerse = ref<{
   text: string;
   reference: string;
+} | null>(null);
+
+// =========================
+// Today's Dates
+// =========================
+const todayDate = ref<{
+  gregorian: string;
+  coptic: string;
 } | null>(null);
 
 const loading = ref(true);
@@ -23,8 +32,13 @@ onMounted(async () => {
   try {
     const data = await getDailyReadings();
 
+    // التاريخ الميلادي والقبطي
+    todayDate.value = data.date;
+
+    // آية اليوم
     todayVerse.value = getTodayVerse(data);
 
+    // القراءات
     vespersReadings.value = getSectionReadings(data, "العشية");
     matinsReadings.value = getSectionReadings(data, "باكر");
     liturgyReadings.value = getSectionReadings(data, "قداس");
@@ -114,7 +128,9 @@ onMounted(async () => {
       <div>
         <!-- Section Title -->
         <div class="text-center mb-6">
-          <h2 class="text-[#f3c43a] text-2xl md:text-4xl font-bold">قراءات اليوم</h2>
+          <h2 class="text-[#f3c43a] text-2xl md:text-4xl font-bold mb-5">قراءات اليوم</h2>
+          <h2 class="text-[#d1d2d2] text-md md:text-2xl font-bold">{{ todayDate?.coptic }}</h2>
+          <h2 class="text-[#d1d2d2] text-md md:text-2xl font-bold">{{ todayDate?.gregorian }}</h2>
 
           <div class="flex justify-center mt-3">
             <div class="h-1 w-20 bg-[#D4AB34] rounded-full"></div>
