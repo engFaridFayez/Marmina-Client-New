@@ -50,8 +50,8 @@
           <h2 class="font-bold text-lg mb-4 text-center">تواصل معنا</h2>
           <ul class="space-y-3 text-gray-300 text-sm text-center">
             <li>📍 العمرانية - الجيزة</li>
-            <li>📞 01000000000</li>
-            <li>✉️ info@church.com</li>
+            <li>📞 +20 12 73648432</li>
+            <li>✉️ ASDeaconsPortal@gmail.com</li>
           </ul>
         </div>
       </div>

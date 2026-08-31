@@ -77,7 +77,7 @@ const sendEmail = async () => {
               <input
                 type="email"
                 name="user_email"
-                placeholder="example@gmail.com"
+                placeholder="ASDeaconsPortal@gmail.com"
                 required
                 class="w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#D4AB34]"
               />
@@ -88,7 +88,7 @@ const sendEmail = async () => {
               <input
                 type="tel"
                 name="user_phone"
-                placeholder="+201234567890"
+                placeholder="+20 12 73648432"
                 required
                 class="w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#D4AB34]"
               />
@@ -171,7 +171,7 @@ const sendEmail = async () => {
             <div>
               <h3 class="font-bold text-[#18294A] text-xl sm:text-2xl md:text-3xl">الهاتف</h3>
               <p class="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl" dir="ltr">
-                +20 123 456 7890
+                +20 12 73648432
               </p>
             </div>
           </div>
@@ -197,7 +197,7 @@ const sendEmail = async () => {
                 البريد الالكتروني
               </h3>
               <p class="text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl break-all">
-                example@gmail.com
+                ASDeaconsPortal@gmail.com
               </p>
             </div>
           </div>

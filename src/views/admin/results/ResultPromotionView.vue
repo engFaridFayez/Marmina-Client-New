@@ -60,7 +60,7 @@ const promoteStudents = async () => {
       passedStudentIds.value,
       failedStudentIds.value,
     );
-    successMessage.value = "تمت ترقية الطلاب بنجاح";
+    successMessage.value = "تمت ترقية المخدومين بنجاح";
     passedStudentIds.value = [];
     failedStudentIds.value = [];
     await resultStore.getFamilyStudents(selectedFamilyId.value);
@@ -84,8 +84,8 @@ const selectPassedStudents = () => {
   <div dir="rtl" class="space-y-6">
     <!-- Header -->
     <div>
-      <h1 class="text-2xl font-bold text-[#232A7E]">ترقية الطلاب</h1>
-      <p class="text-gray-500 mt-2">نقل الطلاب إلى الأسرة التالية</p>
+      <h1 class="text-2xl font-bold text-[#232A7E]">ترقية المخدومين</h1>
+      <p class="text-gray-500 mt-2">نقل المخدومين إلى الأسرة التالية</p>
     </div>
 
     <!-- Success -->

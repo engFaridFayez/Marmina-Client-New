@@ -38,7 +38,7 @@ const stats = computed(() => [
     color: "from-[#D0A633] to-[#b88b22]",
   },
   {
-    title: "الطلاب",
+    title: "المخدومين",
     value: resultStore.enrollments.length,
     icon: "👨‍🎓",
     color: "from-green-500 to-green-700",
@@ -60,7 +60,7 @@ const stats = computed(() => [
         <div class="bg-white p-6 rounded-2xl shadow">
           <h2 class="text-2xl font-bold text-[#232A7E]">👋 أهلاً بك في إدارة النتائج</h2>
 
-          <p class="text-gray-500 mt-2">متابعة نتائج الطلاب والمواد والامتحانات من مكان واحد</p>
+          <p class="text-gray-500 mt-2">متابعة نتائج المخدومين والمواد والامتحانات من مكان واحد</p>
         </div>
 
         <!-- Stats -->
@@ -103,7 +103,7 @@ const stats = computed(() => [
 
               <h3 class="font-bold text-[#232A7E] text-xl">نتائج الأسر</h3>
 
-              <p class="text-gray-500 mt-2">عرض الطلاب وإدارة نتائج الأسر</p>
+              <p class="text-gray-500 mt-2">عرض المخدومين وإدارة نتائج الأسر</p>
             </RouterLink>
 
             <!-- نتيجة أسرتي -->
@@ -164,9 +164,9 @@ const stats = computed(() => [
             >
               <div class="text-4xl mb-3">🚀</div>
 
-              <h3 class="font-bold text-[#232A7E] text-xl">ترقية الطلاب</h3>
+              <h3 class="font-bold text-[#232A7E] text-xl">ترقية المخدومين</h3>
 
-              <p class="text-gray-500 mt-2">نقل الطلاب إلى الأسرة التالية</p>
+              <p class="text-gray-500 mt-2">نقل المخدومين إلى الأسرة التالية</p>
             </RouterLink>
           </div>
         </div>

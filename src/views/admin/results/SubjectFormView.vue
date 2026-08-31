@@ -23,7 +23,6 @@ const pageLoading = ref(false);
 const submitting = ref(false);
 const localError = ref<string | null>(null);
 
-
 // =====================================
 // Load
 // =====================================
@@ -36,9 +35,7 @@ onMounted(async () => {
     await resultStore.getSubjectsList();
 
     if (isEditMode.value && subjectId.value) {
-      const subject = resultStore.subjects.find(
-        item => item.id === subjectId.value
-      );
+      const subject = resultStore.subjects.find((item) => item.id === subjectId.value);
 
       if (!subject) {
         localError.value = "لم يتم العثور على المادة المطلوبة";
@@ -55,7 +52,6 @@ onMounted(async () => {
     pageLoading.value = false;
   }
 });
-
 
 // =====================================
 // Validation
@@ -88,15 +84,13 @@ const validate = () => {
   }
 
   if (successGrade.value > finalGrade.value) {
-    localError.value =
-      "درجة النجاح لا يمكن أن تكون أكبر من الدرجة النهائية";
+    localError.value = "درجة النجاح لا يمكن أن تكون أكبر من الدرجة النهائية";
 
     return false;
   }
 
   return true;
 };
-
 
 // =====================================
 // Submit
@@ -117,24 +111,18 @@ const submit = async () => {
     };
 
     if (isEditMode.value && subjectId.value) {
-      await resultStore.updateSubject(
-        subjectId.value,
-        data
-      );
+      await resultStore.updateSubject(subjectId.value, data);
     } else {
       await resultStore.createSubject(data);
     }
 
     router.push("/admin/results/subjects");
   } catch (error) {
-    localError.value =
-      resultStore.error ??
-      "حدث خطأ أثناء حفظ المادة";
+    localError.value = resultStore.error ?? "حدث خطأ أثناء حفظ المادة";
   } finally {
     submitting.value = false;
   }
 };
-
 
 // =====================================
 // Cancel
@@ -145,16 +133,10 @@ const cancel = () => {
 };
 </script>
 
-
 <template>
-  <div
-    dir="rtl"
-    class="max-w-2xl mx-auto space-y-6"
-  >
-
+  <div dir="rtl" class="max-w-2xl mx-auto space-y-6">
     <!-- Header -->
     <div class="flex items-center gap-3">
-
       <button
         @click="cancel"
         class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 transition flex items-center justify-center"
@@ -168,31 +150,17 @@ const cancel = () => {
         </h1>
 
         <p class="text-gray-500 mt-1">
-          {{
-            isEditMode
-              ? "تعديل بيانات المادة"
-              : "إضافة مادة جديدة إلى النظام"
-          }}
+          {{ isEditMode ? "تعديل بيانات المادة" : "إضافة مادة جديدة إلى النظام" }}
         </p>
       </div>
-
     </div>
-
 
     <!-- Loading -->
-    <div
-      v-if="pageLoading"
-      class="bg-white rounded-2xl border border-gray-100 p-12 text-center"
-    >
-      <div class="text-4xl mb-4">
-        ⏳
-      </div>
+    <div v-if="pageLoading" class="bg-white rounded-2xl border border-gray-100 p-12 text-center">
+      <div class="text-4xl mb-4">⏳</div>
 
-      <p class="text-gray-400">
-        جاري تحميل البيانات...
-      </p>
+      <p class="text-gray-400">جاري تحميل البيانات...</p>
     </div>
-
 
     <!-- Form -->
     <form
@@ -200,21 +168,14 @@ const cancel = () => {
       @submit.prevent="submit"
       class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6"
     >
-
       <!-- Error -->
-      <div
-        v-if="localError"
-        class="bg-red-50 border border-red-200 text-red-600 rounded-xl p-4"
-      >
+      <div v-if="localError" class="bg-red-50 border border-red-200 text-red-600 rounded-xl p-4">
         ⚠️ {{ localError }}
       </div>
 
-
       <!-- Name -->
       <div>
-        <label class="block text-sm font-bold text-gray-700 mb-2">
-          اسم المادة
-        </label>
+        <label class="block text-sm font-bold text-gray-700 mb-2"> اسم المادة </label>
 
         <input
           v-model="name"
@@ -224,15 +185,11 @@ const cancel = () => {
         />
       </div>
 
-
       <!-- Grades -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
         <!-- Final Grade -->
         <div>
-          <label class="block text-sm font-bold text-gray-700 mb-2">
-            الدرجة النهائية
-          </label>
+          <label class="block text-sm font-bold text-gray-700 mb-2"> الدرجة النهائية </label>
 
           <input
             v-model.number="finalGrade"
@@ -243,17 +200,12 @@ const cancel = () => {
             class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-[#232A7E] transition"
           />
 
-          <p class="text-xs text-gray-400 mt-2">
-            الدرجة النهائية للمادة على مدار السنة
-          </p>
+          <p class="text-xs text-gray-400 mt-2">الدرجة النهائية للمادة على مدار السنة</p>
         </div>
-
 
         <!-- Success Grade -->
         <div>
-          <label class="block text-sm font-bold text-gray-700 mb-2">
-            درجة النجاح
-          </label>
+          <label class="block text-sm font-bold text-gray-700 mb-2"> درجة النجاح </label>
 
           <input
             v-model.number="successGrade"
@@ -265,49 +217,31 @@ const cancel = () => {
             class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-[#232A7E] transition"
           />
 
-          <p class="text-xs text-gray-400 mt-2">
-            أقل درجة يعتبر عندها الطالب ناجحًا
-          </p>
+          <p class="text-xs text-gray-400 mt-2">أقل درجة يعتبر عندها المخدوم ناجحًا</p>
         </div>
-
       </div>
 
-
       <!-- Preview -->
-      <div
-        v-if="finalGrade !== null || successGrade !== null"
-        class="grid grid-cols-2 gap-3"
-      >
-
+      <div v-if="finalGrade !== null || successGrade !== null" class="grid grid-cols-2 gap-3">
         <div class="bg-[#F5F2E8] rounded-xl p-4">
-          <p class="text-xs text-gray-500">
-            الدرجة النهائية
-          </p>
+          <p class="text-xs text-gray-500">الدرجة النهائية</p>
 
           <p class="text-xl font-bold text-[#232A7E] mt-1">
             {{ finalGrade ?? "—" }}
           </p>
         </div>
 
-
         <div class="bg-green-50 rounded-xl p-4">
-          <p class="text-xs text-gray-500">
-            درجة النجاح
-          </p>
+          <p class="text-xs text-gray-500">درجة النجاح</p>
 
           <p class="text-xl font-bold text-green-600 mt-1">
             {{ successGrade ?? "—" }}
           </p>
         </div>
-
       </div>
 
-
       <!-- Buttons -->
-      <div
-        class="flex items-center justify-end gap-3 pt-4 border-t border-gray-100"
-      >
-
+      <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
         <button
           type="button"
           @click="cancel"
@@ -321,18 +255,9 @@ const cancel = () => {
           :disabled="submitting"
           class="px-6 py-2.5 rounded-xl bg-[#232A7E] hover:bg-[#1b2263] text-white font-bold transition disabled:opacity-40"
         >
-          {{
-            submitting
-              ? "جاري الحفظ..."
-              : isEditMode
-                ? "حفظ التعديل"
-                : "إضافة المادة"
-          }}
+          {{ submitting ? "جاري الحفظ..." : isEditMode ? "حفظ التعديل" : "إضافة المادة" }}
         </button>
-
       </div>
-
     </form>
-
   </div>
 </template>

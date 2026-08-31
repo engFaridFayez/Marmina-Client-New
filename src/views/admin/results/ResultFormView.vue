@@ -197,7 +197,7 @@ const submit = async () => {
   localError.value = null;
 
   if (!points.value && points.value !== 0) {
-    localError.value = "من فضلك أدخل درجة الطالب";
+    localError.value = "من فضلك أدخل درجة المخدوم";
     return;
   }
 
@@ -280,7 +280,7 @@ const cancel = () => {
         </h1>
 
         <p class="text-gray-500 mt-1">
-          {{ isEditMode ? "تعديل درجة الطالب" : "تسجيل درجة جديدة للطالب" }}
+          {{ isEditMode ? "تعديل درجة المخدوم" : "تسجيل درجة جديدة للمخدوم" }}
         </p>
       </div>
     </div>
@@ -415,7 +415,7 @@ const cancel = () => {
 
       <!-- Points -->
       <div>
-        <label class="block text-sm font-bold text-gray-700 mb-2"> درجة الطالب </label>
+        <label class="block text-sm font-bold text-gray-700 mb-2"> درجة المخدوم </label>
 
         <input
           v-model.number="points"
@@ -423,11 +423,11 @@ const cancel = () => {
           min="0"
           :max="selectedMaxGrade ?? undefined"
           step="0.01"
-          placeholder="أدخل درجة الطالب"
+          placeholder="أدخل درجة المخدوم"
           class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-[#232A7E]"
         />
 
-        <p class="text-xs text-gray-400 mt-2">أدخل الدرجة التي حصل عليها الطالب في هذا الامتحان</p>
+        <p class="text-xs text-gray-400 mt-2">أدخل الدرجة التي حصل عليها المخدوم في هذا الامتحان</p>
       </div>
 
       <!-- Buttons -->

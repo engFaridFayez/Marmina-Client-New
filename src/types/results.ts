@@ -23,7 +23,7 @@ export interface Result {
 
   exam: string;
 
-  // درجة الطالب في الامتحان
+  // درجة المخدوم في الامتحان
   points: number;
 
   // الدرجة القصوى للامتحان/الترم
