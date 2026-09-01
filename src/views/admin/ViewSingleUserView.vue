@@ -106,15 +106,15 @@ const canManageSelectedUser = computed(() => {
           {{ user.full_name?.charAt(0) }}
         </div>
 
-        <h2 class="mt-3 sm:mt-4 text-lg sm:text-2xl md:text-3xl font-bold text-gray-800 break-words px-2">
+        <h2 class="mt-3 sm:mt-4 text-lg sm:text-2xl md:text-3xl font-bold text-gray-800 wrap-break-word px-2">
           {{ user.full_name }}
         </h2>
 
-        <h2 class="mt-1 sm:mt-2 text-base sm:text-xl md:text-2xl font-semibold text-gray-600 break-words px-2">
+        <h2 class="mt-1 sm:mt-2 text-base sm:text-xl md:text-2xl font-semibold text-gray-600 wrap-break-word px-2">
           {{ user.role }}
         </h2>
 
-        <p class="text-gray-500 text-sm sm:text-lg mt-2 sm:mt-3 break-words px-2">
+        <p class="text-gray-500 text-sm sm:text-lg mt-2 sm:mt-3 wrap-break-word px-2">
           {{ user.username }}
         </p>
       </div>
@@ -123,27 +123,27 @@ const canManageSelectedUser = computed(() => {
       <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3 sm:gap-4">
         <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition w-full min-w-0">
           <p class="text-gray-400 text-xs sm:text-sm md:text-base">📱 رقم الهاتف</p>
-          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base break-words">{{ user.phone }}</p>
+          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base wrap-break-word">{{ user.phone }}</p>
         </div>
 
         <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition w-full min-w-0">
           <p class="text-gray-400 text-xs sm:text-sm md:text-base">🏠 العنوان</p>
-          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base break-words">{{ user.address }}</p>
+          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base wrap-break-word">{{ user.address }}</p>
         </div>
 
         <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition w-full min-w-0">
           <p class="text-gray-400 text-xs sm:text-sm md:text-base">👨 الأب</p>
-          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base break-words">{{ user.father }}</p>
+          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base wrap-break-word">{{ user.father }}</p>
         </div>
 
         <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition w-full min-w-0">
           <p class="text-gray-400 text-xs sm:text-sm md:text-base">🎂 تاريخ الميلاد</p>
-          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base break-words">{{ user.birth_date }}</p>
+          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base wrap-break-word">{{ user.birth_date }}</p>
         </div>
 
         <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition w-full min-w-0 sm:col-span-2">
           <p class="text-gray-400 text-xs sm:text-sm md:text-base">Slogan</p>
-          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base break-words">{{ user.slogan }}</p>
+          <p class="text-gray-800 font-bold mt-2 text-sm sm:text-base wrap-break-word">{{ user.slogan }}</p>
         </div>
       </div>
 

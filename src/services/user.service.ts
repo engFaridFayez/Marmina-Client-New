@@ -28,6 +28,12 @@ export const UserSerivce = {
       new_password
     })
   },
+  updateOwnUserPassword(new_password: string, confirm_password: string) {
+    return api.post("users/user-reset-password/", {
+      new_password,
+      confirm_password,
+    })
+  },
   changeUserActivity(id: number) {
     return api.post("users/update-user-status/", {
       id

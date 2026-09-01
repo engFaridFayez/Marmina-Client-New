@@ -91,7 +91,7 @@ const canManageUser = (memberRole: string) => {
         class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4"
       >
         <div class="min-w-0">
-          <h3 class="text-xl sm:text-3xl md:text-4xl font-black break-words">{{ family.name }}</h3>
+          <h3 class="text-xl sm:text-3xl md:text-4xl font-black wrap-break-word">{{ family.name }}</h3>
           <p class="text-white/70 mt-1 text-sm sm:text-lg md:text-2xl">{{ family.year }}</p>
         </div>
         <div
@@ -140,7 +140,7 @@ const canManageUser = (memberRole: string) => {
                   {{ member.full_name?.charAt(0) }}
                 </span>
               </div>
-              <span class="font-black text-[#232A7E] text-base sm:text-xl break-words">{{
+              <span class="font-black text-[#232A7E] text-base sm:text-xl wrap-break-word">{{
                 member.full_name
               }}</span>
             </div>
@@ -245,7 +245,7 @@ const canManageUser = (memberRole: string) => {
                   {{ member.full_name?.charAt(0) }}
                 </span>
               </div>
-              <span class="font-black text-[#232A7E] text-base sm:text-xl break-words">{{
+              <span class="font-black text-[#232A7E] text-base sm:text-xl wrap-break-word">{{
                 member.full_name
               }}</span>
             </div>
@@ -351,7 +351,7 @@ const canManageUser = (memberRole: string) => {
                   {{ member.full_name?.charAt(0) }}
                 </span>
               </div>
-              <span class="font-black text-[#232A7E] text-base sm:text-xl break-words">{{
+              <span class="font-black text-[#232A7E] text-base sm:text-xl wrap-break-word">{{
                 member.full_name
               }}</span>
             </div>

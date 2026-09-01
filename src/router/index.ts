@@ -347,6 +347,14 @@ const router = createRouter({
             requiresAdmin: true,
           }
         },
+        {
+          path: "/change-own-password",
+          name: "change-own-password",
+          component: () => import("@/views/admin/UpdateOwnUserPassword.vue"),
+          meta: {
+            requiresAuth: true,
+          }
+        },
         // {
         //   path: "/change-user-activity/:id",
         //   name: "change-user-activity",

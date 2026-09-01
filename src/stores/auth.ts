@@ -239,5 +239,34 @@ export const useAuthStore = defineStore("auth", {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
     },
+    async updateOwnUserPassword(
+      new_password: string,
+      confirm_password: string
+    ) {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await UserSerivce.updateOwnUserPassword(
+          new_password,
+          confirm_password
+        )
+
+        return response.data
+
+      } catch (error: any) {
+
+        this.error =
+          Array.isArray(error.response?.data?.errors)
+            ? error.response.data.errors.join(", ")
+            : error.response?.data?.errors ||
+            "حدث خطأ أثناء تغيير كلمة المرور"
+
+        throw error
+
+      } finally {
+        this.loading = false
+      }
+    },
   },
 });

@@ -20,7 +20,7 @@ const goToEditProfile = () => {
 };
 
 const goToChangePassword = () => {
-  router.push({ name: "change-password" }); // adjust to your route name
+  router.push({ name: "change-own-password" }); // adjust to your route name
 };
 
 const logout = () => {

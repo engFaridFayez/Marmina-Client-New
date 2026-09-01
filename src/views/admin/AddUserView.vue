@@ -479,7 +479,7 @@ const submit = async () => {
           <button
             type="submit"
             class="w-full hover:scale-[1.01] active:scale-[0.99] text-white font-bold py-4 rounded-2xl shadow-lg transition duration-300 cursor-pointer"
-            style="background-image: url(&quot;/src/assets/images/resBack.jpeg&quot;)"
+            style="background-color: #301214;"
           >
             {{ isEdit ? "تعديل" : "إضافة" }}
           </button>
