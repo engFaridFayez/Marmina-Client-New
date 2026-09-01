@@ -52,7 +52,7 @@ const closePopup = () => {
 // prettier-ignore
 const roleLevel: Record<string, number> = {
   "مخدوم" : 1,
-  "خادم عادي": 2,
+  "خادم": 2,
   "امين مساعد اسرة": 3,
   "امين اسرة": 4,
   "امين مرحلة": 5,
@@ -145,7 +145,7 @@ const canManageSelectedUser = computed(() => {
         </div>
 
         <router-link
-          v-if="canManageSelectedUser"
+          v-if="authStore.user?.role !== 'خادم' && canManageSelectedUser"
           :to="{ name: 'change-user-password', params: { id: user.id } }"
           class="bg-yellow-400 p-4 rounded-xl shadow hover:shadow-md transition hover:bg-yellow-600 hover:text-white"
         >
@@ -153,7 +153,7 @@ const canManageSelectedUser = computed(() => {
         </router-link>
 
         <button
-          v-if="canManageSelectedUser"
+          v-if="authStore.user?.role !== 'خادم' && canManageSelectedUser"
           @click="askChangeActivity(user.id)"
           :disabled="authStore.loading"
           :class="[

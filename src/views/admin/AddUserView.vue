@@ -384,9 +384,9 @@ const submit = async () => {
             </option>
             <option
               v-if="authStore.user?.role == 'امين اسرة' || authStore.user?.role === 'امين مرحلة'"
-              value="خادم عادي"
+              value="خادم"
             >
-              خادم عادي
+              خادم
             </option>
             <option
               v-if="authStore.user?.role == 'امين الشمامسة' || authStore.user?.role == 'admin'"

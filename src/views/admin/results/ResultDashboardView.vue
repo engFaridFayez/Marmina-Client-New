@@ -15,7 +15,7 @@ const isStageSecretary = computed(() => role.value === "امين مرحلة");
 
 const isFamilyUser = computed(
   () =>
-    role.value === "خادم عادي" || role.value === "امين اسرة" || role.value === "امين مساعد اسرة",
+    role.value === "خادم" || role.value === "امين اسرة" || role.value === "امين مساعد اسرة",
 );
 
 onMounted(async () => {

@@ -23,7 +23,7 @@ const leaders = computed(() => {
   const roleOrder: Record<string, number> = {
     "امين اسرة": 1,
     "امين مساعد اسرة": 2,
-    "خادم عادي": 3,
+    "خادم": 3,
     "سكرتاريه": 4,
   };
 
@@ -31,7 +31,7 @@ const leaders = computed(() => {
     .filter(
       (member) =>
         member.role === "امين اسرة" ||
-        member.role === "خادم عادي" ||
+        member.role === "خادم" ||
         member.role === "امين مساعد اسرة",
     )
     .sort((a, b) => {
@@ -54,7 +54,7 @@ const goToDetails = (id: number) => router.push(`/users/${id}`);
 // prettier-ignore
 const roleLevel: Record<string, number> = {
   "مخدوم" : 1,
-  "خادم عادي": 2,
+  "خادم": 2,
   "امين مساعد اسرة": 3,
   "امين اسرة": 4,
   "امين مرحلة": 5,
@@ -144,7 +144,7 @@ const canManageUser = (memberRole: string) => {
                 class="text-lg font-bold px-5 py-2 rounded-full"
                 :class="{
                   'bg-[#232A7E]/10 text-[#232A7E]': member.role === 'امين اسرة',
-                  'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم عادي',
+                  'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم',
                 }"
               >
                 {{ member.role }}
@@ -244,7 +244,7 @@ const canManageUser = (memberRole: string) => {
                 :class="{
                   'bg-[#232A7E]/10 text-[#232A7E]': member.role === 'امين اسرة',
                   'bg-[#e77920]/10 text-[#e77920]': member.role === 'امين مساعد اسرة',
-                  'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم عادي',
+                  'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم',
                 }"
               >
                 {{ member.role }}
