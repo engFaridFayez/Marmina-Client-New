@@ -28,10 +28,7 @@ const leaders = computed(() => {
   };
 
   return family.value.users
-    .filter(
-      (member) =>
-        member.role === "امين اسرة" || member.role === "خادم" || member.role === "امين مساعد اسرة",
-    )
+    .filter((member) => member.role === "امين اسرة" || member.role === "خادم")
     .sort((a, b) => {
       return (roleOrder[a.role] ?? 99) - (roleOrder[b.role] ?? 99);
     });
@@ -91,7 +88,9 @@ const canManageUser = (memberRole: string) => {
         class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4"
       >
         <div class="min-w-0">
-          <h3 class="text-xl sm:text-3xl md:text-4xl font-black wrap-break-word">{{ family.name }}</h3>
+          <h3 class="text-xl sm:text-3xl md:text-4xl font-black wrap-break-word">
+            {{ family.name }}
+          </h3>
           <p class="text-white/70 mt-1 text-sm sm:text-lg md:text-2xl">{{ family.year }}</p>
         </div>
         <div
