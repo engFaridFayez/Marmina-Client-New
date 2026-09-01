@@ -19,7 +19,6 @@ const family = computed(() => authStore.selectedFamily);
 const leaders = computed(() => {
   if (!family.value?.users) return [];
 
-  // prettier-ignore
   const roleOrder: Record<string, number> = {
     "امين اسرة": 1,
     "امين مساعد اسرة": 2,
@@ -28,14 +27,21 @@ const leaders = computed(() => {
   };
 
   return family.value.users
-    .filter((member) => member.role === "امين اسرة" || member.role === "خادم")
+    .filter(
+      (member) =>
+        member.role === "امين اسرة" ||
+        member.role === "خادم" ||
+        member.role === "امين مساعد اسرة",
+    )
     .sort((a, b) => {
       return (roleOrder[a.role] ?? 99) - (roleOrder[b.role] ?? 99);
     });
 });
 
 const stageLeaders = computed(() => {
-  return family.value?.stage?.leaders ?? [];
+  return (family.value?.stage?.leaders ?? []).filter(
+    (member) => member.role === "امين مرحلة"
+  );
 });
 
 const servants = computed(() => {
