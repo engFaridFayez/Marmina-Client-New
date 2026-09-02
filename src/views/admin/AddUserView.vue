@@ -123,6 +123,43 @@ onMounted(async () => {
   }
 });
 
+const availableRoles = computed(() => {
+  const currentRole = authStore.user?.role;
+
+  switch (currentRole) {
+    case "admin":
+      return [
+        { value: "امين الشمامسة", label: "أمين الشمامسة" },
+        { value: "امين مرحلة", label: "أمين مرحلة" },
+        { value: "امين اسرة", label: "أمين أسرة" },
+        { value: "امين مساعد اسرة", label: "امين مساعد اسرة" },
+        { value: "خادم", label: "خادم" },
+        { value: "مخدوم", label: "مخدوم" },
+      ];
+
+    case "امين الشمامسة":
+      return [
+        { value: "امين مرحلة", label: "أمين مرحلة" },
+        { value: "امين اسرة", label: "أمين أسرة" },
+        { value: "امين مساعد اسرة", label: "امين مساعد اسرة" },
+        { value: "خادم", label: "خادم" },
+      ];
+
+    case "امين مرحلة":
+      return [
+        { value: "امين اسرة", label: "أمين أسرة" },
+        { value: "امين مساعد اسرة", label: "امين مساعد اسرة" },
+        { value: "خادم", label: "خادم" },
+      ];
+
+    case "امين اسرة":
+      return [{ value: "خادم", label: "خادم" }];
+
+    default:
+      return [];
+  }
+});
+
 const submit = async () => {
   try {
     const data = new FormData();
@@ -365,9 +402,11 @@ const submit = async () => {
 
         <!-- Role -->
         <div class="space-y-1">
-          <label class="font-semibold text-slate-700"
-            >خادم / مخدوم <b class="text-red-500">*</b></label
-          >
+          <label class="font-semibold text-slate-700">
+            خادم / مخدوم
+            <b class="text-red-500">*</b>
+          </label>
+
           <select
             v-model="form.role"
             :class="[
@@ -376,30 +415,16 @@ const submit = async () => {
             ]"
           >
             <option disabled value="">اختر</option>
-            <option
-              v-if="authStore.user?.role == 'امين اسرة' || authStore.user?.role === 'امين مرحلة'"
-              value="مخدوم"
-            >
-              مخدوم
-            </option>
-            <option
-              v-if="authStore.user?.role == 'امين اسرة' || authStore.user?.role === 'امين مرحلة'"
-              value="خادم"
-            >
-              خادم
-            </option>
-            <option
-              v-if="authStore.user?.role == 'امين الشمامسة' || authStore.user?.role == 'admin'"
-              value="امين مرحلة"
-            >
-              امين مرحلة
+
+            <option v-for="role in availableRoles" :key="role.value" :value="role.value">
+              {{ role.label }}
             </option>
           </select>
+
           <p v-if="fieldError('role')" class="text-red-500 text-sm pr-1">
             {{ fieldError("role") }}
           </p>
         </div>
-
         <!-- Stage -->
         <div v-if="authStore.user?.role !== 'امين اسرة'" class="space-y-1">
           <label class="font-semibold text-slate-700">المرحلة <b class="text-red-500">*</b></label>
@@ -479,7 +504,7 @@ const submit = async () => {
           <button
             type="submit"
             class="w-full hover:scale-[1.01] active:scale-[0.99] text-white font-bold py-4 rounded-2xl shadow-lg transition duration-300 cursor-pointer"
-            style="background-color: #301214;"
+            style="background-color: #301214"
           >
             {{ isEdit ? "تعديل" : "إضافة" }}
           </button>

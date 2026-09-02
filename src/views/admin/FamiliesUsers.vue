@@ -155,8 +155,7 @@ const canManageUser = (memberRole: string) => {
               <span
                 class="text-xs sm:text-lg font-bold px-3 py-1.5 sm:px-5 sm:py-2 rounded-full whitespace-nowrap"
                 :class="{
-                  'bg-[#232A7E]/10 text-[#232A7E]': member.role === 'امين اسرة',
-                  'bg-[#D0A633]/10 text-[#9a7820]': member.role === 'خادم',
+                  'bg-[#2cf0f4]/50 text-[#000000]': member.role === 'امين مرحلة',
                 }"
               >
                 {{ member.role }}
