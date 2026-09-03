@@ -39,7 +39,7 @@ const logout = () => {
       </div>
 
       <!-- Account -->
-      <div>
+      <div v-if="authStore.user?.role === 'admin'">
         <p class="text-xs text-slate-400 mb-2 px-1">الحساب</p>
         <div class="bg-white rounded-2xl shadow divide-y divide-slate-100">
           <button
