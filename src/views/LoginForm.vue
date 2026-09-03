@@ -78,13 +78,13 @@ const forgetPassword = async () => {
 
       <form @submit.prevent="handleLogin" class="flex flex-col gap-4">
         <div class="flex flex-col gap-1">
-          <label for="nationalId">الرقم القومي</label>
+          <label for="nationalId">Username</label>
 
           <div class="relative">
             <input
               id="nationalId"
               type="text"
-              placeholder="#12345678901234"
+              placeholder="SSSSSSSS"
               v-model="username"
               class="border p-2 pl-10 rounded-4xl w-full"
             />

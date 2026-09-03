@@ -145,7 +145,7 @@ const imageUrl = computed(() => {
             </div>
           </div>
 
-          <div v-if="auth.user.role == 'خادم عادي' || auth.user.role == 'امين اسرة'">
+          <div v-if="auth.user.role == 'خادم' || auth.user.role == 'امين اسرة'">
             <label class="text-gray-500 text-xl font-bold">الاسرة</label>
             <div class="flex items-center bg-[#EDE7DD] rounded-full px-4 py-3 mt-1">
               <svg
@@ -167,7 +167,7 @@ const imageUrl = computed(() => {
             </div>
           </div>
 
-          <div v-if="auth.user.role == 'خادم عادي'">
+          <div v-if="auth.user.role == 'خادم'">
             <label class="text-gray-500 text-xl font-bold">اللقب</label>
             <div class="flex items-center bg-[#EDE7DD] rounded-full px-4 py-3 mt-1">
               <svg

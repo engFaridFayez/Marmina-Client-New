@@ -110,7 +110,7 @@ export const useResultStore = defineStore("result", {
 
         this.results = response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Failed to load results";
@@ -135,7 +135,7 @@ export const useResultStore = defineStore("result", {
 
         this.exams = response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Error fetching exams";
@@ -166,7 +166,7 @@ export const useResultStore = defineStore("result", {
 
         this.results = response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Error fetching results";
@@ -199,7 +199,7 @@ export const useResultStore = defineStore("result", {
 
         this.familyData = response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Error fetching family students";
@@ -232,10 +232,13 @@ export const useResultStore = defineStore("result", {
 
         this.enrollments = response.data;
 
-      } catch  {
+      } catch (error: any) {
 
-        this.error =
-          "Error fetching enrollments";
+        console.error("❌ Error fetching enrollments:", error);
+        console.error("Status:", error?.response?.status);
+        console.error("Data:", error?.response?.data);
+
+        this.error = "Error fetching enrollments";
 
       } finally {
 
@@ -272,7 +275,7 @@ export const useResultStore = defineStore("result", {
         this.enrollmentResults =
           response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Error fetching enrollment results";
@@ -422,7 +425,7 @@ export const useResultStore = defineStore("result", {
 
         this.subjects = response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Error fetching subjects";
@@ -1169,7 +1172,7 @@ export const useResultStore = defineStore("result", {
 
         this.resultFamilies = response.data;
 
-      } catch  {
+      } catch {
 
         this.error =
           "Error fetching result families";
