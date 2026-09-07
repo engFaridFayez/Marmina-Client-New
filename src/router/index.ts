@@ -34,11 +34,19 @@ const router = createRouter({
       path: "/terms",
       name: "terms",
       component: TermsView,
+      meta: {
+        requiresAuth: true,
+        noIndex: true,
+      },
     },
     {
       path: "/att-terms",
       name: "att-terms",
       component: TermsForAttendance,
+      meta: {
+        requiresAuth: true,
+        noIndex: true,
+      },
     },
     {
       path: "/terms/myattendance/:termId",
