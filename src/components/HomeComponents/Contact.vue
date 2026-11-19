@@ -23,8 +23,8 @@ const sendEmail = async () => {
   }
 
   try {
-    await emailjs.sendForm("service_rrb0q39", "template_c7gnhcu", form.value, {
-      publicKey: "jXUtwiPm_YEwEk5uz",
+    await emailjs.sendForm("service_4lv0avm", "template_5xb92ul", form.value, {
+      publicKey: "ZLKKAbPd-xw1-YRhk",
     });
 
     successMessage.value = "تم إرسال رسالتك بنجاح ❤️";
